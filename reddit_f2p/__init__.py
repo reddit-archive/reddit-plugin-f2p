@@ -1,7 +1,7 @@
 from r2.lib.cache import CMemcache, MemcacheChain, LocalCache
 from r2.lib.configparse import ConfigValue
 from r2.lib.plugin import Plugin
-from r2.lib.js import Module
+from r2.lib.js import Module, TemplateFileSource
 
 
 class FreeToPlay(Plugin):
@@ -16,6 +16,7 @@ class FreeToPlay(Plugin):
     js = {
         'reddit': Module('reddit.js',
             'f2p/f2p.js',
+            TemplateFileSource('f2p/panel.html'),
         )
     }
 

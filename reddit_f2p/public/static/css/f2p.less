@@ -1,17 +1,43 @@
+.panel {
+    .title-bar {
+        display: inline-block;
+        float: right;
+        height: 20px;
+        line-height: 20px;
+        padding: 0 5px;
+        background: #cee3f8;
+        border: 1px solid #5f99cf;
+        border-bottom: 0;
+        border-radius: 3px 3px 0 0;
+        cursor: default;
+    }
+
+    .panel-content {
+        clear: both;
+        overflow: hidden;
+    }
+}
+
 #inventory-panel {
     position: fixed;
-    width: 200px;
-    height: 400px;
     right: 0;
     bottom: 0;
+}
+
+.inventory-view {
+    width: 200px;
+    height: 400px;
     background: red;
 }
 
 #score-panel {
     position: fixed;
-    width: 500px;
-    height: 150px;
     right: 225px;
     bottom: 0;
+}
+
+.score-view {
+    width: 500px;
+    height: 150px;
     background: orange;
 }
