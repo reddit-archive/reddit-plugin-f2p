@@ -1,5 +1,6 @@
 from r2.lib.hooks import HookRegistrar
 from r2.lib.plugin import Plugin
+from r2.lib.js import Module
 
 hooks = HookRegistrar()
 
@@ -20,4 +21,14 @@ def add_to_js_config(config):
 
 
 class FreeToPlay(Plugin):
-    pass
+    needs_static_build = True
+
+    js = {
+        'reddit': Module('reddit.js',
+            'f2p.js',
+        )
+    }
+
+    def load_controllers(self):
+        from r2.lib.pages import Reddit
+        Reddit.extra_stylesheets.append('f2p.less')
