@@ -39,6 +39,21 @@ def on_request():
     if should_drop:
         drop_item()
 
+    c.js_preload.add("#inventory", [
+        {"kind": "cruise", "title": "Cruise Missile"},
+        {"kind": "downtime_banana", "title": "Banana of Downtime"},
+        {"kind": "smpl_cdgl", "title": "Smpl Cdgl"},
+        {"kind": "caltrops", "title": "Spiny Caltrops of the Spineless"},
+        {"kind": "chirality", "title": "Scimitar of Chirality"},
+    ])
+
+    c.js_preload.add("#game_status", {
+        "blue_score": 4354,
+        "blue_title": "deep blue",
+        "red_score": 8204,
+        "red_title": "redzone",
+    })
+
 
 @hooks.on("add_props")
 def find_effects(items):

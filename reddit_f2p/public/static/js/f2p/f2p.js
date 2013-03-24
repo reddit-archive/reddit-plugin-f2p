@@ -35,23 +35,11 @@ r.f2p = {
 }
 
 r.f2p.Inventory = Backbone.Collection.extend({
-    fetch: function() {
-        this.add([
-            {id: 'cruise', title: 'Cruise Missile'},
-            {id: 'downtime_banana', title: 'Banana of Downtime'},
-            {id: 'smpl_cdgl', title: 'Smpl Cdgl'},
-            {id: 'caltrops', title: 'Spiny Caltrops of the Spineless'}
-        ])
-    }
+    url: '#inventory'
 })
 
 r.f2p.GameStatus = Backbone.Model.extend({
-    fetch: function() {
-        this.set('blueScore', 4353)
-        this.set('blueTitle', 'deep blue')
-        this.set('redScore', 8203)
-        this.set('redTitle', 'redzone')
-    }
+    url: '#game_status'
 })
 
 r.f2p.Panel = Backbone.View.extend({
