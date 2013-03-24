@@ -15,7 +15,7 @@ class FreeToPlay(Plugin):
 
     js = {
         'reddit': Module('reddit.js',
-            'f2p.js',
+            'f2p/f2p.js',
         )
     }
 
