@@ -3,9 +3,11 @@ import random
 from pylons import g, c
 
 from r2.lib.hooks import HookRegistrar
+from r2.models import Account, Comment
 
 
 hooks = HookRegistrar()
+VALID_TARGETS = (Account, Comment)
 
 
 def is_eligible_request():
@@ -38,10 +40,21 @@ def on_request():
         drop_item()
 
 
-@hooks.on("comment.add_props.batch")
-def add_comment_props(items):
-    effects = g.f2pcache.get_multi([item._fullname for item in items],
-                                   prefix="effect_")
+@hooks.on("add_props")
+def find_effects(items):
+    things = [item for item in items
+              if isinstance(item.lookups[0], VALID_TARGETS)]
+
+    if not things:
+        return
+
+    fullnames = set()
+    fullnames.update(item._fullname for item in things)
+    fullnames.update(item.author._fullname for item in things)
+
+    effects = g.f2pcache.get_multi(fullnames, prefix="effect_")
+    g.log.debug("effects = %r", effects)
+
     # TODO: add effects to js_preload
 
 
