@@ -1,11 +1,7 @@
-from r2.lib.pages import Reddit
 from r2.lib.hooks import HookRegistrar
 
 
 hooks = HookRegistrar()
-
-
-Reddit.extra_stylesheets.append('f2p.less')
 
 
 @hooks.on("reddit-request.begin")
