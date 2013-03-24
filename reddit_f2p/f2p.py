@@ -56,9 +56,3 @@ def find_effects(items):
     g.log.debug("effects = %r", effects)
 
     # TODO: add effects to js_preload
-
-
-@hooks.on("js_config")
-def add_to_js_config(config):
-    # TODO: if a game event has happened, throw it in here.
-    pass
