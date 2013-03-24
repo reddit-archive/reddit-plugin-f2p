@@ -24,6 +24,13 @@ r.f2p = {
             this.inventoryPanel.render().el,
             this.scorePanel.render().el
         )
+
+        $('.tagline .author').each(function(idx, el) {
+            new r.f2p.HatPile({
+                el: el,
+                hats: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            }).render()
+        })
     }
 }
 
@@ -100,6 +107,58 @@ r.f2p.ScoreView = Backbone.View.extend({
         this.$el.html(
             r.templates.make('f2p/scores', this.model.toJSON())
         )
+        return this
+    }
+})
+
+r.f2p.HatPile = Backbone.View.extend({
+    dims: {
+        width: 20,
+        height: 7,
+        xJitter: 3,
+        yJitter: 1,
+        rotJitter: 10
+    },
+
+    render: function() {
+        var pile = $('<div class="hats">'),
+            maxLeft = this.$el.width(),
+            curRow = 0,
+            curLeft = 0
+
+        _.each(this.options.hats, function() {
+            var hat = $('<div class="hat">')
+
+            hat.css({
+                position: 'absolute',
+                left: curLeft,
+                bottom: curRow * this.dims.height + _.random(this.dims.yJitter)
+            })
+
+            var rotation = _.random(-this.dims.rotJitter / 2, this.dims.rotJitter / 2),
+                transform = 'rotate(' + rotation + 'deg)'
+            hat.css({
+                '-webkit-transform': transform,
+                '-moz-transform': transform,
+                '-ms-transform': transform,
+                'transform': transform
+            })
+
+            pile.append(hat)
+
+            curLeft += this.dims.width + _.random(this.dims.xJitter)
+            if (curLeft + this.dims.width > maxLeft) {
+                curRow += 1
+                curLeft = 0
+            }
+        }, this)
+
+        var targetPos = this.$el.position()
+        pile.css({
+            position: 'absolute',
+            left: targetPos.left
+        })
+        this.$el.after(pile)
         return this
     }
 })
