@@ -43,8 +43,11 @@ class FreeToPlay(Plugin):
 
         # TODO: make this a zookeeper.LiveDict
         g.f2pitems = {
-            "cruise": {},
-            "downtime_banana": {},
+            "cruise": {"title": "Cruise Missile"},
+            "downtime_banana": {"title": "Banana of Downtime"},
+            "smpl_cdgl": {"title": "Smpl Cdgl"},
+            "caltrops": {"title": "Spiny Caltrops of the Spineless"},
+            "chirality": {"title": "Scimitar of Chirality"},
         }
 
     def load_controllers(self):

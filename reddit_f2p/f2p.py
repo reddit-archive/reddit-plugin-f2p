@@ -1,3 +1,4 @@
+import json
 import random
 
 from pylons import g, c
@@ -16,6 +17,29 @@ def is_eligible_request():
     return True  # TODO
 
 
+def add_to_inventory(user, item):
+    """Add a given item-name to the user's inventory."""
+    inventory_key = "inventory_%d" % user._id
+    with g.make_lock("f2p_inventory", "f2p_inventory_%d" % user._id):
+        inventory_data = g.f2pcache.get(inventory_key, default="{}")
+        inventory = json.loads(inventory_data)
+        inventory[item] = inventory.get(item, 0) + 1
+        g.f2pcache.set(inventory_key, json.dumps(inventory))
+
+
+def get_inventory(user):
+    inventory_data = g.f2pcache.get("inventory_%d" % user._id, default="{}")
+    inventory = json.loads(inventory_data)
+
+    inventory_view = []
+    for kind, count in inventory.iteritems():
+        for i in xrange(count):
+            item = {"kind": kind}
+            item.update(g.f2pitems[kind])
+            inventory_view.append(item)
+    return inventory_view
+
+
 def drop_item():
     """Choose an item and add it to the user's inventory."""
 
@@ -25,8 +49,7 @@ def drop_item():
 
     g.log.debug("dropping item %r for %r", item_name, c.user.name)
     c.js_preload.add("#drop", [item_name])
-
-    # TODO: add item to user's inventory
+    add_to_inventory(c.user, item_name)
 
 
 def check_for_drops():
@@ -53,14 +76,7 @@ def check_for_drops():
 def on_request():
     check_for_drops()
 
-    c.js_preload.add("#inventory", [
-        {"kind": "cruise", "title": "Cruise Missile"},
-        {"kind": "downtime_banana", "title": "Banana of Downtime"},
-        {"kind": "smpl_cdgl", "title": "Smpl Cdgl"},
-        {"kind": "caltrops", "title": "Spiny Caltrops of the Spineless"},
-        {"kind": "chirality", "title": "Scimitar of Chirality"},
-    ])
-
+    c.js_preload.add("#inventory", get_inventory(c.user))
     c.js_preload.add("#game_status", {
         "blue_score": 4354,
         "blue_title": "deep blue",
