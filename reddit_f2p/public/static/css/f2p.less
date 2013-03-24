@@ -6,6 +6,14 @@
     transition: @arguments;
 }
 
+.no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .panel {
     .title-bar {
         display: inline-block;
@@ -17,7 +25,23 @@
         border: 1px solid #5f99cf;
         border-bottom: 0;
         border-radius: 3px 3px 0 0;
-        cursor: default;
+    }
+
+    .minimize-button {
+        @size: 14px;
+        width: @size;
+        height: @size;
+        line-height: @size;
+        background: white;
+        border: 1px solid black;
+        font-size: @size;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .title-bar, .minimize-button {
+        cursor: pointer;
+        .no-select;
     }
 
     .panel-content {
@@ -38,6 +62,10 @@
     position: fixed;
     right: 5px;
     bottom: 0;
+
+    .minimize-button {
+        display: none;
+    }
 }
 
 .inventory-view {
@@ -78,14 +106,113 @@
     }
 }
 
+@score-panel-width: 500px;
 #score-panel {
     position: fixed;
-    right: 225px;
+    right: 50%;
+    margin-right: -@score-panel-width / 2;
     bottom: 0;
+
+    .minimize-button {
+        position: absolute;
+        right: 2px;
+        top: 25px;
+    }
+
+    .title-bar {
+        opacity: 0;
+        .transition(opacity, 0.2s, ease)
+    }
+
+    &.minimized {
+        .title-bar {
+            opacity: 1;
+            .transition(opacity, 0.5s, ease, 0.25s)
+        }
+    }
 }
 
 .score-view {
-    width: 500px;
-    height: 150px;
-    background: orange;
+    @height: 80px;
+    @box-height: 50px;
+    width: @score-panel-width;
+    height: @height;
+
+    .score {
+        position: relative;
+        font-size: 80px;
+        font-weight: bold;
+        letter-spacing: -.05em;
+        color: white;
+        text-shadow:
+            1px 1px 1px black,
+            -1px 1px 0 black,
+            1px -1px 0 black,
+            -1px -1px 0 black
+            ;
+        margin: -45px 8px 0 8px;
+        z-index: 10;
+    }
+
+    .team {
+        position: relative;
+        display: inline-block;
+        width: @score-panel-width / 2 - 5px;
+        margin-top: @height - @box-height;
+        height: @box-height;
+
+        .team-label {
+            position: absolute;
+            bottom: 15px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        &.blue-team {
+            float: left;
+
+            .score {
+                float: right;
+            }
+
+            .team-label {
+                left: 10px;
+            }
+
+            &:after {
+                background: blue;
+            }
+        }
+
+        &.red-team {
+            float: right;
+
+            .team-label {
+                right: 10px;
+            }
+
+            .score {
+                float: left;
+            }
+
+            &:after {
+                background: red;
+            }
+        }
+
+        &:after {
+            position: absolute;
+            content: '';
+            display: block;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 10px;
+            color: white;
+            border-radius: 8px;
+            opacity: .5;
+        }
+    }
 }

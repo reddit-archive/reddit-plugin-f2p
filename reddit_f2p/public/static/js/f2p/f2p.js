@@ -10,10 +10,14 @@ r.f2p = {
             })
         })
 
+        this.gameStatus = new r.f2p.GameStatus()
+        this.gameStatus.fetch()
         this.scorePanel = new r.f2p.Panel({
             id: 'score-panel',
             title: 'scoreboard',
-            content: new r.f2p.ScoreView()
+            content: new r.f2p.ScoreView({
+                model: this.gameStatus
+            })
         })
 
         $('body').append(
@@ -34,9 +38,18 @@ r.f2p.Inventory = Backbone.Collection.extend({
     }
 })
 
+r.f2p.GameStatus = Backbone.Model.extend({
+    fetch: function() {
+        this.set('blueScore', 4353)
+        this.set('blueTitle', 'deep blue')
+        this.set('redScore', 8203)
+        this.set('redTitle', 'redzone')
+    }
+})
+
 r.f2p.Panel = Backbone.View.extend({
     events: {
-        'click .title-bar': 'minimize'
+        'click .title-bar, .minimize-button': 'minimize'
     },
 
     initialize: function() {
@@ -72,14 +85,23 @@ r.f2p.InventoryView = Backbone.View.extend({
 
     render: function() {
         this.collection.each(function(item) {
-            this.$el.append(r.templates.make('f2p/item', item.toJSON()))
+            this.$el.append(
+                r.templates.make('f2p/item', item.toJSON())
+            )
         }, this)
         return this
     }
 })
 
 r.f2p.ScoreView = Backbone.View.extend({
-    className: 'score-view'
+    className: 'score-view',
+
+    render: function() {
+        this.$el.html(
+            r.templates.make('f2p/scores', this.model.toJSON())
+        )
+        return this
+    }
 })
 
 $(function() {

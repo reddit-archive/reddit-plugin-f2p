@@ -18,6 +18,7 @@ class FreeToPlay(Plugin):
             'f2p/f2p.js',
             TemplateFileSource('f2p/panel.html'),
             TemplateFileSource('f2p/item.html'),
+            TemplateFileSource('f2p/scores.html'),
         )
     }
 
