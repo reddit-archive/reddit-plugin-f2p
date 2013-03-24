@@ -38,6 +38,13 @@ def on_request():
         drop_item()
 
 
+@hooks.on("comment.add_props.batch")
+def add_comment_props(items):
+    effects = g.f2pcache.get_multi([item._fullname for item in items],
+                                   prefix="effect_")
+    # TODO: add effects to js_preload
+
+
 @hooks.on("js_config")
 def add_to_js_config(config):
     # TODO: if a game event has happened, throw it in here.
