@@ -101,6 +101,21 @@ def on_request():
     })
 
 
+# TODO: call this from a controller somewhere!
+def add_effect(thing, effect):
+    """Apply an effect to a thing."""
+    with mutate_key("effect_%s" % thing._fullname, type_=list) as effects:
+        effects.append(effect)
+
+
+def get_effects(fullnames):
+    """Return a dict of fullname -> [effects] for the given fullnames."""
+    effects = g.f2pcache.get_multi(fullnames, prefix="effect_")
+    for fullname, effect_json in effects.iteritems():
+        effects[fullname] = json.loads(effect_json)
+    return effects
+
+
 @hooks.on("add_props")
 def find_effects(items):
     things = [item for item in items
@@ -113,7 +128,6 @@ def find_effects(items):
     fullnames.update(item._fullname for item in things)
     fullnames.update(item.author._fullname for item in things)
 
-    effects = g.f2pcache.get_multi(fullnames, prefix="effect_")
-    g.log.debug("effects = %r", effects)
-
-    # TODO: add effects to js_preload
+    # TODO: it's possible for this hook to run multiple times in the same
+    # request. will multiple preloads for the same URL cause issues?
+    c.js_preload.add("#effects", get_effects(fullnames))
