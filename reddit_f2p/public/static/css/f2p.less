@@ -14,6 +14,13 @@
     user-select: none;
 }
 
+@font-face {
+    font-family: 'TF2';
+    src: url('../TF2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .panel {
     z-index: 10000;
 
@@ -147,8 +154,8 @@
 
     .score {
         position: relative;
-        font-size: 80px;
-        font-weight: bold;
+        font-size: 90px;
+        font-family: 'TF2' sans-serif;
         letter-spacing: -.05em;
         color: white;
         text-shadow:
@@ -157,7 +164,7 @@
             1px -1px 0 black,
             -1px -1px 0 black
             ;
-        margin: -45px 8px 0 8px;
+        margin: -35px 8px 0 8px;
         z-index: 10;
     }
 
