@@ -1,9 +1,13 @@
 r.f2p = {
     init: function() {
+        this.inventory = new r.f2p.Inventory()
+        this.inventory.fetch()
         this.inventoryPanel = new r.f2p.Panel({
             id: 'inventory-panel',
             title: 'inventory',
-            content: new r.f2p.InventoryView()
+            content: new r.f2p.InventoryView({
+                collection: this.inventory,
+            })
         })
 
         this.scorePanel = new r.f2p.Panel({
@@ -18,6 +22,17 @@ r.f2p = {
         )
     }
 }
+
+r.f2p.Inventory = Backbone.Collection.extend({
+    fetch: function() {
+        this.add([
+            {id: 'cruise', title: 'Cruise Missile'},
+            {id: 'downtime_banana', title: 'Banana of Downtime'},
+            {id: 'smpl_cdgl', title: 'Smpl Cdgl'},
+            {id: 'caltrops', title: 'Spiny Caltrops of the Spineless'}
+        ])
+    }
+})
 
 r.f2p.Panel = Backbone.View.extend({
     events: {
@@ -56,7 +71,15 @@ r.f2p.Panel = Backbone.View.extend({
 })
 
 r.f2p.InventoryView = Backbone.View.extend({
-    className: 'inventory-view'
+    className: 'inventory-view',
+    tagName: 'ul',
+
+    render: function() {
+        this.collection.each(function(item) {
+            this.$el.append(r.templates.make('f2p/item', item.toJSON()))
+        }, this)
+        return this
+    }
 })
 
 r.f2p.ScoreView = Backbone.View.extend({

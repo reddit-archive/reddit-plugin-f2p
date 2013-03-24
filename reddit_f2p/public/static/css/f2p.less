@@ -20,14 +20,46 @@
 
 #inventory-panel {
     position: fixed;
-    right: 0;
+    right: 5px;
     bottom: 0;
 }
 
 .inventory-view {
-    width: 200px;
+    @border-width: 1px;
+    @icon-size: 64px;
+    @item-width: @icon-size + 10px;
+    @item-margin: 10px;
+
+    width: 2 * (@item-width + 2 * @item-margin);
     height: 400px;
-    background: red;
+    background: white;
+    padding: 8px;
+    border: 1px solid #5f99cf;
+    border-bottom: 0;
+
+    .item {
+        display: block;
+        float: left;
+        width: @item-width;
+        height: @item-width + 10px;
+        margin: @item-margin;
+        text-align: center;
+
+        .icon {
+            display: inline-block;
+            @border-width: 2px;
+            width: @icon-size - 2 * @border-width;
+            height: @icon-size - 2 * @border-width;
+            background: #cee3f8;
+            border: @border-width solid #5f99cf;
+            border-radius: 6px;
+        }
+
+        .title {
+            padding: 2px 0;
+            text-transform: lowercase;
+        }
+    }
 }
 
 #score-panel {
