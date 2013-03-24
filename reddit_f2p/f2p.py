@@ -3,6 +3,7 @@ import random
 from pylons import g, c
 
 from r2.lib.hooks import HookRegistrar
+from r2.lib.utils import weighted_lottery
 from r2.models import Account, Comment
 
 
@@ -17,11 +18,19 @@ def is_eligible_request():
 
 def drop_item():
     """Choose an item and add it to the user's inventory."""
-    pass
+
+    weights = dict.fromkeys(g.f2pitems.keys(), 100)
+    weights.update(g.live_config["f2p_item_weights"])
+    item_name = weighted_lottery(weights)
+
+    g.log.debug("dropping item %r for %r", item_name, c.user.name)
+    c.js_preload.add("#drop", [item_name])
+
+    # TODO: add item to user's inventory
 
 
-@hooks.on("reddit.request.begin")
-def on_request():
+def check_for_drops():
+    """Determine if it is time to give the user a new item and do so."""
     if not c.user_is_loggedin:
         return
 
@@ -38,6 +47,11 @@ def on_request():
                                  time=next_cooldown)
     if should_drop:
         drop_item()
+
+
+@hooks.on("reddit.request.begin")
+def on_request():
+    check_for_drops()
 
     c.js_preload.add("#inventory", [
         {"kind": "cruise", "title": "Cruise Missile"},

@@ -26,7 +26,11 @@ class FreeToPlay(Plugin):
         ConfigValue.float: [
             'drop_cooldown_mu',
             'drop_cooldown_sigma',
-        ]
+        ],
+
+        ConfigValue.dict(str, int): [
+            'f2p_item_weights',
+        ],
     }
 
     def on_load(self, g):
@@ -36,6 +40,12 @@ class FreeToPlay(Plugin):
             LocalCache(),
             f2p_memcaches,
         ))
+
+        # TODO: make this a zookeeper.LiveDict
+        g.f2pitems = {
+            "cruise": {},
+            "downtime_banana": {},
+        }
 
     def load_controllers(self):
         from r2.lib.pages import Reddit
