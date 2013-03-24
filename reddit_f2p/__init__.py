@@ -22,6 +22,13 @@ class FreeToPlay(Plugin):
         )
     }
 
+    live_config = {
+        ConfigValue.float: [
+            'drop_cooldown_mu',
+            'drop_cooldown_sigma',
+        ]
+    }
+
     def on_load(self, g):
         # TODO: use SelfEmptyingCache for localcache if we use this in jobs
         f2p_memcaches = CMemcache(g.f2pcaches, num_clients=g.num_mc_clients)
