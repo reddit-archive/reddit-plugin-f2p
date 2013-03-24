@@ -43,6 +43,22 @@ def add_to_inventory(user, item):
         inventory[item] = inventory.get(item, 0) + 1
 
 
+class NoSuchItemError(Exception):
+    pass
+
+
+def consume_item(user, item):
+    """Consume an item in the user's inventory or die trying."""
+    with mutate_key("inventory_%d" % user._id, type_=dict) as inventory:
+        if item not in inventory:
+            raise NoSuchItemError()
+
+        inventory[item] -= 1
+        assert inventory[item] >= 0
+        if inventory[item] == 0:
+            del inventory[item]
+
+
 def get_inventory(user):
     inventory_data = g.f2pcache.get("inventory_%d" % user._id, default="{}")
     inventory = json.loads(inventory_data)
