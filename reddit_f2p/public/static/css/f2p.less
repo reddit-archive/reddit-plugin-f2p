@@ -1,3 +1,11 @@
+.transition (@property, @duration, @function: ease, @delay: 0s) {
+    -webkit-transition: @arguments;
+    -moz-transition: @arguments;
+    -o-transition: @arguments;
+    -ms-transition: @arguments;
+    transition: @arguments;
+}
+
 .panel {
     .title-bar {
         display: inline-block;
@@ -15,6 +23,14 @@
     .panel-content {
         clear: both;
         overflow: hidden;
+        max-height: 9999px;
+        .transition(max-height, 0.25s);
+    }
+
+    &.minimized {
+        .panel-content {
+            max-height: 0 !important;
+        }
     }
 }
 

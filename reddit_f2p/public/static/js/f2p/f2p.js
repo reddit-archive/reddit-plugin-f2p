@@ -51,22 +51,18 @@ r.f2p.Panel = Backbone.View.extend({
         this.$('.panel-content').empty().append(
             this.options.content.render().el
         )
+
+        // once content is positioned, set max-height required for css transition.
+        _.defer(_.bind(function() {
+            this.$('.panel-content').css('max-height', this.options.content.$el.outerHeight())
+        }, this))
+
         return this
     },
 
     minimize: function() {
         this.minimized = !this.minimized
-
         this.$el.toggleClass('minimized', this.minimized)
-
-        var props = {}
-        if (this.minimized) {
-            props = {height: 0}
-        } else {
-            props = {height: this.options.content.$el.height()}
-        }
-
-        this.$('.panel-content').animate(props, 250)
     }
 })
 
