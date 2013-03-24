@@ -80,7 +80,7 @@ def drop_item():
     item_name = weighted_lottery(weights)
 
     g.log.debug("dropping item %r for %r", item_name, c.user.name)
-    c.js_preload.add("#drop", [item_name])
+    c.js_preload.set("#drop", [item_name])
     add_to_inventory(c.user, item_name)
 
 
@@ -108,8 +108,8 @@ def check_for_drops():
 def on_request():
     check_for_drops()
 
-    c.js_preload.add("#inventory", get_inventory(c.user))
-    c.js_preload.add("#game_status", {
+    c.js_preload.set("#inventory", get_inventory(c.user))
+    c.js_preload.set("#game_status", {
         "blue_score": 4354,
         "blue_title": "deep blue",
         "red_score": 8204,
@@ -146,4 +146,4 @@ def find_effects(items):
 
     # TODO: it's possible for this hook to run multiple times in the same
     # request. will multiple preloads for the same URL cause issues?
-    c.js_preload.add("#effects", get_effects(fullnames))
+    c.js_preload.set("#effects", get_effects(fullnames))
