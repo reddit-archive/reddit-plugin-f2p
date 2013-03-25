@@ -101,6 +101,14 @@ def find_effects(items):
     c.js_preload.set("#effects", effects.get_effects(fullnames))
 
 
+@hooks.on("comment.gild")
+def gild_comment_effect(comment, gilder):
+    """Add an effect to the gilded comment author."""
+    author = Account._byID(comment.author_id, data=True)
+    g.log.debug('%s got gilded, give them an effect!' % author.name)
+    pass
+
+
 @add_controller
 class FreeToPlayController(RedditController):
     # TODO: validators etc.
