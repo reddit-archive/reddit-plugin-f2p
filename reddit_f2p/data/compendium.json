@@ -1,98 +1,122 @@
 {
     "inebriation": {
         "title": "Clumsy Mallet of Inebriation",
+        "targets": ["usertext"],
         "rarity": "common"
     },
     "patriotism": {
         "title": "Redacting Tape of Patriotism",
+        "targets": ["usertext"],
         "rarity": "common"
     },
     "nostalgia": {
         "title": "Moldy Boot of Nostalgia",
+        "targets": ["usertext"],
         "rarity": "rare"
     },
     "medal": {
         "title": "Distinguished Medal of something something",
+        "targets": ["usertext"],
         "rarity": "uncommon"
     },
     "chirality": {
         "title": "Scimitar of Chirality",
+        "targets": ["usertext"],
         "rarity": "common"
     },
     "nightfall": {
         "title": "Enveloping Cloak of Nightfall",
+        "targets": null,
         "rarity": "rare"
     },
     "daystar": {
         "title": "Blinding Saber of the Daystar",
+        "targets": null,
         "rarity": null
     },
     "english": {
         "title": "Royal Sceptre of the Queen's English",
+        "targets": ["usertext"],
         "rarity": "uncommon"
     },
     "compensation": {
         "title": "Sizable Claymore of Compensation",
+        "targets": ["usertext"],
         "rarity": null
     },
     "inversion": {
         "title": "Curious Orb of Hemispherical Inversion",
+        "targets": ["usertext", "account"],
         "rarity": null
     },
     "scrambler": {
         "title": "Lysdexial Tome of something",
+        "targets": ["link"],
         "rarity": null
     },
     "palindrome": {
         "title": "Mirrored Shield of Palindromic Failure",
+        "targets": ["link", "usertext", "account"],
         "rarity": "uncommon"
     },
     "shuffler": {
         "title": "Cryptographic Shuffler of Pelcgbtencuvp Fuhssyre",
+        "targets": ["usertext", "account"],
         "rarity": null
     },
     "intolerance": {
         "title": "Mighty Megaphone of Internet Intolerance",
+        "targets": ["usertext"],
         "rarity": "rare"
     },
     "emphasis": {
         "title": "Indiscriminate Scattergun of Emphasis",
+        "targets": ["usertext"],
         "rarity": null
     },
     "antigravity": {
         "title": "Extremely Uplifting Anti-Gravity Gun",
+        "targets": ["usertext"],
         "rarity": null
     },
     "discombobulation": {
         "title": "Boxing Gloves of Discombobulation",
+        "targets": ["account"],
         "rarity": null
     },
     "panacea": {
         "title": "Huge Syringe of Soothing Panacea",
+        "targets": ["account"],
         "rarity": null
     },
     "shrouding": {
         "title": "Smoke Bomb of Vague Shrouding",
+        "targets": ["usertext"],
         "rarity": null
     },
     "downtime_banana": {
         "title": "Banana of Downtime",
+        "targets": ["account"],
         "rarity": null
     },
     "torpor": {
         "title": "Hackneyed Crossbow of Memetic Torpor",
+        "targets": ["usertext"],
         "rarity": null
     },
     "smpl_cdgl": {
         "title": "Smpl Cdgl",
+        "targets": ["usertext"],
         "rarity": null
     },
     "cruise": {
         "title": "Cruise Missile",
+        "targets": ["usertext"],
         "rarity": "common"
     },
     "caltrops": {
         "title": "Spiny Caltrops of the Spineless",
+        "targets": ["usertext"],
         "rarity": null
     }
 }
