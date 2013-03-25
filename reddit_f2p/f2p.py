@@ -1,12 +1,16 @@
 import json
 import random
-import contextlib
 
 from pylons import g, c
 
+from r2.controllers import add_controller
+from r2.controllers.reddit_base import RedditController
+from r2.lib.base import abort
 from r2.lib.hooks import HookRegistrar
 from r2.lib.utils import weighted_lottery
 from r2.models import Account, Comment
+from reddit_f2p import procs, inventory
+from reddit_f2p.utils import mutate_key
 
 
 hooks = HookRegistrar()
@@ -18,60 +22,6 @@ def is_eligible_request():
     return True  # TODO
 
 
-@contextlib.contextmanager
-def mutate_key(key, type_=dict):
-    """Context manager to atomically mutate an object stored in memcached.
-
-    The context manager returns an object which can be mutated and will be
-    stored back in memcached when the context ends.  A lock is held while
-    mutation is going on, so be quick!
-
-    If there is currently no object in memcached, `type_` is called to make
-    a new one.
-
-    """
-    with g.make_lock("f2p", "f2p_%s" % key):
-        raw_json = g.f2pcache.get(key)
-        data = json.loads(raw_json) if raw_json else type_()
-        yield data
-        g.f2pcache.set(key, json.dumps(data))
-
-
-def add_to_inventory(user, item):
-    """Add a given item-name to the user's inventory."""
-    with mutate_key("inventory_%d" % user._id, type_=dict) as inventory:
-        inventory[item] = inventory.get(item, 0) + 1
-
-
-class NoSuchItemError(Exception):
-    pass
-
-
-def consume_item(user, item):
-    """Consume an item in the user's inventory or die trying."""
-    with mutate_key("inventory_%d" % user._id, type_=dict) as inventory:
-        if item not in inventory:
-            raise NoSuchItemError()
-
-        inventory[item] -= 1
-        assert inventory[item] >= 0
-        if inventory[item] == 0:
-            del inventory[item]
-
-
-def get_inventory(user):
-    inventory_data = g.f2pcache.get("inventory_%d" % user._id, default="{}")
-    inventory = json.loads(inventory_data)
-
-    inventory_view = []
-    for kind, count in inventory.iteritems():
-        for i in xrange(count):
-            item = {"kind": kind}
-            item.update(g.f2pitems[kind])
-            inventory_view.append(item)
-    return inventory_view
-
-
 def drop_item():
     """Choose an item and add it to the user's inventory."""
 
@@ -80,8 +30,8 @@ def drop_item():
     item_name = weighted_lottery(weights)
 
     g.log.debug("dropping item %r for %r", item_name, c.user.name)
-    c.js_preload.set("#drop", [item_name])
-    add_to_inventory(c.user, item_name)
+    proc = procs.get_item_proc("drop", item_name)
+    proc(c.user, item_name)
 
 
 def check_for_drops():
@@ -108,7 +58,7 @@ def check_for_drops():
 def on_request():
     check_for_drops()
 
-    c.js_preload.set("#inventory", get_inventory(c.user))
+    c.js_preload.set("#inventory", inventory.get_inventory(c.user))
     c.js_preload.set("#game_status", {
         "blue_score": 4354,
         "blue_title": "deep blue",
@@ -147,3 +97,16 @@ def find_effects(items):
     # TODO: it's possible for this hook to run multiple times in the same
     # request. will multiple preloads for the same URL cause issues?
     c.js_preload.set("#effects", get_effects(fullnames))
+
+
+@add_controller
+class FreeToPlayController(RedditController):
+    # TODO: validators etc.
+    def POST_use_item(self, item, target):
+        try:
+            inventory.consume_item(c.user, item)
+        except inventory.NoSuchItemError:
+            abort(400)
+
+        proc = procs.get_item_proc("use", item)
+        proc(c.user, target)
