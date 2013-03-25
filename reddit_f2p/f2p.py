@@ -8,7 +8,7 @@ from r2.lib.base import abort
 from r2.lib.hooks import HookRegistrar
 from r2.lib.utils import weighted_lottery
 from r2.models import Account, Comment
-from reddit_f2p import procs, inventory, effects
+from reddit_f2p import procs, inventory, effects, scores
 
 
 hooks = HookRegistrar()
@@ -64,14 +64,7 @@ def on_request():
 
     c.js_preload.set("#myeffects", effects.get_my_effects(c.user))
     c.js_preload.set("#inventory", inventory.get_inventory(c.user))
-
-    # TODO: get the score from a real data source
-    c.js_preload.set("#game_status", {
-        "blue_score": 4354,
-        "blue_title": "deep blue",
-        "red_score": 8204,
-        "red_title": "redzone",
-    })
+    c.js_preload.set("#game_status", scores.get_scoreboard())
 
 
 @hooks.on("add_props")
