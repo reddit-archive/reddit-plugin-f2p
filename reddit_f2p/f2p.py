@@ -1,4 +1,3 @@
-import json
 import random
 
 from pylons import g, c
@@ -9,8 +8,7 @@ from r2.lib.base import abort
 from r2.lib.hooks import HookRegistrar
 from r2.lib.utils import weighted_lottery
 from r2.models import Account, Comment
-from reddit_f2p import procs, inventory
-from reddit_f2p.utils import mutate_key
+from reddit_f2p import procs, inventory, effects
 
 
 hooks = HookRegistrar()
@@ -59,7 +57,7 @@ def check_for_drops():
 def on_request():
     check_for_drops()
 
-    # TODO: get the effects applied to the current user and put them in preload
+    c.js_preload.set("#myeffects", effects.get_my_effects(c.user))
     c.js_preload.set("#inventory", inventory.get_inventory(c.user))
 
     # TODO: get the score from a real data source
@@ -69,21 +67,6 @@ def on_request():
         "red_score": 8204,
         "red_title": "redzone",
     })
-
-
-# TODO: call this from a controller somewhere!
-def add_effect(thing, effect):
-    """Apply an effect to a thing."""
-    with mutate_key("effect_%s" % thing._fullname, type_=list) as effects:
-        effects.append(effect)
-
-
-def get_effects(fullnames):
-    """Return a dict of fullname -> [effects] for the given fullnames."""
-    effects = g.f2pcache.get_multi(fullnames, prefix="effect_")
-    for fullname, effect_json in effects.iteritems():
-        effects[fullname] = json.loads(effect_json)
-    return effects
 
 
 @hooks.on("add_props")
@@ -100,7 +83,7 @@ def find_effects(items):
 
     # TODO: it's possible for this hook to run multiple times in the same
     # request. will multiple preloads for the same URL cause issues?
-    c.js_preload.set("#effects", get_effects(fullnames))
+    c.js_preload.set("#effects", effects.get_effects(fullnames))
 
 
 @add_controller
