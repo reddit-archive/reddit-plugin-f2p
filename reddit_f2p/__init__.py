@@ -44,6 +44,7 @@ class FreeToPlay(Plugin):
             LocalCache(),
             f2p_memcaches,
         ))
+        g.cache_chains.update(f2p=g.f2pcache)
 
         compendium = pkg_resources.resource_stream(__name__,
                                                    "data/compendium.json")
