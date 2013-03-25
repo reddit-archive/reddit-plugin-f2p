@@ -64,7 +64,7 @@ def on_request():
 
     c.js_preload.set("#myeffects", effects.get_my_effects(c.user))
     c.js_preload.set("#inventory", inventory.get_inventory(c.user))
-    c.js_preload.set("#game_status", scores.get_scoreboard())
+    c.js_preload.set("#game_status", scores.get_game_status())
 
 
 @hooks.on("add_props")
