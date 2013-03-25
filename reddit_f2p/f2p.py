@@ -21,12 +21,17 @@ def is_eligible_request():
 
 
 def drop_item():
-    """Choose an item and add it to the user's inventory."""
+    """Choose an item and add it to the user's inventory.
 
-    # TODO: change this system to take advantage of common/uncommon/rare/etc.
-    weights = dict.fromkeys(g.f2pitems.keys(), 100)
-    weights.update(g.live_config["f2p_item_weights"])
-    item_name = weighted_lottery(weights)
+    The rarity class of the item to drop is chosen by weighted lottery
+    according to the weights configured in live config. An item from within
+    that rarity class is then chosen uniformly at random.
+
+    """
+
+    item_class = weighted_lottery(g.live_config["f2p_rarity_weights"])
+    item_name = random.choice([i["kind"] for i in g.f2pitems.itervalues()
+                               if i["rarity"] == item_class])
 
     g.log.debug("dropping item %r for %r", item_name, c.user.name)
     proc = procs.get_item_proc("drop", item_name)

@@ -33,7 +33,7 @@ class FreeToPlay(Plugin):
         ],
 
         ConfigValue.dict(str, int): [
-            'f2p_item_weights',
+            'f2p_rarity_weights',
         ],
     }
 
