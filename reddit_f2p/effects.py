@@ -5,7 +5,6 @@ from pylons import g
 from reddit_f2p.utils import mutate_key
 
 
-# TODO: call this from a controller somewhere!
 def add_effect(thing, effect):
     """Apply an effect to a thing."""
     with mutate_key("effect_%s" % thing._fullname, type_=list) as effects:
