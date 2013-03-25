@@ -1,6 +1,6 @@
 from pylons import c
 
-from reddit_f2p import inventory
+from reddit_f2p import inventory, effects
 
 
 def get_item_proc(type, item):
@@ -19,5 +19,6 @@ def drop_default(user, item_name):
     inventory.add_to_inventory(user, item_name)
 
 
-def use_default(user, target):
-    pass
+def use_default(user, target, item):
+    # TODO: check the target is of a valid type
+    effects.add_effect(target, item)

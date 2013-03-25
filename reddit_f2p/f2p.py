@@ -96,4 +96,4 @@ class FreeToPlayController(RedditController):
             abort(400)
 
         proc = procs.get_item_proc("use", item)
-        proc(c.user, target)
+        proc(c.user, target, item)
