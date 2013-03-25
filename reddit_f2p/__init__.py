@@ -1,3 +1,7 @@
+import json
+
+import pkg_resources
+
 from r2.lib.cache import CMemcache, MemcacheChain, LocalCache
 from r2.lib.configparse import ConfigValue
 from r2.lib.plugin import Plugin
@@ -41,14 +45,9 @@ class FreeToPlay(Plugin):
             f2p_memcaches,
         ))
 
-        # TODO: make this a zookeeper.LiveDict
-        g.f2pitems = {
-            "cruise": {"title": "Cruise Missile"},
-            "downtime_banana": {"title": "Banana of Downtime"},
-            "smpl_cdgl": {"title": "Smpl Cdgl"},
-            "caltrops": {"title": "Spiny Caltrops of the Spineless"},
-            "chirality": {"title": "Scimitar of Chirality"},
-        }
+        compendium = pkg_resources.resource_stream(__name__,
+                                                   "data/compendium.json")
+        g.f2pitems = json.load(compendium)
 
     def load_controllers(self):
         from r2.lib.pages import Reddit

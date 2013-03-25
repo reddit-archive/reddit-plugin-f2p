@@ -14,6 +14,9 @@ setup(name='reddit_f2p',
         'r2.plugin':
             ['f2p = reddit_f2p:FreeToPlay']
     },
+    package_data={
+        'reddit_f2p': ['data/*.json'],
+    },
     include_package_data=True,
     zip_safe=False,
 )
