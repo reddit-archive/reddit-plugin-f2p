@@ -48,6 +48,8 @@ class FreeToPlay(Plugin):
         compendium = pkg_resources.resource_stream(__name__,
                                                    "data/compendium.json")
         g.f2pitems = json.load(compendium)
+        for kind, data in g.f2pitems.iteritems():
+            data["kind"] = kind
 
     def load_controllers(self):
         from r2.lib.pages import Reddit

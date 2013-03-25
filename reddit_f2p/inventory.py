@@ -34,7 +34,5 @@ def get_inventory(user):
     inventory_view = []
     for kind, count in inventory.iteritems():
         for i in xrange(count):
-            item = {"kind": kind}
-            item.update(g.f2pitems[kind])
-            inventory_view.append(item)
+            inventory_view.append(g.f2pitems[kind])
     return inventory_view
