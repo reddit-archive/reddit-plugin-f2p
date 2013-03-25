@@ -1,6 +1,6 @@
 import random
 
-from pylons import g, c
+from pylons import g, c, request
 
 from r2.controllers import add_controller
 from r2.controllers.reddit_base import RedditController
@@ -17,7 +17,23 @@ VALID_TARGETS = (Account, Comment)
 
 def is_eligible_request():
     """Return whether or not the request is eligible to drop items."""
-    return True  # TODO
+    if request.method != 'GET':
+        return False
+
+    if request.environ.get('render_style') != 'html':
+        return False
+
+    routes_dict = request.environ.get('pylons.routes_dict', {})
+    controller = routes_dict.get('controller')
+    action_name = routes_dict.get('action_name')
+    if controller == 'front' and action_name == 'comments':
+        return True
+    elif (controller in ('hot', 'new', 'rising', 'browse', 'randomrising',
+                         'comments') and
+          action_name == 'listing'):
+        return True
+    else:
+        return False
 
 
 def drop_item():
