@@ -1,17 +1,98 @@
 {
-    "cruise": {
-        "title": "Cruise Missile"
+    "inebriation": {
+        "title": "Clumsy Mallet of Inebriation",
+        "rarity": "common"
     },
-    "downtime_banana": {
-        "title": "Banana of Downtime"
+    "patriotism": {
+        "title": "Redacting Tape of Patriotism",
+        "rarity": "common"
     },
-    "smpl_cdgl": {
-        "title": "Smpl Cdgl"
+    "nostalgia": {
+        "title": "Moldy Boot of Nostalgia",
+        "rarity": "rare"
     },
-    "caltrops": {
-        "title": "Spiny Caltrops of the Spineless"
+    "medal": {
+        "title": "Distinguished Medal of something something",
+        "rarity": "uncommon"
     },
     "chirality": {
-        "title": "Scimitar of Chirality"
+        "title": "Scimitar of Chirality",
+        "rarity": "common"
+    },
+    "nightfall": {
+        "title": "Enveloping Cloak of Nightfall",
+        "rarity": "rare"
+    },
+    "daystar": {
+        "title": "Blinding Saber of the Daystar",
+        "rarity": null
+    },
+    "english": {
+        "title": "Royal Sceptre of the Queen's English",
+        "rarity": "uncommon"
+    },
+    "compensation": {
+        "title": "Sizable Claymore of Compensation",
+        "rarity": null
+    },
+    "inversion": {
+        "title": "Curious Orb of Hemispherical Inversion",
+        "rarity": null
+    },
+    "scrambler": {
+        "title": "Lysdexial Tome of something",
+        "rarity": null
+    },
+    "palindrome": {
+        "title": "Mirrored Shield of Palindromic Failure",
+        "rarity": "uncommon"
+    },
+    "shuffler": {
+        "title": "Cryptographic Shuffler of Pelcgbtencuvp Fuhssyre",
+        "rarity": null
+    },
+    "intolerance": {
+        "title": "Mighty Megaphone of Internet Intolerance",
+        "rarity": "rare"
+    },
+    "emphasis": {
+        "title": "Indiscriminate Scattergun of Emphasis",
+        "rarity": null
+    },
+    "antigravity": {
+        "title": "Extremely Uplifting Anti-Gravity Gun",
+        "rarity": null
+    },
+    "discombobulation": {
+        "title": "Boxing Gloves of Discombobulation",
+        "rarity": null
+    },
+    "panacea": {
+        "title": "Huge Syringe of Soothing Panacea",
+        "rarity": null
+    },
+    "shrouding": {
+        "title": "Smoke Bomb of Vague Shrouding",
+        "rarity": null
+    },
+    "downtime_banana": {
+        "title": "Banana of Downtime",
+        "rarity": null
+    },
+    "torpor": {
+        "title": "Hackneyed Crossbow of Memetic Torpor",
+        "rarity": null
+    },
+    "smpl_cdgl": {
+        "title": "Smpl Cdgl",
+        "rarity": null
+    },
+    "cruise": {
+        "title": "Cruise Missile",
+        "rarity": "common"
+    },
+    "caltrops": {
+        "title": "Spiny Caltrops of the Spineless",
+        "rarity": null
     }
 }
