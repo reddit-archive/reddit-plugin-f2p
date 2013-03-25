@@ -25,6 +25,7 @@ def is_eligible_request():
 def drop_item():
     """Choose an item and add it to the user's inventory."""
 
+    # TODO: change this system to take advantage of common/uncommon/rare/etc.
     weights = dict.fromkeys(g.f2pitems.keys(), 100)
     weights.update(g.live_config["f2p_item_weights"])
     item_name = weighted_lottery(weights)
@@ -58,7 +59,10 @@ def check_for_drops():
 def on_request():
     check_for_drops()
 
+    # TODO: get the effects applied to the current user and put them in preload
     c.js_preload.set("#inventory", inventory.get_inventory(c.user))
+
+    # TODO: get the score from a real data source
     c.js_preload.set("#game_status", {
         "blue_score": 4354,
         "blue_title": "deep blue",
