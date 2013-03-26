@@ -78,8 +78,9 @@ def check_for_drops():
 def on_request():
     check_for_drops()
 
-    c.js_preload.set("#myeffects", effects.get_my_effects(c.user))
-    c.js_preload.set("#inventory", inventory.get_inventory(c.user))
+    if c.user_is_loggedin:
+        c.js_preload.set("#myeffects", effects.get_my_effects(c.user))
+        c.js_preload.set("#inventory", inventory.get_inventory(c.user))
     c.js_preload.set("#game_status", scores.get_game_status())
 
 
