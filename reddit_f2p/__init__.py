@@ -52,6 +52,9 @@ class FreeToPlay(Plugin):
         for kind, data in g.f2pitems.iteritems():
             data["kind"] = kind
 
+    def add_routes(self, mc):
+        mc('/gamelog', controller='gamelog', action='listing')
+
     def load_controllers(self):
         from r2.lib.pages import Reddit
         Reddit.extra_stylesheets.append('f2p.less')
