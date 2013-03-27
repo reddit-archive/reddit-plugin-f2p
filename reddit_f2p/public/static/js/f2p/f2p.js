@@ -1,7 +1,6 @@
 r.f2p = {
     init: function() {
         this.inventory = new r.f2p.Inventory()
-        this.inventory.fetch()
         this.inventoryPanel = new r.f2p.Panel({
             id: 'inventory-panel',
             title: 'inventory',
@@ -9,6 +8,7 @@ r.f2p = {
                 collection: this.inventory,
             })
         })
+        this.inventory.fetch()
 
         this.gameStatus = new r.f2p.GameStatus()
         this.gameStatus.fetch()
@@ -20,9 +20,12 @@ r.f2p = {
             })
         })
 
+        this.targetOverlay = new r.f2p.TargetOverlay()
+
         $('body').append(
             this.inventoryPanel.render().el,
-            this.scorePanel.render().el
+            this.scorePanel.render().el,
+            this.targetOverlay.render().el
         )
 
         $('.tagline .author').each(function(idx, el) {
@@ -34,8 +37,16 @@ r.f2p = {
     }
 }
 
+r.f2p.Item = Backbone.Model.extend({
+    target: function(targetId) {
+        alert('targeting '  + targetId)
+    }
+})
+
+
 r.f2p.Inventory = Backbone.Collection.extend({
-    url: '#inventory'
+    url: '#inventory',
+    model: r.f2p.Item
 })
 
 r.f2p.GameStatus = Backbone.Model.extend({
@@ -78,13 +89,119 @@ r.f2p.InventoryView = Backbone.View.extend({
     className: 'inventory-view',
     tagName: 'ul',
 
+    initialize: function() {
+        this.listenTo(this.collection, 'add', this.addOne)
+        this.listenTo(this.collection, 'reset', this.addAll)
+    },
+
+    addAll: function() {
+        this.collection.each(this.addOne, this)
+    },
+
+    addOne: function(item) {
+        var view = new r.f2p.ItemView({model: item})
+        this.$el.append(view.render().el)
+    }
+})
+
+r.f2p.ItemView = Backbone.View.extend({
+    tagName: 'li',
+    className: 'item',
+
+    events: {
+        'click': 'activate'
+    },
+
     render: function() {
-        this.collection.each(function(item) {
-            this.$el.append(
-                r.templates.make('f2p/item', item.toJSON())
-            )
-        }, this)
+        this.$el.html(
+            r.templates.make('f2p/item', this.model.toJSON())
+        )
         return this
+    },
+
+    activate: function() {
+        r.f2p.targetOverlay.displayFor(this.model)
+    }
+})
+
+r.f2p.TargetOverlay = Backbone.View.extend({
+    id: 'f2p-target-overlay',
+
+    events: {
+        'click .shade': 'cancel',
+        'click .target-cover': 'select',
+    },
+
+    targetKinds: {
+        'account': {
+            selector: '.tagline .author',
+            getId: function(el) {
+                return $(el).data('fullname')
+            }
+        },
+        'link': {
+            selector: '.thing.link a.title',
+            getId: function(el) {
+                return $(el).parents('.thing').data('fullname')
+            }
+        },
+        'usertext': {
+            selector: '.usertext-body',
+            getId: function(el) {
+                return $(el).parents('.thing').data('fullname')
+            }
+        }
+    },
+
+    displayFor: function(item) {
+        if (this.activeItem != item) {
+            this.cancel()
+        }
+
+        this.activeItem = item
+
+        var kinds = _.pick(this.targetKinds, item.get('targets')),
+            selectors = _.pluck(kinds, 'selector')
+
+        this.$el.html(
+            r.templates.make('f2p/target-overlay', {
+                selector: _.values(selectors).join(', ')
+            })
+        )
+
+        var container = this.$('.target-overlay')
+        container.empty()
+        _.each(kinds, function(kind) {
+            $(kind.selector).each(function() {
+                var $el = $(this),
+                    targetShape = $('<div>')
+                        .offset($el.offset())
+                        .width($el.width())
+                        .height($el.height())
+                        .addClass('target-' + kind)
+
+                var targetCover = targetShape.clone()
+                    .data('target-id', kind.getId($el))
+
+                targetShape.addClass('target-bg')
+                targetCover.addClass('target-cover')
+
+                container.append(targetShape, targetCover)
+            })
+        }, this)
+
+        this.$el.show()
+    },
+
+    cancel: function() {
+        this.$el.hide()
+        this.$el.empty()
+        this.activeItem = null
+    },
+
+    select: function(ev) {
+        var targetId = $(ev.target).data('target-id')
+        this.activeItem.target(targetId)
     }
 })
 

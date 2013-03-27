@@ -102,6 +102,7 @@
         height: @item-width + 10px;
         margin: @item-margin;
         text-align: center;
+        cursor: pointer;
 
         .icon {
             display: inline-block;
@@ -229,6 +230,46 @@
             color: white;
             border-radius: 8px;
             opacity: .5;
+        }
+    }
+}
+
+#f2p-target-overlay {
+    .shade {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: black;
+        opacity: .25;
+        z-index: 1000;
+    }
+
+    .target-overlay {
+        .target-bg, .target-cover {
+            position: absolute;
+            padding: 2px;
+            margin: -2px;
+            border-radius: 2px;
+        }
+
+        .target-bg {
+            background: white;
+            z-index: 9000;
+            box-shadow: 0 0 3px 1px fade(orangered, 50%);
+
+            &.target-account {
+              z-index: 9001;
+            }
+        }
+
+        .target-cover {
+            z-index: 11000;
+
+            &:hover {
+                box-shadow: 0 0 5px 2px orangered;
+            }
         }
     }
 }
