@@ -20,6 +20,7 @@ from r2.lib.validator import (
     validate,
     VLimit,
 )
+from r2.lib.wrapped import Wrapped
 from r2.models import (
     Account,
     Comment,
@@ -168,6 +169,16 @@ class GameLogController(RedditController):
             q._after(after)
 
         builder = QueryBuilder(q, skip=False, num=num, reverse=reverse)
+
+        def wrap_items_fn(items):
+            wrapped = []
+            for item in items:
+                w = Wrapped(item)
+                wrapped.append(w)
+            GameLogEntry.add_props(c.user, wrapped)
+            return wrapped
+
+        builder.wrap_items = wrap_items_fn
         listing = TableListing(builder)
         return Reddit(content=listing.listing(),
                       extension_handling=False).render()
@@ -250,26 +261,6 @@ class GameLogEntry(object):
     @property
     def _fullname(self):
         return '%s_%s' % (self.__class__.__name__, self._id)
-
-    @property
-    def _ups(self):
-        return 0
-
-    @property
-    def _downs(self):
-        return 0
-
-    @property
-    def _deleted(self):
-        return False
-
-    @property
-    def _spam(self):
-        return False
-
-    @property
-    def reported(self):
-        return False
 
     @classmethod
     def create(cls, user_fullname, target_fullname, item_id):
