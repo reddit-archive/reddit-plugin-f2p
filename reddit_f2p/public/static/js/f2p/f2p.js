@@ -95,6 +95,7 @@ r.f2p.InventoryView = Backbone.View.extend({
     tagName: 'ul',
 
     initialize: function() {
+        this.bubbleGroup = {}
         this.listenTo(this.collection, 'add', this.addOne)
         this.listenTo(this.collection, 'reset', this.addAll)
     },
@@ -104,7 +105,10 @@ r.f2p.InventoryView = Backbone.View.extend({
     },
 
     addOne: function(item) {
-        var view = new r.f2p.ItemView({model: item})
+        var view = new r.f2p.ItemView({
+            model: item,
+            bubbleGroup: this.bubbleGroup
+        })
         this.$el.append(view.render().el)
     }
 })
@@ -117,6 +121,14 @@ r.f2p.ItemView = Backbone.View.extend({
         'click': 'activate'
     },
 
+    initialize: function() {
+        this.bubble = new r.f2p.ItemBubble({
+            model: this.model,
+            parent: this.$el,
+            group: this.options.bubbleGroup
+        })
+    },
+
     render: function() {
         this.$el.html(
             r.templates.make('f2p/item', this.model.toJSON())
@@ -126,6 +138,20 @@ r.f2p.ItemView = Backbone.View.extend({
 
     activate: function() {
         r.f2p.targetOverlay.displayFor(this.model)
+    }
+})
+
+r.f2p.ItemBubble = r.ui.Bubble.extend({
+    className: 'item-bubble hover-bubble anchor-right',
+
+    showDelay: 0,
+    hideDelay: 0,
+
+    render: function() {
+        this.$el.html(
+            r.templates.make('f2p/item-bubble', this.model.toJSON())
+        )
+        return this
     }
 })
 
