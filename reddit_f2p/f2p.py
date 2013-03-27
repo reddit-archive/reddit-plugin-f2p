@@ -95,8 +95,19 @@ def check_for_drops():
         drop_item()
 
 
+def check_for_banana():
+    if not c.user_is_loggedin or not is_eligible_request():
+        return False
+
+    user_effects = effects.get_effects([c.user._fullname])
+    return 'banana' in user_effects
+
+
 @hooks.on("reddit.request.begin")
 def on_request():
+    if check_for_banana() and random.random() < 0.05:
+        abort(503)
+
     check_for_drops()
 
     if c.user_is_loggedin:
