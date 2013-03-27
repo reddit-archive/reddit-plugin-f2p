@@ -185,17 +185,12 @@ class GameLogController(RedditController):
 
 
 class GameLogEntry(object):
-    def __init__(self, _id, user_fullname, target_fullname, item_id):
+    def __init__(self, _id, user_fullname, target_fullname, item_id, date):
         self._id = _id
         self.user_fullname = user_fullname
         self.target_fullname = target_fullname
         self.item_id = item_id
-
-        timestamp = (_id.time - 0x01b21dd213814000L)*100/1e9
-        date = datetime.datetime.fromtimestamp(timestamp).replace(tzinfo=g.tz)
-        system_offset = -4 # EDT to UTC (PDT to UTC: -7)
-        date -= datetime.timedelta(hours=system_offset)
-        self._date = date
+        self.date = date
 
     @classmethod
     def add_props(cls, user, wrapped):
@@ -265,22 +260,38 @@ class GameLogEntry(object):
     @classmethod
     def create(cls, user_fullname, target_fullname, item_id):
         _id = uuid1()
-        obj = cls(_id, user_fullname, target_fullname, item_id)
+        date = datetime.datetime.now(g.tz)
+        obj = cls(_id, user_fullname, target_fullname, item_id, date)
         GameLog.add_object(obj)
         return obj
+
+    @classmethod
+    def date_to_tuple(cls, d):
+        # Assumes date is UTC
+        date_fields = ('year', 'month', 'day', 'hour', 'minute', 'second',
+                       'microsecond')
+        return tuple(getattr(d, f) for f in date_fields)
+
+    @classmethod
+    def date_from_tuple(cls, t):
+        date = datetime.datetime(*t)
+        date = date.replace(tzinfo=g.tz)
+        return date
 
     def to_json(self):
         return json.dumps({
             'user': self.user_fullname,
             'target': self.target_fullname,
             'item': self.item_id,
+            'date': self.date_to_tuple(self.date),
         })
 
     @classmethod
     def from_json(cls, _id, blob):
         attr_dict = json.loads(blob)
         obj = cls(_id, attr_dict['user'], attr_dict['target'],
-                  attr_dict['item'])
+                  attr_dict['item'],
+                  cls.date_from_tuple(attr_dict['date']))
         return obj
 
     def __repr__(self):
