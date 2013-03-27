@@ -19,6 +19,14 @@ def get_effects(fullnames):
     return effects
 
 
+def remove_effect(thing, effect):
+    with mutate_key("effect_%s" % thing._fullname, type_=list) as effects:
+        try:
+            effects.remove(effect)
+        except ValueError:
+            pass
+
+
 def get_my_effects(user):
     """Return full item descriptions for all effects on the user given."""
     effects = get_effects([user._fullname])
