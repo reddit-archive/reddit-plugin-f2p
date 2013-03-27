@@ -2,11 +2,4 @@ reddit_f2p.egg-info
 *.swp
 *.swo
 *.pyc
-
-reddit_f2p/.DS_Store
-
-.DS_Store
-
-reddit_f2p/public/static/images/.DS_Store
-
-reddit_f2p/public/static/images/.DS_Store
+*.DS_Store
