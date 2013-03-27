@@ -59,11 +59,12 @@ r.f2p.Panel = Backbone.View.extend({
     },
 
     initialize: function() {
-        this.minimized = false
         this.setElement(r.templates.make('f2p/panel', {
             id: this.id,
             title: this.options.title
         }))
+        this.storeKey = 'f2p.' + this.id + 'minimized'
+        this._minimize(store.get(this.storeKey) == true)
     },
 
     render: function() {
@@ -79,9 +80,13 @@ r.f2p.Panel = Backbone.View.extend({
         return this
     },
 
+    _minimize: function(minimized) {
+        store.set(this.storeKey, minimized)
+        this.$el.toggleClass('minimized', minimized)
+    },
+
     minimize: function() {
-        this.minimized = !this.minimized
-        this.$el.toggleClass('minimized', this.minimized)
+        this._minimize(!this.$el.hasClass('minimized'))
     }
 })
 
