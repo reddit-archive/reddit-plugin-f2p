@@ -22,6 +22,17 @@ def drop_default(user, item_name):
     inventory.add_to_inventory(user, item_name)
 
 
+def drop_abstinence(user, item_name):
+    effects.add_effect(user, item_name)
+    drop_default(user, item_name)
+
+
+def use_abstinence(user, target, item_name):
+    effects.remove_effect(user, item_name)
+    effects.add_effect(target, item_name)
+    inventory.add_to_inventory(target, item_name)
+
+
 def use_default(user, target, item):
     # TODO: check the target is of a valid type
     effects.add_effect(target, item)
