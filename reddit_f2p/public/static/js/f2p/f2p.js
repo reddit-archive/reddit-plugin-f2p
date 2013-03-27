@@ -174,10 +174,14 @@ r.f2p.TargetOverlay = Backbone.View.extend({
         _.each(kinds, function(kind, kindName) {
             $(kind.selector).each(function() {
                 var $el = $(this),
+                    offset = $el.offset(),
                     targetShape = $('<div>')
-                        .offset($el.offset())
-                        .width($el.width())
-                        .height($el.height())
+                        .css({
+                            left: offset.left,
+                            top: offset.top,
+                            width: $el.width(),
+                            height: $el.height()
+                        })
                         .addClass('target-' + kindName)
 
                 var targetCover = targetShape.clone()
