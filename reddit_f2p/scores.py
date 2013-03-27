@@ -23,3 +23,8 @@ def get_game_status():
         scoreboard["user_team"] = get_user_team(c.user)
 
     return scoreboard
+
+
+def incr_score(team, delta):
+    assert team in TEAMS.keys()
+    g.f2pcache.incr('score_%s' % team, delta=delta)
