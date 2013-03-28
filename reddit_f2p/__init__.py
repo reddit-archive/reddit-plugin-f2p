@@ -55,7 +55,7 @@ class FreeToPlay(Plugin):
             data["kind"] = kind
 
     def add_routes(self, mc):
-        mc('/gamelog', controller='gamelog', action='listing')
+        mc('/f2p/gamelog', controller='gamelog', action='listing')
 
     def load_controllers(self):
         from r2.lib.pages import Reddit
