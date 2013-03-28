@@ -37,16 +37,26 @@ r.f2p = {
     }
 }
 
-r.f2p.Item = Backbone.Model.extend({
-    target: function(targetId) {
-        alert('targeting '  + targetId)
-    }
-})
+r.f2p.Item = Backbone.Model.extend({})
 
 
 r.f2p.Inventory = Backbone.Collection.extend({
     url: '#inventory',
-    model: r.f2p.Item
+    model: r.f2p.Item,
+
+    use: function(item, targetId) {
+        $.ajax({
+            type: 'post',
+            url: '/api/f2p/use_item',
+            data: {
+                item: item.get('kind'),
+                target: targetId
+            },
+            success: _.bind(function() {
+                this.remove(item)
+            }, this)
+        })
+    }
 })
 
 r.f2p.GameStatus = Backbone.Model.extend({
@@ -95,8 +105,10 @@ r.f2p.InventoryView = Backbone.View.extend({
     tagName: 'ul',
 
     initialize: function() {
+        this._itemViews = {}
         this.bubbleGroup = {}
         this.listenTo(this.collection, 'add', this.addOne)
+        this.listenTo(this.collection, 'remove', this.removeOne)
         this.listenTo(this.collection, 'reset', this.addAll)
     },
 
@@ -109,7 +121,14 @@ r.f2p.InventoryView = Backbone.View.extend({
             model: item,
             bubbleGroup: this.bubbleGroup
         })
+        this._itemViews[item.cid] = view
         this.$el.append(view.render().el)
+    },
+
+    removeOne: function(item) {
+        var view = this._itemViews[item.cid]
+        view.remove()
+        delete this._itemViews[view.cid]
     }
 })
 
@@ -236,7 +255,8 @@ r.f2p.TargetOverlay = Backbone.View.extend({
 
     select: function(ev) {
         var targetId = $(ev.target).data('target-id')
-        this.activeItem.target(targetId)
+        r.f2p.inventory.use(this.activeItem, targetId)
+        this.cancel()
     }
 })
 

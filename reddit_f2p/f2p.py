@@ -11,6 +11,7 @@ from r2.controllers.reddit_base import RedditController
 from r2.lib.base import abort
 from r2.lib.db import tdb_cassandra
 from r2.lib.db.thing import Thing
+from r2.lib.errors import errors
 from r2.lib.filters import _force_unicode
 from r2.lib.hooks import HookRegistrar
 from r2.lib.pages import Reddit, WrappedUser
@@ -19,6 +20,8 @@ from r2.lib.validator import (
     nop,
     validate,
     VLimit,
+    VRequired,
+    VByName,
 )
 from r2.lib.wrapped import Wrapped
 from r2.models import (
@@ -154,8 +157,9 @@ def comment_reply_effect(comment):
 
 
 @add_controller
-class FreeToPlayController(RedditController):
-    # TODO: validators etc.
+class FreeToPlayApiController(RedditController):
+    @validate(item=VRequired('item', errors.NO_NAME),
+              target=VByName('target'))
     def POST_use_item(self, item, target):
         try:
             inventory.consume_item(c.user, item)
