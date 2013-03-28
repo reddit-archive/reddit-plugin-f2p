@@ -73,6 +73,7 @@ def drop_item():
     g.log.debug("dropping item %r for %r", item_name, c.user.name)
     proc = procs.get_item_proc("drop", item_name)
     proc(c.user, item_name)
+    c.js_preload.set("#drop", [item_name])
 
 
 def check_for_drops():

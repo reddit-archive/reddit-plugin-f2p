@@ -20,7 +20,6 @@ def drop_cloak(user, item_name):
 
 
 def drop_default(user, item_name):
-    c.js_preload.set("#drop", [item_name])
     inventory.add_to_inventory(user, item_name)
 
 
