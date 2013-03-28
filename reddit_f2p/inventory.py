@@ -36,3 +36,8 @@ def get_inventory(user):
         for i in xrange(count):
             inventory_view.append(g.f2pitems[kind])
     return inventory_view
+
+
+def clear_inventory(user):
+    with mutate_key("inventory_%d" % user._id, type_=dict) as inventory:
+        inventory = {}

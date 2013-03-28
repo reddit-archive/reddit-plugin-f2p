@@ -32,3 +32,8 @@ def get_my_effects(user):
     effects = get_effects([user._fullname])
     effect_names = effects.get(user._fullname, [])
     return [g.f2pitems[name] for name in effect_names]
+
+
+def clear_effects(thing):
+    with mutate_key("effect_%s" % thing._fullname, type_=list) as effects:
+        effects = []
