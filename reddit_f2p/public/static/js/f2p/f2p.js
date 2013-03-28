@@ -37,8 +37,11 @@ r.f2p = {
     }
 }
 
-r.f2p.Item = Backbone.Model.extend({})
-
+r.f2p.Item = Backbone.Model.extend({
+    defaults: {
+        "cursor": "crosshair"
+    }
+})
 
 r.f2p.Inventory = Backbone.Collection.extend({
     url: '#inventory',
@@ -219,6 +222,8 @@ r.f2p.TargetOverlay = Backbone.View.extend({
             })
         )
 
+        $('body').css({'cursor': item.get('cursor')})
+
         var container = this.$('.target-overlay')
         container.empty()
         _.each(kinds, function(kind, kindName) {
@@ -251,6 +256,7 @@ r.f2p.TargetOverlay = Backbone.View.extend({
         this.$el.hide()
         this.$el.empty()
         this.activeItem = null
+        $('body').css({'cursor': 'auto'})
     },
 
     select: function(ev) {

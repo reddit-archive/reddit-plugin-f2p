@@ -87,6 +87,7 @@
     "panacea": {
         "title": "Huge Syringe of Soothing Panacea",
         "targets": ["account"],
+        "cursor": "cell",
         "rarity": null
     },
     "shrouding": {
