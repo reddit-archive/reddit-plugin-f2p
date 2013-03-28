@@ -207,12 +207,14 @@ class GameLogController(RedditController):
 
 
 class GameLogEntry(object):
-    def __init__(self, _id, user_fullname, target_fullname, item_id, date):
+    def __init__(self, _id, user_fullname, target_fullname, item, date,
+                 **extras):
         self._id = _id
         self.user_fullname = user_fullname
         self.target_fullname = target_fullname
-        self.item_id = item_id
+        self.item = item
         self.date = date
+        self.extras = extras
 
     @classmethod
     def add_props(cls, user, wrapped):
@@ -235,8 +237,6 @@ class GameLogEntry(object):
         authors = Account._byID(author_ids, data=True, return_dict=True)
         links = Link._byID(link_ids, data=True, return_dict=True)
         subreddits = Subreddit._byID(sr_ids, data=True, return_dict=True)
-
-        items = {}
 
         target_things = {}
         for fullname, target in targets.iteritems():
@@ -267,8 +267,16 @@ class GameLogEntry(object):
         for w in wrapped:
             w.user = WrappedUser(users[w.user_fullname])
             w.target = target_things[w.target_fullname]
-            w.item = items.get(w.item_id, w.item_id)
+            try:
+                w.item = g.f2pitems[w.item]['title']
+            except KeyError:
+                pass
             w.user_team = scores.get_user_team(users[w.user_fullname])
+            w.text = ''
+            if 'damage' in w.extras:
+                damage = w.extras['damage']
+                w.text = ('for %s point%s of damage' %
+                          (damage, 's' if damage > 1 else ''))
             if isinstance(w.target, WrappedUser):
                 target_user = targets[w.target.fullname]
             else:
@@ -280,10 +288,10 @@ class GameLogEntry(object):
         return '%s_%s' % (self.__class__.__name__, self._id)
 
     @classmethod
-    def create(cls, user_fullname, target_fullname, item_id):
+    def create(cls, user_fullname, target_fullname, item, **extras):
         _id = uuid1()
         date = datetime.datetime.now(g.tz)
-        obj = cls(_id, user_fullname, target_fullname, item_id, date)
+        obj = cls(_id, user_fullname, target_fullname, item, date, **extras)
         GameLog.add_object(obj)
         return obj
 
@@ -301,19 +309,21 @@ class GameLogEntry(object):
         return date
 
     def to_json(self):
-        return json.dumps({
+        return json.dumps(self.extras.update({
             'user': self.user_fullname,
             'target': self.target_fullname,
-            'item': self.item_id,
+            'item': self.item,
             'date': self.date_to_tuple(self.date),
-        })
+        }))
 
     @classmethod
     def from_json(cls, _id, blob):
         attr_dict = json.loads(blob)
-        obj = cls(_id, attr_dict['user'], attr_dict['target'],
-                  attr_dict['item'],
-                  cls.date_from_tuple(attr_dict['date']))
+        user = attr_dict.pop('user')
+        target = attr_dict.pop('target')
+        item = attr_dict.pop('item')
+        date = cls.date_from_tuple(attr_dict.pop('date'))
+        obj = cls(_id, user, target, item, date, **attr_dict)
         return obj
 
     def __repr__(self):

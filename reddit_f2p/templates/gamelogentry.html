@@ -39,4 +39,7 @@
                  target='_blank' if c.user.pref_newwindow else '')}
     %endif
   </td>
+  %if thing.text:
+    <td>${thing.text}</td>
+  %endif
 </tr>
