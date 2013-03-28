@@ -118,5 +118,15 @@
         "title": "Spiny Caltrops of the Spineless",
         "targets": ["usertext"],
         "rarity": null
+    },
+    "overpowered": {
+        "title": "Overpowered Melee Weapon",
+        "targets": ["account"],
+        "rarity": null
+    },
+    "magnet": {
+        "title": "Magnet of Un-Magnanimity",
+        "targets": ["account"],
+        "rarity": null
     }
 }
