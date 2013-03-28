@@ -141,6 +141,17 @@ def gild_comment_effect(comment, gilder):
     pass
 
 
+@hooks.on("comment.new")
+def comment_reply_effect(comment):
+    parent_id = (comment.parent_id if hasattr(comment, 'parent_id')
+                 else comment.link_id)
+    parent = Thing._byID(parent_id)
+    parent_effects = effects.get_effects([parent._fullname])
+    reply_effects = []
+    if reply_effects:
+        pass
+
+
 @add_controller
 class FreeToPlayController(RedditController):
     # TODO: validators etc.
