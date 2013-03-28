@@ -40,4 +40,4 @@ def get_inventory(user):
 
 def clear_inventory(user):
     with mutate_key("inventory_%d" % user._id, type_=dict) as inventory:
-        inventory = {}
+        inventory.clear()
