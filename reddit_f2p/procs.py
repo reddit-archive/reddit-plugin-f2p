@@ -4,7 +4,7 @@ from pylons import c, g
 
 from reddit_f2p import inventory, effects, scores
 
-from r2.models import Account
+from r2.models import Account, Comment, Link
 from r2.models.admintools import send_system_message
 
 
@@ -75,4 +75,62 @@ def use_capitulation(user, target, item):
                                                             item_title, damage)
     send_system_message(target, subject, msg)
     scores.incr_score(scores.get_user_team(target), damage)
+
+
+def use_overpowered(user, target, item):
+    effects.clear_effects(target)
+    inventory.clear_inventory(target)
+    item_title = g.f2pitems[item]['title']
+    subject = 'you were assassinated!'
+    msg = ('you were assassinated by %s (with %s) and lost all your items and'
+           ' effects' % (user.name, item_title))
+    send_system_message(target, subject, msg)
+
+
+def use_magnet(user, target, item):
+    target_items = [item_dict['kind']
+                    for item_dict in inventory.get_inventory(target)]
+    if target_items:
+        to_steal = random.choice(target_items)
+        inventory.consume_item(target, to_steal)
+        inventory.add_to_inventory(user, to_steal)
+
+        to_steal_title = g.f2pitems[to_steal]['title']
+        item_title = g.f2pitems[item]['title']
+        subject = "you've been robbed!"
+        msg = ('%s used %s to steal your %s' %
+               (user.name, item_title, to_steal_title))
+        send_system_message(target, subject, msg)
+
+        subject = "you stole an item"
+        msg = ("you used %s to steal %s from %s" %
+               (item_title, to_steal_title, target.name))
+        send_system_message(user, subject, msg)
+
+
+def use_wand(user, target, item):
+    if isinstance(target, Account):
+        target_type = 'account'
+    elif isinstance(target, Comment):
+        target_type = 'usertext'
+    elif isinstance(target, Link):
+        target_type = 'link'
+    else:
+        return
+
+    target_items = [item_dict['kind'] for item_dict in g.f2pitems.values()
+                    if (item_dict['targets'] and
+                        target_type in item_dict['targets'])]
+    target_random_item = random.choice(target_items)
+    proc = get_item_proc('use', target_random_item)
+    proc(user, target, target_random_item)
+
+    if random.random() > 0.5:
+        user_items = [item_dict['kind'] for item_dict in g.f2pitems.values()
+                      if (item_dict['targets'] and
+                          'account' in item_dict['targets'])]
+        user_random_item = random.choice(user_items)
+        proc = get_item_proc('use', user_random_item)
+        proc(user, user, user_random_item)
+    # TODO: messages?
 
