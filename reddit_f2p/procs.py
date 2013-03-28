@@ -1,3 +1,5 @@
+import random
+
 from pylons import c, g
 
 from reddit_f2p import inventory, effects, scores
@@ -39,7 +41,7 @@ def use_default(user, target, item):
 
 
 def _use_healing_item(user, target, item):
-    target_afflictions = effects.get_effects([target._fullname])
+    target_afflictions = effects.get_effects([target._fullname]).values()[0]
     if target_afflictions:
         to_heal = random.choice(target_afflictions)
         effects.remove_effect(target, to_heal)
