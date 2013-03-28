@@ -36,4 +36,4 @@ def get_my_effects(user):
 
 def clear_effects(thing):
     with mutate_key("effect_%s" % thing._fullname, type_=list) as effects:
-        effects = []
+        del effects[:]
