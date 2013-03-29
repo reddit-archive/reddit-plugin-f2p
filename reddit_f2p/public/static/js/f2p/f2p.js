@@ -8,10 +8,10 @@ r.f2p = {
                 collection: this.inventory,
             })
         })
+        $('body').append(this.inventoryPanel.render().el)
         this.inventory.fetch()
 
         this.gameStatus = new r.f2p.GameStatus()
-        this.gameStatus.fetch()
         this.scorePanel = new r.f2p.Panel({
             id: 'score-panel',
             title: 'scoreboard',
@@ -19,14 +19,11 @@ r.f2p = {
                 model: this.gameStatus
             })
         })
+        $('body').append(this.scorePanel.render().el)
+        this.gameStatus.fetch()
 
         this.targetOverlay = new r.f2p.TargetOverlay()
-
-        $('body').append(
-            this.inventoryPanel.render().el,
-            this.scorePanel.render().el,
-            this.targetOverlay.render().el
-        )
+        $('body').append(this.targetOverlay.render().el)
 
         this.pageEffects = new r.f2p.Effects()
         this.pageEffects.fetch()
@@ -98,7 +95,6 @@ r.f2p.Panel = Backbone.View.extend({
 
 r.f2p.InventoryView = Backbone.View.extend({
     className: 'inventory-view',
-    tagName: 'ul',
 
     initialize: function() {
         this._itemViews = {}
@@ -106,6 +102,11 @@ r.f2p.InventoryView = Backbone.View.extend({
         this.listenTo(this.collection, 'add', this.addOne)
         this.listenTo(this.collection, 'remove', this.removeOne)
         this.listenTo(this.collection, 'reset', this.addAll)
+    },
+
+    render: function() {
+        this.$el.append('<ul>')
+        return this
     },
 
     addAll: function() {
@@ -118,7 +119,7 @@ r.f2p.InventoryView = Backbone.View.extend({
             bubbleGroup: this.bubbleGroup
         })
         this._itemViews[item.cid] = view
-        this.$el.append(view.render().el)
+        this.$('ul').append(view.render().el)
     },
 
     removeOne: function(item) {
@@ -263,6 +264,10 @@ r.f2p.TargetOverlay = Backbone.View.extend({
 
 r.f2p.ScoreView = Backbone.View.extend({
     className: 'score-view',
+
+    initialize: function() {
+        this.listenTo(this.model, 'change', this.render)
+    },
 
     render: function() {
         this.$el.html(
