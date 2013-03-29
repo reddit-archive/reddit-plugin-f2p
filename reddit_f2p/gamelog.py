@@ -122,12 +122,14 @@ class GameLogEntry(object):
         return date
 
     def to_json(self):
-        return json.dumps(self.extras.update({
+        d = self.extras
+        d.update({
             'user': self.user_fullname,
             'target': self.target_fullname,
             'item': self.item,
             'date': self.date_to_tuple(self.date),
-        }))
+        })
+        return json.dumps(d)
 
     @classmethod
     def from_json(cls, _id, blob):
