@@ -44,6 +44,31 @@ r.f2p.Item.kinds = {
         }
     }),
 
+    english: r.f2p.Item.extend({}, {
+        applyEffect: function($el) {
+            r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
+                var wordSwaps = {
+                        'a lot': 'alot',
+                        'a': 'an',
+                        'an': 'a',
+                        'you': 'u',
+                        "you're": 'your',
+                        'your': "you're",
+                        'too': 'to',
+                        'to': 'too'
+                    },
+                    wordSwapRe = new RegExp('\\b' + _.keys(wordSwaps).join('\\b|\\b') + '\\b', 'ig')
+
+                return text
+                    .replace(/i/ig, 'i')
+                    .replace(/,/ig, '')
+                    .replace(wordSwapRe, function(match) {
+                        return wordSwaps[match]
+                    })
+            })
+        }
+    }),
+
     hatchet: r.f2p.Item.extend({}, {
         applyEffect: function($el) {
             $el.find('.md:first').addClass('flattened')
