@@ -2,7 +2,7 @@ import random
 
 from pylons import c, g
 
-from reddit_f2p import inventory, effects, scores
+from reddit_f2p import inventory, effects, scores, gamelog
 
 from r2.models import Account, Comment, Link
 from r2.models.admintools import send_system_message
@@ -28,15 +28,23 @@ def drop_abstinence(user, item_name):
     drop_default(user, item_name)
 
 
+def log_and_score(user, target, item, points=1, damage=None):
+    scores.incr_score(scores.get_user_team(user), damage or points)
+    kw = {'damage': damage} if damage else {'points': points}
+    gamelog.GameLogEntry.create(user._fullname, target._fullname, item, **kw)
+
+
 def use_abstinence(user, target, item_name):
     effects.remove_effect(user, item_name)
     effects.add_effect(target, item_name)
     inventory.add_to_inventory(target, item_name)
+    log_and_score(user, target, item_name, damage=1)
 
 
 def use_default(user, target, item):
     # TODO: check the target is of a valid type
     effects.add_effect(target, item)
+    log_and_score(user, target, item, points=1)
 
 
 def _use_healing_item(user, target, item):
@@ -57,6 +65,8 @@ def _use_healing_item(user, target, item):
     if isinstance(target, Account):
         send_system_message(target, subject, msg)
 
+    log_and_score(user, target, item, points=1)
+
 
 def use_panacea(user, target, item):
     _use_healing_item(user, target, item)
@@ -73,7 +83,7 @@ def use_capitulation(user, target, item):
     msg = 'you were poked by %s (with %s) for %s damage' % (user.name,
                                                             item_title, damage)
     send_system_message(target, subject, msg)
-    scores.incr_score(scores.get_user_team(target), damage)
+    log_and_score(user, target, item, damage=damage)
 
 
 def use_overpowered(user, target, item):
@@ -84,6 +94,7 @@ def use_overpowered(user, target, item):
     msg = ('you were assassinated by %s (with %s) and lost all your items and'
            ' effects' % (user.name, item_title))
     send_system_message(target, subject, msg)
+    log_and_score(user, target, item, damage=1)
 
 
 def use_magnet(user, target, item):
@@ -105,6 +116,7 @@ def use_magnet(user, target, item):
         msg = ("you used %s to steal %s from %s" %
                (item_title, to_steal_title, target.name))
         send_system_message(user, subject, msg)
+        log_and_score(user, target, item, points=1)
 
 
 def use_wand(user, target, item):
@@ -123,6 +135,7 @@ def use_wand(user, target, item):
     target_random_item = random.choice(target_items)
     proc = get_item_proc('use', target_random_item)
     proc(user, target, target_random_item)
+    log_and_score(user, target, item, points=1)
 
     if random.random() > 0.5:
         user_items = [item_dict['kind'] for item_dict in g.f2pitems.values()
