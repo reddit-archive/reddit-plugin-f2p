@@ -113,6 +113,7 @@ def on_request():
         c.js_preload.set("#myeffects", effects.get_my_effects(c.user))
         c.js_preload.set("#inventory", inventory.get_inventory(c.user))
     c.js_preload.set("#game_status", scores.get_game_status())
+    c.visible_effects = {}
 
 
 @hooks.on("add_props")
@@ -120,16 +121,20 @@ def find_effects(items):
     things = [item for item in items
               if isinstance(item.lookups[0], VALID_TARGETS)]
 
-    if not things:
-        return
-
     fullnames = set()
     fullnames.update(item._fullname for item in things)
     fullnames.update(item.author._fullname for item in things)
+    fullnames -= set(c.visible_effects)
 
-    # TODO: it's possible for this hook to run multiple times in the same
-    # request. will multiple preloads for the same URL cause issues?
-    c.js_preload.set("#effects", effects.get_visible_effects(fullnames))
+    if fullnames:
+        visible_effects = effects.get_visible_effects(fullnames)
+        c.visible_effects.update(visible_effects)
+
+
+@hooks.on("use_js_preload")
+def coalesce_effects_for_preload(js_preload):
+    if c.visible_effects:
+        js_preload.set("#effects", c.visible_effects)
 
 
 @hooks.on("comment.gild")
