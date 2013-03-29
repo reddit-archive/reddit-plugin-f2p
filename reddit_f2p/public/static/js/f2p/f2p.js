@@ -39,7 +39,9 @@ r.f2p = {
 
 r.f2p.Item = Backbone.Model.extend({
     defaults: {
-        "cursor": "crosshair"
+        "cursor": "crosshair",
+        "description": "lorem ipsum dolor sit amet your hampster",
+        "flavor": "flavor flavor flavor flavor flavour flavour flavour flavour flavour"
     }
 })
 
