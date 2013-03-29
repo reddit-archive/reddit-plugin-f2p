@@ -48,7 +48,11 @@ def use_default(user, target, item):
 
 
 def _use_healing_item(user, target, item):
-    target_afflictions = effects.get_effects([target._fullname]).values()[0]
+    effect_dict = effects.get_all_effects([target._fullname])
+    target_afflictions = []
+    if isinstance(effect_dict, dict) and target._fullname in effect_dict:
+        target_afflictions = effect_dict[target._fullname]
+
     if target_afflictions:
         to_heal = random.choice(target_afflictions)
         effects.remove_effect(target, to_heal)
