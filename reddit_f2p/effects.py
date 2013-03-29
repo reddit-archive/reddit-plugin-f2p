@@ -39,7 +39,6 @@ def get_all_effects(fullnames):
 
 def get_visible_effects(fullnames):
     """Return a dict of fullname -> [effects] for the given fullnames."""
-    g.log.warning("visible effects")
     effects = g.f2pcache.get_multi(fullnames, prefix="effect_")
     for fullname, effect_json in effects.iteritems():
         thing_effects = json.loads(effect_json)
