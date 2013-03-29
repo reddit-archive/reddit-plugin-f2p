@@ -3,6 +3,7 @@ import json
 from uuid import uuid1
 
 from pycassa.system_manager import TIME_UUID_TYPE
+from pylons import g
 
 from r2.lib.db import tdb_cassandra
 from r2.lib.filters import _force_unicode
