@@ -142,9 +142,10 @@ def gild_comment_effect(comment, gilder):
 
 @hooks.on("comment.new")
 def comment_reply_effect(comment):
-    parent_id = (comment.parent_id if hasattr(comment, 'parent_id')
-                 else comment.link_id)
-    parent = Thing._byID(parent_id)
+    if comment.parent_id is not None:
+        parent = Comment._byID(comment.parent_id)
+    else:
+        parent = Link._byID(comment.link_id)
     parent_effects = effects.get_effects([parent._fullname])
     reply_effects = []
     if reply_effects:
