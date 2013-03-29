@@ -9,6 +9,7 @@ setup(name='reddit_f2p',
     packages=find_packages(),
     install_requires=[
         'r2',
+        'python-openid',
     ],
     entry_points={
         'r2.plugin':
