@@ -105,7 +105,7 @@
         "targets": ["usertext"],
         "rarity": null
     },
-    "smpl_cdgl": {
+    "cdgl": {
         "title": "Smpl Cdgl",
         "targets": ["usertext"],
         "rarity": null
