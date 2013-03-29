@@ -131,7 +131,7 @@ def find_effects(items):
         c.visible_effects.update(visible_effects)
 
 
-@hooks.on("use_js_preload")
+@hooks.on("js_preload.use")
 def coalesce_effects_for_preload(js_preload):
     if c.visible_effects:
         js_preload.set("#effects", c.visible_effects)
