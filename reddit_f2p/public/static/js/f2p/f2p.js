@@ -30,7 +30,7 @@ r.f2p = {
 
         this.pageEffects = new r.f2p.Effects()
         this.pageEffects.fetch()
-        new r.f2p.EffectScrollUpdater({
+        new r.f2p.EffectUpdater({
             model: this.pageEffects
         }).start()
 
@@ -48,7 +48,15 @@ r.f2p.GameStatus = Backbone.Model.extend({
 })
 
 r.f2p.Effects = Backbone.Model.extend({
-    url: '#effects'
+    url: '#effects',
+
+    applyItem: function(item, targetId) {
+        if (!this.has(targetId)) {
+            this.set(targetId, [])
+        }
+        this.get(targetId).push(item.kind)
+        this.trigger('apply', item.get('kind'), targetId)
+    }
 })
 
 r.f2p.Panel = Backbone.View.extend({
@@ -314,8 +322,27 @@ r.f2p.HatPile = Backbone.View.extend({
     }
 })
 
-r.f2p.EffectScrollUpdater = r.ScrollUpdater.extend({
+r.f2p.EffectUpdater = r.ScrollUpdater.extend({
     selector: '.thing',
+
+    initialize: function() {
+        this.model.on('apply', this.applyItem, this)
+    },
+
+    applyItem: function(kind, target) {
+        var $el
+        if (_.isString(target)) {
+            $el = $('[data-fullname="' + target + '"]')
+        } else {
+            $el = $(target)
+        }
+
+        var itemKind = r.f2p.Item.kinds[kind]
+        if (itemKind) {
+            itemKind.applyEffect($el)
+        }
+    },
+
     update: function($el) {
         if ($el.data('_updated')) {
             return
@@ -323,15 +350,9 @@ r.f2p.EffectScrollUpdater = r.ScrollUpdater.extend({
 
         var fullname = $el.data('fullname'),
             effects = this.model.get(fullname)
-        if (effects) {
-            _.each(effects, function(kind) {
-                var itemKind = r.f2p.Item.kinds[kind]
-                if (itemKind) {
-                    itemKind.applyEffect($el)
-                }
-            })
-        }
-
+        _.each(effects, function(kind) {
+            this.applyItem(kind, $el)
+        }, this)
         $el.data('_updated', true)
     }
 })

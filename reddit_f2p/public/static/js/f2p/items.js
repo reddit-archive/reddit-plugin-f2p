@@ -23,6 +23,7 @@ r.f2p.Inventory = Backbone.Collection.extend({
             },
             success: _.bind(function() {
                 this.remove(item)
+                r.f2p.pageEffects.applyItem(item, targetId)
             }, this)
         })
     }
