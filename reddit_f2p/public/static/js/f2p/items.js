@@ -32,3 +32,17 @@ r.f2p.Item.kinds.cruise = r.f2p.Item.extend({}, {
         $el.find('.usertext-body .md').html('<p>Tom Cruise</p>')
     }
 })
+
+r.f2p.Item.kinds.chirality = r.f2p.Item.extend({}, {
+    applyEffect: function($el) {
+        $el.find('.usertext-body .md').css('text-align', 'right')
+    }
+})
+
+r.f2p.Item.kinds.palindrome = r.f2p.Item.extend({}, {
+    applyEffect: function($el) {
+        $el.find('.tagline .author').text(
+            $el.find('.tagline .author').text().split('').reverse().join('')
+        )
+    }
+})
