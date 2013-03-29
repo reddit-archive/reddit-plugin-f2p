@@ -41,13 +41,13 @@ r.f2p.Item.kinds.cdgl = r.f2p.Item.extend({}, {
 
 r.f2p.Item.kinds.chirality = r.f2p.Item.extend({}, {
     applyEffect: function($el) {
-        $el.find('.usertext-body .md').css('text-align', 'right')
+        $el.find('.usertext-body .md:first').css('text-align', 'right')
     }
 })
 
 r.f2p.Item.kinds.cruise = r.f2p.Item.extend({}, {
     applyEffect: function($el) {
-        $el.find('.usertext-body .md').html('<p>Tom Cruise</p>')
+        $el.find('.usertext-body .md:first').html('<p>Tom Cruise</p>')
     }
 })
 
@@ -66,15 +66,16 @@ r.f2p.Item.kinds.knuckles = r.f2p.Item.extend({}, {
 
 r.f2p.Item.kinds.palindrome = r.f2p.Item.extend({}, {
     applyEffect: function($el) {
-        $el.find('.tagline .author').text(
-            $el.find('.tagline .author').text().split('').reverse().join('')
+        var $author = $el.find('.tagline .author:first')
+        $author.text(
+            $author.text().split('').reverse().join('')
         )
     }
 })
 
 r.f2p.Item.kinds.patriotism = r.f2p.Item.extend({}, {
     applyEffect: function($el) {
-        $el.find('.usertext-body .md *')
+        $el.find('.usertext-body .md:first *')
             .each(function(idx, mdEl) {
                 var $mdEl = $(mdEl)
                 if ($mdEl.children().length) {
