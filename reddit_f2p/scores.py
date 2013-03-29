@@ -31,4 +31,6 @@ def get_game_status():
 
 def incr_score(team, delta):
     assert team in TEAMS.keys()
-    g.f2pcache.incr('score_%s' % team, delta=delta)
+    score_key = 'score_%s' % team
+    g.f2pcache.add(score_key, 0)
+    g.f2pcache.incr(score_key, delta=delta)
