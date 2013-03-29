@@ -27,15 +27,15 @@ r.f2p.Inventory = Backbone.Collection.extend({
 
 r.f2p.Item.kinds = {}
 
-r.f2p.Item.kinds.cruise = r.f2p.Item.extend({}, {
-    applyEffect: function($el) {
-        $el.find('.usertext-body .md').html('<p>Tom Cruise</p>')
-    }
-})
-
 r.f2p.Item.kinds.chirality = r.f2p.Item.extend({}, {
     applyEffect: function($el) {
         $el.find('.usertext-body .md').css('text-align', 'right')
+    }
+})
+
+r.f2p.Item.kinds.cruise = r.f2p.Item.extend({}, {
+    applyEffect: function($el) {
+        $el.find('.usertext-body .md').html('<p>Tom Cruise</p>')
     }
 })
 
