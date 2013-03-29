@@ -1,133 +1,282 @@
 {
-    "inebriation": {
-        "title": "Clumsy Mallet of Inebriation",
-        "targets": ["usertext"],
-        "rarity": "common"
-    },
-    "patriotism": {
-        "title": "Redacting Tape of Patriotism",
-        "targets": ["usertext"],
-        "rarity": "common"
-    },
-    "nostalgia": {
-        "title": "Moldy Boot of Nostalgia",
-        "targets": ["usertext"],
-        "rarity": "rare"
-    },
-    "medal": {
-        "title": "Distinguished Medal of something something",
-        "targets": ["usertext"],
-        "rarity": "uncommon"
-    },
-    "chirality": {
-        "title": "Scimitar of Chirality",
-        "targets": ["usertext"],
-        "rarity": "common"
-    },
-    "nightfall": {
-        "title": "Enveloping Cloak of Nightfall",
-        "targets": null,
-        "rarity": "rare"
-    },
-    "daystar": {
-        "title": "Blinding Saber of the Daystar",
-        "targets": null,
-        "rarity": null
-    },
-    "english": {
-        "title": "Royal Sceptre of the Queen's English",
-        "targets": ["usertext"],
-        "rarity": "uncommon"
-    },
-    "compensation": {
-        "title": "Sizable Claymore of Compensation",
-        "targets": ["usertext"],
-        "rarity": null
-    },
-    "inversion": {
-        "title": "Curious Orb of Hemispherical Inversion",
-        "targets": ["usertext", "account"],
-        "rarity": null
-    },
-    "scrambler": {
-        "title": "Lysdexial Tome of something",
-        "targets": ["link"],
-        "rarity": null
-    },
-    "palindrome": {
-        "title": "Mirrored Shield of Palindromic Failure",
-        "targets": ["link", "usertext", "account"],
-        "rarity": "uncommon"
-    },
-    "shuffler": {
-        "title": "Cryptographic Shuffler of Pelcgbtencuvp Fuhssyre",
-        "targets": ["usertext", "account"],
-        "rarity": null
-    },
-    "intolerance": {
-        "title": "Mighty Megaphone of Internet Intolerance",
-        "targets": ["usertext"],
-        "rarity": "rare"
-    },
-    "emphasis": {
-        "title": "Indiscriminate Scattergun of Emphasis",
-        "targets": ["usertext"],
-        "rarity": null
-    },
+    "abstinence": {
+        "rarity": "artifact", 
+        "targets": [
+            "account"
+        ], 
+        "title": "Purest Ring of Abstain-ence", 
+        "visibility": "self"
+    }, 
     "antigravity": {
-        "title": "Extremely Uplifting Anti-Gravity Gun",
-        "targets": ["usertext"],
-        "rarity": null
-    },
-    "discombobulation": {
-        "title": "Boxing Gloves of Discombobulation",
-        "targets": ["account"],
-        "rarity": null
-    },
-    "panacea": {
-        "title": "Huge Syringe of Soothing Panacea",
-        "targets": ["account"],
-        "cursor": "cell",
-        "rarity": null
-    },
-    "shrouding": {
-        "title": "Smoke Bomb of Vague Shrouding",
-        "targets": ["usertext"],
-        "rarity": null
-    },
-    "downtime_banana": {
-        "title": "Banana of Downtime",
-        "targets": ["account"],
-        "rarity": null
-    },
-    "torpor": {
-        "title": "Hackneyed Crossbow of Memetic Torpor",
-        "targets": ["usertext"],
-        "rarity": null
-    },
-    "cdgl": {
-        "title": "Smpl Cdgl",
-        "targets": ["usertext"],
-        "rarity": null
-    },
-    "cruise": {
-        "title": "Cruise Missile",
-        "targets": ["usertext"],
-        "rarity": "common"
-    },
+        "rarity": "uncommon", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Extremely Uplifting Anti-Gravity Gun"
+    }, 
+    "banana": {
+        "rarity": "rare", 
+        "targets": [
+            "account"
+        ], 
+        "title": "Banana of Downtime", 
+        "visibility": "self"
+    }, 
     "caltrops": {
-        "title": "Spiny Caltrops of the Spineless",
-        "targets": ["usertext"],
-        "rarity": null
-    },
-    "overpowered": {
-        "title": "Overpowered Melee Weapon",
-        "targets": ["account"],
-        "rarity": null
-    },
+        "rarity": "uncommon", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Spiny Caltrops of the Spineless", 
+        "visibility": "team"
+    }, 
+    "capitulation": {
+        "damage": "1", 
+        "rarity": "common", 
+        "targets": [
+            "account"
+        ], 
+        "title": "Pokey Stick of Social Capitulation", 
+        "visibility": "instant"
+    }, 
+    "cdgl": {
+        "rarity": "uncommon", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Smpl Cdgl"
+    }, 
+    "chirality": {
+        "rarity": "common", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Scimitar of Chirality"
+    }, 
+    "compensation": {
+        "rarity": "common", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Sizable Claymore of Compensation"
+    }, 
+    "cruise": {
+        "rarity": "common", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Cruise Missile"
+    }, 
+    "daystar": {
+        "rarity": "rare", 
+        "targets": [], 
+        "title": "Blinding Saber of the Daystar", 
+        "visibility": "self"
+    }, 
+    "discombobulation": {
+        "rarity": "rare", 
+        "targets": [
+            "account"
+        ], 
+        "title": "Boxing Gloves of Discombobulation", 
+        "visibility": "self"
+    }, 
+    "dowser": {
+        "flavor": "\"RDT-651\"", 
+        "rarity": "rare", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Suspiciously Functional Booby-Trap Dowser", 
+        "visibility": "self"
+    }, 
+    "emphasis": {
+        "rarity": "common", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Indiscriminate Scattergun of Emphasis"
+    }, 
+    "english": {
+        "rarity": "uncommon", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Royal Sceptre of the Queen's English"
+    }, 
+    "hatchet": {
+        "rarity": "uncommon", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Crude Hatchet of Paragraphical Indifference"
+    }, 
+    "inebriation": {
+        "rarity": "common", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Clumsy Mallet of Inebriation"
+    }, 
+    "intolerance": {
+        "rarity": "rare", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Mighty Megaphone of Internet Intolerance"
+    }, 
+    "inversion": {
+        "rarity": "rare", 
+        "targets": [
+            "usertext", 
+            "account"
+        ], 
+        "title": "Curious Orb of Hemispherical Inversion"
+    }, 
+    "key": {
+        "rarity": "artifact", 
+        "targets": [
+            "account:not(.self)"
+        ], 
+        "title": "Launch Key"
+    }, 
+    "knuckles": {
+        "rarity": "uncommon", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Dastardly Knuckles"
+    }, 
     "magnet": {
-        "title": "Magnet of Un-Magnanimity",
-        "targets": ["account"],
-        "rarity": null
+        "flavor": "\"How do they work?\"", 
+        "rarity": "uncommon", 
+        "targets": [
+            "acount"
+        ], 
+        "title": "Magnet of Un-Magnanimity"
+    }, 
+    "medal": {
+        "rarity": "uncommon", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Distinguished Medal of something something"
+    }, 
+    "melodies": {
+        "cursor": "cell", 
+        "rarity": "uncommon", 
+        "targets": [
+            "account", 
+            "usertext"
+        ], 
+        "title": "Wistful Panpipe Melodies", 
+        "visibility": "instant"
+    }, 
+    "mortar": {
+        "rarity": "artifact", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Cowardly Mortar of Indiscriminateness"
+    }, 
+    "nightfall": {
+        "rarity": "rare", 
+        "targets": [], 
+        "title": "Enveloping Cloak of Nightfall"
+    }, 
+    "nostalgia": {
+        "rarity": "rare", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Moldy Boot of Nostalgia"
+    }, 
+    "nuke": {
+        "rarity": "artifact", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Nuclear and Present Danger"
+    }, 
+    "overpowered": {
+        "rarity": "rare", 
+        "targets": [
+            "acount"
+        ], 
+        "title": "Overpowered Melee Weapon"
+    }, 
+    "palindrome": {
+        "rarity": "uncommon", 
+        "targets": [
+            "link", 
+            "usertext", 
+            "account"
+        ], 
+        "title": "Mirrored Shield of Palindromic Failure"
+    }, 
+    "panacea": {
+        "cursor": "cell", 
+        "rarity": "uncommon", 
+        "targets": [
+            "account"
+        ], 
+        "title": "Huge Syringe of Soothing Panacea", 
+        "visibility": "instant"
+    }, 
+    "patriotism": {
+        "rarity": "common", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Redacting Tape of Patriotism"
+    }, 
+    "propinquity": {
+        "rarity": "uncommon", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Mine of Propinquity", 
+        "visibility": "team"
+    }, 
+    "scrambler": {
+        "rarity": "uncommon", 
+        "targets": [
+            "link"
+        ], 
+        "title": "Lysdexial Tome of something"
+    }, 
+    "shrouding": {
+        "rarity": "rare", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Smoke Bomb of Vague Shrouding"
+    }, 
+    "shuffler": {
+        "rarity": "common", 
+        "targets": [
+            "usertext", 
+            "account"
+        ], 
+        "title": "Cryptographic Shuffler of Pelcgbtencuvp Fuhssyre"
+    }, 
+    "subterfuge": {
+        "rarity": "rare", 
+        "targets": [
+            "account.self"
+        ], 
+        "title": "Poorly Crafted but Utterly Convincing Mask of Subterfuge"
+    }, 
+    "torpor": {
+        "rarity": "common", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Hackneyed Crossbow of Memetic Torpor"
+    }, 
+    "wand": {
+        "rarity": "rare", 
+        "targets": [], 
+        "title": "cursed wand"
     }
 }
