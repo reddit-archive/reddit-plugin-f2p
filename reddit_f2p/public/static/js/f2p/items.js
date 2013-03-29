@@ -8,7 +8,10 @@ r.f2p.Item = Backbone.Model.extend({
 
 r.f2p.Inventory = Backbone.Collection.extend({
     url: '#inventory',
-    model: r.f2p.Item,
+    model: function(attrs, options) {
+        var itemKind = r.f2p.Item.kinds[attrs.kind] || r.f2p.Item
+        return new itemKind(attrs, options)
+    },
 
     use: function(item, targetId) {
         $.ajax({
