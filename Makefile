@@ -32,4 +32,4 @@ $(LARGE_IMAGES_DIR)%.png : art/%.png
 	convert -resize 140x140 $< -unsharp 0x0.5 $@
 
 $(CURSOR_IMAGES_DIR)%.png: art/%.png
-	convert -resize 32x32 $< -unsharp 0x0.5 $@
+	convert -resize 32x32 $< -unsharp 0x2 $@
