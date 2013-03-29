@@ -33,13 +33,9 @@ r.f2p.Item.kinds = {}
 
 r.f2p.Item.kinds.cdgl = r.f2p.Item.extend({}, {
     applyEffect: function($el) {
-        $el.find('.usertext-body .md *').contents()
-            .filter(function() {
-                return this.nodeType == Node.TEXT_NODE
-            })
-            .each(function(idx, textEl) {
-                textEl.nodeValue = textEl.nodeValue.replace(/a|i|e|o|u/ig, '')
-            })
+        r.f2p.utils.modifyText($el, function(idx, textEl) {
+            textEl.nodeValue = textEl.nodeValue.replace(r.f2p.utils.vowels, '')
+        })
     }
 })
 

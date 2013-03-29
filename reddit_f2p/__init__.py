@@ -21,6 +21,7 @@ class FreeToPlay(Plugin):
         'reddit': Module('reddit.js',
             'f2p/scrollupdater.js',
             'f2p/f2p.js',
+            'f2p/utils.js',
             'f2p/items.js',
             TemplateFileSource('f2p/panel.html'),
             TemplateFileSource('f2p/item.html'),
