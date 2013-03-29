@@ -9,5 +9,11 @@ r.f2p.utils = {
                 return this.nodeType == Node.TEXT_NODE
             })
             .each(modifier)
+    },
+
+    replaceText: function(el, modifier) {
+        r.f2p.utils.modifyText(el, function(idx, textEl) {
+            textEl.nodeValue = modifier(textEl.nodeValue)
+        })
     }
 }

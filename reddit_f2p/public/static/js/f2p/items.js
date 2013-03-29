@@ -26,11 +26,9 @@ r.f2p.Inventory = Backbone.Collection.extend({
 r.f2p.Item.kinds = {
     cdgl: r.f2p.Item.extend({}, {
         applyEffect: function($el) {
-            r.f2p.utils.modifyText($el.find('.usertext-body .md:first'),
-                function(idx, textEl) {
-                    textEl.nodeValue = textEl.nodeValue.replace(r.f2p.utils.vowels, '')
-                }
-            )
+            r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
+                return text.replace(r.f2p.utils.vowels, '')
+            })
         }
     }),
 
@@ -54,40 +52,35 @@ r.f2p.Item.kinds = {
 
     intolerance: r.f2p.Item.extend({}, {
         applyEffect: function($el) {
-            r.f2p.utils.modifyText($el.find('.usertext-body .md:first'),
-                function(idx, textEl) {
-                    textEl.nodeValue = textEl.nodeValue.toUpperCase().replace(/[.,]/g, function() {
-                        tail = []
-                        for (var i = 0; i < _.random(10); i++) {
-                            tail.push('!')
-                        }
-                        for (var i = 0; i < _.random(5); i++) {
-                            tail.push('1')
-                        }
-                        return tail.join('')
-                    })
-                }
-            )
+            r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
+                return text.toUpperCase().replace(/[.,]/g, function() {
+                    tail = []
+                    for (var i = 0; i < _.random(10); i++) {
+                        tail.push('!')
+                    }
+                    for (var i = 0; i < _.random(5); i++) {
+                        tail.push('1')
+                    }
+                    return tail.join('')
+                })
+            })
         }
     }),
 
     knuckles: r.f2p.Item.extend({}, {
         applyEffect: function($el) {
-            r.f2p.utils.modifyText($el.find('.usertext-body .md:first'),
-                function(idx, textEl) {
-                    var text = textEl.nodeValue,
-                        vowels = text.match(r.f2p.utils.vowels)
+            r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
+                vowels = text.match(r.f2p.utils.vowels)
 
-                    if (!vowels) {
-                        return
-                    }
-
-                    vowels.push(vowels.shift())
-                    textEl.nodeValue = text.replace(r.f2p.utils.vowels, function() {
-                        return vowels.shift()
-                    })
+                if (!vowels) {
+                    return
                 }
-            )
+
+                vowels.push(vowels.shift())
+                return text.replace(r.f2p.utils.vowels, function() {
+                    return vowels.shift()
+                })
+            })
         }
     }),
 
