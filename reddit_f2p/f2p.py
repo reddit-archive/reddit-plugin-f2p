@@ -31,7 +31,7 @@ from reddit_f2p import procs, inventory, effects, scores, gamelog
 
 
 hooks = HookRegistrar()
-VALID_TARGETS = (Account, Comment)
+VALID_TARGETS = (Account, Comment, Link)
 
 
 def is_eligible_request():
@@ -98,7 +98,7 @@ def check_for_banana():
     if not c.user_is_loggedin or not is_eligible_request():
         return False
 
-    user_effects = effects.get_effects([c.user._fullname])
+    user_effects = effects.get_all_effects([c.user._fullname])
     return 'banana' in user_effects
 
 
@@ -129,7 +129,7 @@ def find_effects(items):
 
     # TODO: it's possible for this hook to run multiple times in the same
     # request. will multiple preloads for the same URL cause issues?
-    c.js_preload.set("#effects", effects.get_effects(fullnames))
+    c.js_preload.set("#effects", effects.get_visible_effects(fullnames))
 
 
 @hooks.on("comment.gild")
@@ -146,7 +146,7 @@ def comment_reply_effect(comment):
         parent = Comment._byID(comment.parent_id)
     else:
         parent = Link._byID(comment.link_id)
-    parent_effects = effects.get_effects([parent._fullname])
+    parent_effects = effects.get_all_effects([parent._fullname])
     reply_effects = []
     if reply_effects:
         pass

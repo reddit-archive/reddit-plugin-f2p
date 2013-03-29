@@ -3,12 +3,16 @@ from pylons import g, c
 
 TEAMS = {
     "blue": "periwinkle",
-    "red": "orangered",
+    "red": "redzone",
 }
 
 
 def get_user_team(user):
-    return "red" if user._id % 2 == 0 else "blue"
+    return get_userid_team(user._id)
+
+
+def get_userid_team(user_id):
+    return "red" if user_id % 2 == 0 else "blue"
 
 
 def get_game_status():
