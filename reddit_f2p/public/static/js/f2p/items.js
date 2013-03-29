@@ -79,16 +79,13 @@ r.f2p.Item.kinds.palindrome = r.f2p.Item.extend({}, {
 
 r.f2p.Item.kinds.patriotism = r.f2p.Item.extend({}, {
     applyEffect: function($el) {
-        $el.find('.usertext-body .md:first *')
-            .each(function(idx, mdEl) {
-                var $mdEl = $(mdEl)
-                if ($mdEl.children().length) {
-                    return
-                }
-
-                $mdEl.html(
-                    $mdEl.text().replace(/(\w+w\w+|\w+a\w+|\w+s\w+)/ig, '<span class="redacted">$1</span>')
+        r.f2p.utils.modifyText($el.find('.usertext-body .md:first'),
+            function(idx, textEl) {
+                var $parent = $(textEl).parent()
+                $parent.html(
+                    $parent.text().replace(/(\w+w\w+|\w+a\w+|\w+s\w+)/ig, '<span class="redacted">$1</span>')
                 )
-            })
+            }
+        )
     }
 })
