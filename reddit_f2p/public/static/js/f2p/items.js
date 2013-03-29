@@ -1,10 +1,4 @@
-r.f2p.Item = Backbone.Model.extend({
-    defaults: {
-        "cursor": "crosshair",
-        "description": "lorem ipsum dolor sit amet your hampster",
-        "flavor": "flavor flavor flavor flavor flavour flavour flavour flavour flavour"
-    }
-})
+r.f2p.Item = Backbone.Model.extend({})
 
 r.f2p.Inventory = Backbone.Collection.extend({
     url: '#inventory',

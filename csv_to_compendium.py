@@ -2,6 +2,8 @@ import csv
 import sys
 import json
 
+import snudown
+
 
 FIELDS = {
     "Drop Rate": "rarity",
@@ -15,6 +17,12 @@ FIELDS = {
 
 DEFAULTS = {
     "visibility": "all",
+}
+
+
+MARKDOWN = {
+    "description",
+    "flavor",
 }
 
 
@@ -35,7 +43,9 @@ for row in reader:
             continue
 
         value = value.strip()
-        if value and value != DEFAULTS.get(output_key):
+        if output_key in MARKDOWN and value:
+            item_data[output_key] = snudown.markdown(value)
+        elif value and value != DEFAULTS.get(output_key):
             item_data[output_key] = value
 
     compendium[item_name] = item_data

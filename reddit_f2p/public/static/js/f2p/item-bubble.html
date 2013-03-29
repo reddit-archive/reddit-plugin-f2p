@@ -4,6 +4,14 @@
 
 <img src="/static/images/lg/<%- thing.kind %>.png" height="140" width="140">
 
-<p><%- thing.description %></p>
+<% if (thing.description) { %>
+<div class="description">
+<%= thing.description %>
+</div>
+<% } %>
 
-<p class="flavor"><%= thing.flavor %></p>
+<% if (thing.flavor) { %>
+<div class="flavor">
+<%= thing.flavor %>
+</div>
+<% } %>

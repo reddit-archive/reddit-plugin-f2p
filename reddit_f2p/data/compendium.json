@@ -1,5 +1,6 @@
 {
     "abstinence": {
+        "flavor": "<p>Over 100% effective at preventing vote-communicated diseases.</p>\n", 
         "rarity": "artifact", 
         "targets": [
             "account"
@@ -8,7 +9,7 @@
         "visibility": "self"
     }, 
     "antigravity": {
-        "flavor": "Infamous for leading to several squabbles and one knife fight in /r/math.", 
+        "flavor": "<p>Infamous for leading to several squabbles and one knife fight in <a href=\"/r/math\">/r/math</a>.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "usertext"
@@ -24,7 +25,7 @@
         "visibility": "self"
     }, 
     "caltrops": {
-        "flavor": "The spines are covered with more spines for that double-spine goodness.", 
+        "flavor": "<p>The spines are covered with more spines for that double-spine goodness.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "usertext"
@@ -41,7 +42,7 @@
         "title": "Pokey Stick of Social Capitulation"
     }, 
     "cdgl": {
-        "flavor": "Dvlpd ftr yrs f nthcl, ghstly rsrch n /r/nmlswthtncks.", 
+        "flavor": "<p>Dvlpd ftr yrs f nthcl, ghstly rsrch n <a href=\"/r/nmlswthtncks\">/r/nmlswthtncks</a>.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "usertext"
@@ -56,7 +57,7 @@
         "title": "Scimitar of Chirality"
     }, 
     "compensation": {
-        "flavor": "Brought to you by the makers of ... ?", 
+        "flavor": "<p>Brought to you by the makers of ... ?</p>\n", 
         "rarity": "common", 
         "targets": [
             "usertext"
@@ -85,7 +86,7 @@
         "visibility": "self"
     }, 
     "dowser": {
-        "flavor": "\"RDT-651\"", 
+        "flavor": "<p>&quot;RDT-651&quot;</p>\n", 
         "rarity": "rare", 
         "targets": [
             "usertext"
@@ -94,6 +95,7 @@
         "visibility": "self"
     }, 
     "emphasis": {
+        "flavor": "<p>Insert random emphasis quip <strong>here</strong>.</p>\n", 
         "rarity": "common", 
         "targets": [
             "usertext"
@@ -101,7 +103,7 @@
         "title": "Indiscriminate Scattergun of Emphasis"
     }, 
     "english": {
-        "flavor": "Her Britannic Majesty's Secretary of State Requests and requires in the Name of Her Majesty all those whom it may concern to allow the bearer to pass freely without let or hindrance, and to afford the bearer such assistance and protection as may be necessary.", 
+        "flavor": "<p>Her Britannic Majesty&#39;s Secretary of State Requests and requires in the Name of Her Majesty all those whom it may concern to allow the bearer to pass freely without let or hindrance, and to afford the bearer such assistance and protection as may be necessary.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "usertext"
@@ -109,7 +111,7 @@
         "title": "Royal Sceptre of the Queen's English"
     }, 
     "handgrenade": {
-        "flavor": "O LORD, bless this Thy hand grenade that with it Thou mayest blow Thine enemies to tiny bits, in Thy mercy.", 
+        "flavor": "<p>O LORD, bless this Thy hand grenade that with it Thou mayest blow Thine enemies to tiny bits, in Thy mercy.</p>\n", 
         "rarity": "artifact", 
         "targets": [
             "usertext"
@@ -117,7 +119,7 @@
         "title": "Holy Hand Grenade"
     }, 
     "hatchet": {
-        "flavor": "Preferred weapon of the uninitiated IAmA poster.", 
+        "flavor": "<p>Preferred weapon of the uninitiated IAmA poster.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "usertext"
@@ -132,7 +134,7 @@
         "title": "Clumsy Mallet of Inebriation"
     }, 
     "intolerance": {
-        "flavor": "Rumored to have been forged in the fires of eBay.", 
+        "flavor": "<p>Rumored to have been forged in the fires of eBay.</p>\n", 
         "rarity": "rare", 
         "targets": [
             "usertext"
@@ -140,7 +142,7 @@
         "title": "Mighty Megaphone of Internet Intolerance"
     }, 
     "inversion": {
-        "flavor": "Objects in orb may appear more Australian than they actually are.", 
+        "flavor": "<p>Objects in orb may appear more Australian than they actually are.</p>\n", 
         "rarity": "rare", 
         "targets": [
             "usertext", 
@@ -163,7 +165,7 @@
         "title": "Dastardly Knuckles"
     }, 
     "magnet": {
-        "flavor": "\"How do they work?\"", 
+        "flavor": "<p>&quot;How do they work?&quot;</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "acount"
@@ -171,7 +173,7 @@
         "title": "Magnet of Un-Magnanimity"
     }, 
     "medal": {
-        "flavor": "Some people say that Manbearpig isn't real. Well, I'm here to tell you now, Manbearpig is very real, and he most certainly exists.", 
+        "flavor": "<p>Some people say that Manbearpig isn&#39;t real. Well, I&#39;m here to tell you now, Manbearpig is very real, and he most certainly exists.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "usertext"
@@ -194,7 +196,7 @@
         "title": "Cowardly Mortar of Indiscriminateness"
     }, 
     "nightfall": {
-        "flavor": "All that sunlight is cooking your brain.", 
+        "flavor": "<p>All that sunlight is cooking your brain.</p>\n", 
         "rarity": "rare", 
         "targets": [], 
         "title": "Enveloping Cloak of Nightfall"
@@ -214,6 +216,7 @@
         "title": "Nucular and Present Danger"
     }, 
     "overpowered": {
+        "flavor": "<p><strong>WARNING</strong> - Keep pointy end pointed away from self.</p>\n", 
         "rarity": "rare", 
         "targets": [
             "acount"
@@ -221,12 +224,11 @@
         "title": "Pointy Dagger of Mortal Strike"
     }, 
     "palindrome": {
-        "flavor": "The question is: how does the mirror know to get the left and right mixed up, but not the up and the down?", 
+        "flavor": "<p>The question is: how does the mirror know to get the left and right mixed up, but not the up and the down?</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "link", 
-            "usertext", 
-            "account"
+            "usertext"
         ], 
         "title": "Mirrored Shield of Palindromic Failure"
     }, 
@@ -238,7 +240,7 @@
         "title": "Huge Syringe of Soothing Panacea"
     }, 
     "patriotism": {
-        "flavor": "A small label bearing the name 'D Cheney' can be found on the inside of each spool.", 
+        "flavor": "<p>A small label bearing the name &#39;D Cheney&#39; can be found on the inside of each spool.</p>\n", 
         "rarity": "common", 
         "targets": [
             "usertext"
@@ -253,6 +255,13 @@
         "title": "Mine of Propinquity", 
         "visibility": "team"
     }, 
+    "rampart": {
+        "rarity": "uncommon", 
+        "targets": [
+            "usertext"
+        ], 
+        "title": "Ineffective Trebuchet of Rampart Surmounting"
+    }, 
     "scrambler": {
         "rarity": "uncommon", 
         "targets": [
@@ -261,7 +270,7 @@
         "title": "Lysdexial Tome of something"
     }, 
     "shrouding": {
-        "flavor": "Known to have led to several wars during the shitty-LCD era.", 
+        "flavor": "<p>Known to have led to several wars during the shitty-LCD era.</p>\n", 
         "rarity": "rare", 
         "targets": [
             "usertext"
@@ -277,7 +286,7 @@
         "title": "Cryptographic Shuffler of Pelcgbtencuvp Fuhssyre"
     }, 
     "subterfuge": {
-        "flavor": "They'll never see it coming, provided the spirit gum and popsicle sticks hold together.", 
+        "flavor": "<p>They&#39;ll never see you coming, provided the spirit gum and popsicle sticks hold together.</p>\n", 
         "rarity": "rare", 
         "targets": [
             "account.self"
