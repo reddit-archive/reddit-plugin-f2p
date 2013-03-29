@@ -3,7 +3,7 @@ from pylons import g, c
 
 TEAMS = {
     "blue": "periwinkle",
-    "red": "redzone",
+    "red": "orangered",
 }
 
 
