@@ -23,99 +23,100 @@ r.f2p.Inventory = Backbone.Collection.extend({
     }
 })
 
-r.f2p.Item.kinds = {}
-
-r.f2p.Item.kinds.cdgl = r.f2p.Item.extend({}, {
-    applyEffect: function($el) {
-        r.f2p.utils.modifyText($el.find('.usertext-body .md:first'),
-            function(idx, textEl) {
-                textEl.nodeValue = textEl.nodeValue.replace(r.f2p.utils.vowels, '')
-            }
-        )
-    }
-})
-
-r.f2p.Item.kinds.chirality = r.f2p.Item.extend({}, {
-    applyEffect: function($el) {
-        $el.find('.usertext-body .md:first').css('text-align', 'right')
-    }
-})
-
-r.f2p.Item.kinds.cruise = r.f2p.Item.extend({}, {
-    applyEffect: function($el) {
-        $el.find('.usertext-body .md:first').html('<p>Tom Cruise</p>')
-    }
-})
-
-r.f2p.Item.kinds.hatchet = r.f2p.Item.extend({}, {
-    applyEffect: function($el) {
-        $el.find('.md:first').addClass('flattened')
-    }
-})
-
-r.f2p.Item.kinds.intolerance = r.f2p.Item.extend({}, {
-    applyEffect: function($el) {
-        r.f2p.utils.modifyText($el.find('.usertext-body .md:first'),
-            function(idx, textEl) {
-                textEl.nodeValue = textEl.nodeValue.toUpperCase().replace(/[.,]/g, function() {
-                    tail = []
-                    for (var i = 0; i < _.random(10); i++) {
-                        tail.push('!')
-                    }
-                    for (var i = 0; i < _.random(5); i++) {
-                        tail.push('1')
-                    }
-                    return tail.join('')
-                })
-            }
-        )
-    }
-})
-
-r.f2p.Item.kinds.knuckles = r.f2p.Item.extend({}, {
-    applyEffect: function($el) {
-        r.f2p.utils.modifyText($el.find('.usertext-body .md:first'),
-            function(idx, textEl) {
-                var text = textEl.nodeValue,
-                    vowels = text.match(r.f2p.utils.vowels)
-
-                if (!vowels) {
-                    return
+r.f2p.Item.kinds = {
+    cdgl: r.f2p.Item.extend({}, {
+        applyEffect: function($el) {
+            r.f2p.utils.modifyText($el.find('.usertext-body .md:first'),
+                function(idx, textEl) {
+                    textEl.nodeValue = textEl.nodeValue.replace(r.f2p.utils.vowels, '')
                 }
+            )
+        }
+    }),
 
-                vowels.push(vowels.shift())
-                textEl.nodeValue = text.replace(r.f2p.utils.vowels, function() {
-                    return vowels.shift()
-                })
-            }
-        )
-    }
-})
+    chirality: r.f2p.Item.extend({}, {
+        applyEffect: function($el) {
+            $el.find('.usertext-body .md:first').css('text-align', 'right')
+        }
+    }),
 
-r.f2p.Item.kinds.palindrome = r.f2p.Item.extend({}, {
-    applyEffect: function($el) {
-        var $author = $el.find('.tagline .author:first')
-        $author.text(
-            $author.text().split('').reverse().join('')
-        )
-    }
-})
+    cruise: r.f2p.Item.extend({}, {
+        applyEffect: function($el) {
+            $el.find('.usertext-body .md:first').html('<p>Tom Cruise</p>')
+        }
+    }),
 
-r.f2p.Item.kinds.patriotism = r.f2p.Item.extend({}, {
-    applyEffect: function($el) {
-        r.f2p.utils.modifyText($el.find('.usertext-body .md:first'),
-            function(idx, textEl) {
-                var $parent = $(textEl).parent()
-                $parent.html(
-                    $parent.text().replace(/(\w+w\w+|\w+a\w+|\w+s\w+)/ig, '<span class="redacted">$1</span>')
-                )
-            }
-        )
-    }
-})
+    hatchet: r.f2p.Item.extend({}, {
+        applyEffect: function($el) {
+            $el.find('.md:first').addClass('flattened')
+        }
+    }),
 
-r.f2p.Item.kinds.shrouding = r.f2p.Item.extend({}, {
-    applyEffect: function($el) {
-        $el.find('.md:first').addClass('shrouded')
-    }
-})
+    intolerance: r.f2p.Item.extend({}, {
+        applyEffect: function($el) {
+            r.f2p.utils.modifyText($el.find('.usertext-body .md:first'),
+                function(idx, textEl) {
+                    textEl.nodeValue = textEl.nodeValue.toUpperCase().replace(/[.,]/g, function() {
+                        tail = []
+                        for (var i = 0; i < _.random(10); i++) {
+                            tail.push('!')
+                        }
+                        for (var i = 0; i < _.random(5); i++) {
+                            tail.push('1')
+                        }
+                        return tail.join('')
+                    })
+                }
+            )
+        }
+    }),
+
+    knuckles: r.f2p.Item.extend({}, {
+        applyEffect: function($el) {
+            r.f2p.utils.modifyText($el.find('.usertext-body .md:first'),
+                function(idx, textEl) {
+                    var text = textEl.nodeValue,
+                        vowels = text.match(r.f2p.utils.vowels)
+
+                    if (!vowels) {
+                        return
+                    }
+
+                    vowels.push(vowels.shift())
+                    textEl.nodeValue = text.replace(r.f2p.utils.vowels, function() {
+                        return vowels.shift()
+                    })
+                }
+            )
+        }
+    }),
+
+    palindrome: r.f2p.Item.extend({}, {
+        applyEffect: function($el) {
+            var $author = $el.find('.tagline .author:first')
+            $author.text(
+                $author.text().split('').reverse().join('')
+            )
+        }
+    }),
+
+    patriotism: r.f2p.Item.extend({}, {
+        applyEffect: function($el) {
+            r.f2p.utils.modifyText($el.find('.usertext-body .md:first'),
+                function(idx, textEl) {
+                    var $parent = $(textEl).parent()
+                    $parent.html(
+                        $parent.text().replace(/(\w+w\w+|\w+a\w+|\w+s\w+)/ig, '<span class="redacted">$1</span>')
+                    )
+                }
+            )
+        }
+    }),
+
+    shrouding: r.f2p.Item.extend({}, {
+        applyEffect: function($el) {
+            $el.find('.md:first').addClass('shrouded')
+        }
+    })
+}
+
