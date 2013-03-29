@@ -94,3 +94,9 @@ r.f2p.Item.kinds.patriotism = r.f2p.Item.extend({}, {
         )
     }
 })
+
+r.f2p.Item.kinds.shrouding = r.f2p.Item.extend({}, {
+    applyEffect: function($el) {
+        $el.find('.md:first').addClass('shrouded')
+    }
+})
