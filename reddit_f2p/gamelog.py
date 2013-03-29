@@ -80,16 +80,21 @@ class GameLogEntry(object):
             except KeyError:
                 pass
             w.user_team = scores.get_user_team(users[w.user_fullname])
-            w.text = ''
-            if 'damage' in w.extras:
-                damage = w.extras['damage']
-                w.text = ('for %s point%s of damage' %
-                          (damage, 's' if damage > 1 else ''))
             if isinstance(w.target, WrappedUser):
                 target_user = targets[w.target.fullname]
             else:
                 target_user = authors[targets[w.target_fullname].author_id]
             w.target_team = scores.get_user_team(target_user)
+
+            w.text = ''
+            if 'damage' in w.extras:
+                damage = w.extras['damage']
+                w.text = ('for %s point%s of damage' %
+                          (damage, 's' if damage > 1 else ''))
+            elif 'points' in w.extras:
+                points = w.extras['points']
+                w.text = ('(+%s point%s for the %s team' %
+                          (points, 's' if points > 1 else '', w.user_team))
 
     @property
     def _fullname(self):
