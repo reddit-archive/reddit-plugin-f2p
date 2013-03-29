@@ -89,11 +89,11 @@ class GameLogEntry(object):
             w.text = ''
             if 'damage' in w.extras:
                 damage = w.extras['damage']
-                w.text = ('for %s point%s of damage' %
-                          (damage, 's' if damage > 1 else ''))
+                w.text = ('(%s point%s of damage to the %s team)' %
+                          (damage, 's' if damage > 1 else '', w.target_team))
             elif 'points' in w.extras:
                 points = w.extras['points']
-                w.text = ('(+%s point%s for the %s team' %
+                w.text = ('(+%s point%s for the %s team)' %
                           (points, 's' if points > 1 else '', w.user_team))
 
     @property
