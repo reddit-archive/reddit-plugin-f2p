@@ -59,6 +59,11 @@ r.f2p.Item.kinds.knuckles = r.f2p.Item.extend({}, {
             function(idx, textEl) {
                 var text = textEl.nodeValue,
                     vowels = text.match(r.f2p.utils.vowels)
+
+                if (!vowels) {
+                    return
+                }
+
                 vowels.push(vowels.shift())
                 textEl.nodeValue = text.replace(r.f2p.utils.vowels, function() {
                     return vowels.shift()
