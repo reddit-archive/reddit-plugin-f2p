@@ -3,3 +3,6 @@ reddit_f2p.egg-info
 *.swo
 *.pyc
 *.DS_Store
+reddit_f2p/public/static/images/lg/
+reddit_f2p/public/static/images/sm/
+reddit_f2p/public/static/images/cur/
