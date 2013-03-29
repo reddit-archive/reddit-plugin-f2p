@@ -28,6 +28,12 @@ r.f2p = {
             this.targetOverlay.render().el
         )
 
+        this.pageEffects = new r.f2p.Effects()
+        this.pageEffects.fetch()
+        new r.f2p.EffectScrollUpdater({
+            model: this.pageEffects
+        }).start()
+
         $('.tagline .author').each(function(idx, el) {
             new r.f2p.HatPile({
                 el: el,
@@ -37,35 +43,12 @@ r.f2p = {
     }
 }
 
-r.f2p.Item = Backbone.Model.extend({
-    defaults: {
-        "cursor": "crosshair",
-        "description": "lorem ipsum dolor sit amet your hampster",
-        "flavor": "flavor flavor flavor flavor flavour flavour flavour flavour flavour"
-    }
-})
-
-r.f2p.Inventory = Backbone.Collection.extend({
-    url: '#inventory',
-    model: r.f2p.Item,
-
-    use: function(item, targetId) {
-        $.ajax({
-            type: 'post',
-            url: '/api/f2p/use_item',
-            data: {
-                item: item.get('kind'),
-                target: targetId
-            },
-            success: _.bind(function() {
-                this.remove(item)
-            }, this)
-        })
-    }
-})
-
 r.f2p.GameStatus = Backbone.Model.extend({
     url: '#game_status'
+})
+
+r.f2p.Effects = Backbone.Model.extend({
+    url: '#effects'
 })
 
 r.f2p.Panel = Backbone.View.extend({
@@ -328,6 +311,28 @@ r.f2p.HatPile = Backbone.View.extend({
         })
         this.$el.after(pile)
         return this
+    }
+})
+
+r.f2p.EffectScrollUpdater = r.ScrollUpdater.extend({
+    selector: '.thing',
+    update: function($el) {
+        if ($el.data('_updated')) {
+            return
+        }
+
+        var fullname = $el.data('fullname'),
+            effects = this.model.get(fullname)
+        if (effects) {
+            _.each(effects, function(kind) {
+                var itemKind = r.f2p.Item.kinds[kind]
+                if (itemKind) {
+                    itemKind.applyEffect($el)
+                }
+            })
+        }
+
+        $el.data('_updated', true)
     }
 })
 
