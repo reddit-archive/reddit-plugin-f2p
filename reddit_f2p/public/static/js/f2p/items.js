@@ -53,6 +53,25 @@ r.f2p.Item.kinds.hatchet = r.f2p.Item.extend({}, {
     }
 })
 
+r.f2p.Item.kinds.intolerance = r.f2p.Item.extend({}, {
+    applyEffect: function($el) {
+        r.f2p.utils.modifyText($el.find('.usertext-body .md:first'),
+            function(idx, textEl) {
+                textEl.nodeValue = textEl.nodeValue.toUpperCase().replace(/[.,]/g, function() {
+                    tail = []
+                    for (var i = 0; i < _.random(10); i++) {
+                        tail.push('!')
+                    }
+                    for (var i = 0; i < _.random(5); i++) {
+                        tail.push('1')
+                    }
+                    return tail.join('')
+                })
+            }
+        )
+    }
+})
+
 r.f2p.Item.kinds.knuckles = r.f2p.Item.extend({}, {
     applyEffect: function($el) {
         r.f2p.utils.modifyText($el.find('.usertext-body .md:first'),
