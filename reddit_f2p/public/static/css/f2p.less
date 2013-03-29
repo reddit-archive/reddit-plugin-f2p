@@ -350,6 +350,18 @@
     color: blue;
 }
 
-.md .redacted {
-    background: black;
+.md {
+    &.flattened {
+        * {
+            display: inline
+        }
+
+        br {
+            display: none;
+        }
+    }
+
+    .redacted {
+        background: black;
+    }
 }

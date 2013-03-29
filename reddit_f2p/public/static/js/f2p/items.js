@@ -53,6 +53,12 @@ r.f2p.Item.kinds.cruise = r.f2p.Item.extend({}, {
     }
 })
 
+r.f2p.Item.kinds.hatchet = r.f2p.Item.extend({}, {
+    applyEffect: function($el) {
+        $el.find('.md:first').addClass('flattened')
+    }
+})
+
 r.f2p.Item.kinds.knuckles = r.f2p.Item.extend({}, {
     applyEffect: function($el) {
         r.f2p.utils.modifyText($el.find('.usertext-body .md:first'),
