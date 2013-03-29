@@ -6,7 +6,6 @@ import json
 FIELDS = {
     "Drop Rate": "rarity",
     "Effect Visibility": "visibility",
-    "Cursor": "cursor",
     "Title": "title",
     "Damage": "damage",
     "Description": "description",
@@ -15,7 +14,6 @@ FIELDS = {
 
 
 DEFAULTS = {
-    "cursor": "crosshair",
     "visibility": "all",
 }
 

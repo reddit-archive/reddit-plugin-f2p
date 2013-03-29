@@ -215,7 +215,9 @@ r.f2p.TargetOverlay = Backbone.View.extend({
             })
         )
 
-        $('body').css({'cursor': item.get('cursor')})
+        $('body').css({
+            'cursor': 'url(/static/images/cur/' + item.get('kind') + '.png), auto'
+        })
 
         var container = this.$('.target-overlay')
         container.empty()
