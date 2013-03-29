@@ -3,7 +3,7 @@ r.f2p.utils = {
 
     modifyText: function(el, modifier) {
         $(el)
-            .find('.usertext-body .md *')
+            .find('*')
             .contents()
             .filter(function() {
                 return this.nodeType == Node.TEXT_NODE
