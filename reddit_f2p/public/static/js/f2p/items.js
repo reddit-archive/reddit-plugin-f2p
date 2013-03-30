@@ -38,6 +38,12 @@ r.f2p.Item.kinds = {
         }
     }),
 
+    compensation: r.f2p.Item.extend({}, {
+        applyEffect: function($el) {
+            $el.find('.entry:first').addClass('effect-compensation')
+        }
+    }),
+
     cruise: r.f2p.Item.extend({}, {
         applyEffect: function($el) {
             $el.find('.usertext-body .md:first').html('<p>Tom Cruise</p>')
