@@ -102,11 +102,6 @@ def on_request():
     if check_for_banana() and random.random() < 0.05:
         abort(503)
 
-    check_for_drops()
-
-    if c.user_is_loggedin:
-        c.js_preload.set("#myeffects", effects.get_my_effects(c.user))
-        c.js_preload.set("#inventory", inventory.get_inventory(c.user))
     c.js_preload.set("#game_status", scores.get_game_status())
 
     c.visible_effects = {}
@@ -117,9 +112,16 @@ def on_request():
                                            collections.defaultdict(list)),
     }
 
+    check_for_drops()
+
+    if c.user_is_loggedin:
+        find_effects([c.user._fullname])
+        c.js_preload.set("#myeffects", effects.get_my_effects(c.user))
+        c.js_preload.set("#inventory", inventory.get_inventory(c.user))
+
 
 @hooks.on("add_props")
-def find_effects(items):
+def on_add_props(items):
     things = [item for item in items
               if isinstance(item.lookups[0], VALID_TARGETS)]
 
@@ -128,6 +130,10 @@ def find_effects(items):
     fullnames.update(item.author._fullname for item in things)
     fullnames -= set(c.visible_effects)
 
+    return find_effects(fullnames)
+
+
+def find_effects(fullnames):
     if fullnames:
         visible_effects = effects.get_visible_effects(fullnames)
         c.visible_effects.update(visible_effects)

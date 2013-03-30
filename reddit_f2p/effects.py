@@ -28,6 +28,7 @@ def add_effect(thing, effect):
         effects.append((c.user._id, effect))
     c.state_changes["effects"]["add"][thing._fullname].append(effect)
 
+
 def get_all_effects(fullnames):
     """Return a dict of fullname -> [effects] for the given fullnames."""
     effects = g.f2pcache.get_multi(fullnames, prefix="effect_")
