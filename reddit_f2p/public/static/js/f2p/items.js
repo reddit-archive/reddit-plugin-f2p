@@ -161,6 +161,14 @@ r.f2p.Item.kinds = {
         }
     }),
 
+    medal: r.f2p.Item.extend({}, {
+        applyEffect: function($el) {
+            $el
+                .find('.md:first')
+                .append('<p>Excelsior!</p>')
+        }
+    }),
+
     palindrome: r.f2p.Item.extend({}, {
         applyEffect: function($el) {
             var $author = $el.find('.tagline .author:first')
