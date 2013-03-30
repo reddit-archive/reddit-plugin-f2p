@@ -156,7 +156,7 @@
         "visibility": "self"
     }, 
     "dowser": {
-        "flavor": "<p>The trusty RDT-651.  Though you suspect it is filled with lint and sauce tartare, it sure does the job.</p>\n", 
+        "flavor": "<p>The trusty RDT-651.  Though you suspect it is just filled with lint and sauce tartare, it sure does the job.</p>\n", 
         "rarity": "rare", 
         "targets": [
             "usertext"
@@ -255,7 +255,7 @@
         "flavor": "<p>The key has &quot;Do Not Duplicate&quot; clearly etched in the bow. You marvel at this failsafe epitome of security.</p>\n", 
         "rarity": "artifact", 
         "targets": [
-            "account:not(.self)"
+            "account.other"
         ], 
         "title": "Launch Key"
     }, 
@@ -267,10 +267,10 @@
         "title": "Dastardly Knuckles"
     }, 
     "magnet": {
-        "flavor": "<p>&quot;How do they work?&quot;</p>\n", 
+        "flavor": "<p>How do they work?</p>\n", 
         "rarity": "uncommon", 
         "targets": [
-            "acount"
+            "account"
         ], 
         "title": "Magnet of Un-Magnanimity"
     }, 
@@ -283,7 +283,7 @@
         "title": "Distinguished Medal of Something Significant"
     }, 
     "melodies": {
-        "flavor": "<p>Only rivers flow....wait for me......wei..g...h...t......f...o.....r.....m......e......</p>\n", 
+        "flavor": "<p>Only rivers flow....wait for me......w..e.....i..g...h...t......f...o.....r.....m......e......</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "account", 
@@ -348,7 +348,7 @@
         "flavor": "<p>Instructions: Point pointy end away from self. Apply force.</p>\n", 
         "rarity": "rare", 
         "targets": [
-            "acount"
+            "account"
         ], 
         "title": "Pointy Dagger of Mortal Strike"
     }, 
