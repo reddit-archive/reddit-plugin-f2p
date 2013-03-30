@@ -386,7 +386,7 @@
     "key": {
         "damage": 0, 
         "description": "", 
-        "flavor": "<p>The key has &quot;Do Not Duplicate&quot; clearly etched in the bow. You marvel at this failsafe epitome of security.</p>\n", 
+        "flavor": "<p>The key has &quot;Do Not Duplicate&quot; clearly etched in the bow. You take a moment to marvel at this epitome of security.</p>\n", 
         "rarity": "artifact", 
         "targets": [
             "account.other"
@@ -430,7 +430,7 @@
     "melodies": {
         "damage": 0, 
         "description": "", 
-        "flavor": "<p>Only rivers flow....wait for me......w..e.....i..g...h...t......f...o.....r.....m......e......</p>\n", 
+        "flavor": "<p>Lonely rivers flow....wait for me...... w..a.....i...t...... f...o.....r..... m......e......</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "account", 
@@ -551,7 +551,7 @@
     "panacea": {
         "damage": 0, 
         "description": "", 
-        "flavor": "<p><strong>Warning</strong> - Expel all air from syringe before use. Failure to do so may result in unexpected consequences.</p>\n", 
+        "flavor": "<p><strong>Warning</strong> &mdash; Expel all air from syringe before use. Failure to do so may result in unexpected consequences.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "account"
@@ -573,7 +573,7 @@
     "patriotism": {
         "damage": 0, 
         "description": "", 
-        "flavor": "<p>A small label bearing the name &#39;D Cheney&#39; can be found on the inside of each spool.</p>\n", 
+        "flavor": "<p>A small label bearing the name &quot;D Cheney&quot; can be found on the inside of each spool.</p>\n", 
         "rarity": "common", 
         "targets": [
             "usertext"
@@ -683,7 +683,7 @@
     "shuffler": {
         "damage": 0, 
         "description": "", 
-        "flavor": "<p>You spot the logo of your bank on the underside of the weapon.</p>\n", 
+        "flavor": "<p>You spot the logo of your bank on the underside of the cylinder.</p>\n", 
         "rarity": "common", 
         "targets": [
             "usertext"
@@ -782,7 +782,7 @@
     "torpor": {
         "damage": 0, 
         "description": "", 
-        "flavor": "<p>The prod and bow string appear severely worn. You being to wonder if it will even fire anymore.</p>\n", 
+        "flavor": "<p>The prod and bow string appear severely worn. You begin to wonder if it will even fire anymore.</p>\n", 
         "rarity": "common", 
         "targets": [
             "usertext"
