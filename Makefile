@@ -18,6 +18,8 @@ CURSOR_IMAGES := $(addprefix $(CURSOR_IMAGES_DIR), $(SOURCE_IMAGES))
 SILHOUETTE_IMAGES := $(addprefix $(SILHOUETTE_IMAGES_DIR), $(SOURCE_IMAGES))
 ALL_IMAGES := $(SMALL_IMAGES) $(LARGE_IMAGES) $(CURSOR_IMAGES) $(SILHOUETTE_IMAGES)
 
+CONVERT := convert -background none -gravity center -extent 500x500
+
 images: $(ALL_DIRS) $(ALL_IMAGES)
 clean_images:
 	rm -f $(ALL_IMAGES)
@@ -27,13 +29,13 @@ $(ALL_DIRS):
 	mkdir -p $@
 
 $(SMALL_IMAGES_DIR)%.png : art/%.png
-	convert -resize 60x60 $< -unsharp 0x0.5 $@
+	$(CONVERT) -resize 60x60 $< -unsharp 0x0.5 $@
 
 $(LARGE_IMAGES_DIR)%.png : art/%.png
-	convert -resize 140x140 $< -unsharp 0x0.5 $@
+	$(CONVERT) -resize 140x140 $< -unsharp 0x0.5 $@
 
 $(CURSOR_IMAGES_DIR)%.png: art/%.png
-	convert -resize 32x32 $< -unsharp 0x2 $@
+	$(CONVERT) -resize 32x32 $< -unsharp 0x2 $@
 
 $(SILHOUETTE_IMAGES_DIR)%.png: art/%.png
-	convert -resize 24x24 -channel RGB -threshold 100% -channel A -normalize $< -unsharp 0x0.5 $@
+	$(CONVERT) -resize 24x24 -channel RGB -threshold 100% -channel A -normalize $< -unsharp 0x0.5 $@
