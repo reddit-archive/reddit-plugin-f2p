@@ -36,6 +36,21 @@ r.f2p.Inventory = Backbone.Collection.extend({
 })
 
 r.f2p.Item.kinds = {
+    antigravity: r.f2p.Item.extend({}, {
+        applyEffect: function($el) {
+            r.f2p.utils.modifyText($el.find('.usertext-body .md:first'),
+                function(idx, textEl) {
+                    var $parent = $(textEl).parent()
+                    $parent.html(
+                        $parent.text().replace(/(\w+k\w+|\w+u\w+)/ig, function(match) {
+                            return '<sup>' + match.split('').join('<sup>') + Array(match.length + 1).join('</sup>')
+                        })
+                    )
+                }
+            )
+        }
+    }),
+
     cdgl: r.f2p.Item.extend({}, {
         applyEffect: function($el) {
             r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
