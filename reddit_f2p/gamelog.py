@@ -25,6 +25,13 @@ from r2.models import (
 from reddit_f2p import scores
 
 
+class GameLogPage(Templated):
+    def __init__(self, listing):
+        self.listing = listing
+        self.scores = scores.get_game_status()
+        Templated.__init__(self)
+
+
 class GameLogTarget(Templated):
     def __init__(self, target, permalink, author):
         self.text = "%s (%s)" % (target.__class__.__name__, author.name)
@@ -233,5 +240,8 @@ class GameLogController(RedditController):
 
         builder.wrap_items = wrap_items_fn
         listing = TableListing(builder)
-        return Reddit(content=listing.listing(),
+        content = GameLogPage(listing.listing())
+        return Reddit(content=content,
+                      page_classes=["gamelog"],
+                      show_sidebar=False,
                       extension_handling=False).render()

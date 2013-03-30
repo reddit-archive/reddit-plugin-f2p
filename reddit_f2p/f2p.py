@@ -59,7 +59,7 @@ def drop_item():
 
     item_class = weighted_lottery(g.live_config["f2p_rarity_weights"])
     item_name = random.choice([i["kind"] for i in g.f2pitems.itervalues()
-                               if i["rarity"] == item_class])
+                               if i.get("rarity", "common") == item_class])
 
     g.log.debug("dropping item %r for %r", item_name, c.user.name)
     proc = procs.get_item_proc("drop", item_name)

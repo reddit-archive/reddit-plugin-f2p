@@ -343,6 +343,50 @@
     }
 }
 
+.gamelog {
+    h2 {
+        color: black;
+        background-color: inherit;
+        text-align: center;
+        font-size: large;
+        margin: 1em;
+    }
+
+    .overview {
+        text-align: center;
+
+        .score {
+            display: inline-block;
+            font-size: 90px;
+            border-radius: 5px;
+            width: 3em;
+            color: white;
+
+            &.blue-team {
+                background-color: @blueteam;
+                border-right: 0;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            &.red-team {
+                background-color: @redteam;
+                border-left: 0;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        }
+    }
+
+    .content .generic-table {
+        margin: 0 auto;
+    }
+
+    p.nextprev {
+        text-align: center;
+    }
+}
+
 .gamelogentry td {
     font-size: small;
     text-align: left;
