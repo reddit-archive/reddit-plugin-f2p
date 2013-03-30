@@ -8,9 +8,9 @@
 <tr class="gamelogentry">
   <td class="timestamp">${timestamp(thing.date)}&#32;ago</td>
   <td>
-    <div class="interaction">
+    <div class="interaction ${"self" if thing.is_self else ""}">
       <div class="actor team-${thing.user_team}">${thing.user}</div>
-      <img src="${static('images/sil/' + thing.item['kind'] + '.png')}" title="${thing.item['title']}">
+      <img src="${static('images/sil/' + thing.item['kind'] + '.png')}" title="${thing.item.get('title', '')}">
       <div class="actor target team-${thing.target_team}">
         ${thing.target}
       </div>

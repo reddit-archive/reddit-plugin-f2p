@@ -83,6 +83,8 @@ class GameLogEntry(object):
                 target_things[fullname] = WrappedUser(target)
 
         for w in wrapped:
+            w.is_self = (c.user_is_loggedin and
+                         w.user_fullname == c.user._fullname)
             w.user = WrappedUser(users[w.user_fullname])
             w.target = target_things[w.target_fullname]
             w.item = g.f2pitems[w.item]
