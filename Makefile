@@ -6,23 +6,20 @@ IMAGES_DIR = reddit_f2p/public/static/images
 SMALL_IMAGES_DIR = $(IMAGES_DIR)/sm/
 LARGE_IMAGES_DIR := $(IMAGES_DIR)/lg/
 CURSOR_IMAGES_DIR := $(IMAGES_DIR)/cur/
+ALL_DIRS := $(SMALL_IMAGES_DIR) $(LARGE_IMAGES_DIR) $(CURSOR_IMAGES_DIR)
 
 SOURCE_IMAGES := $(notdir $(shell find art -name \*.png))
 SMALL_IMAGES := $(addprefix $(SMALL_IMAGES_DIR), $(SOURCE_IMAGES))
 LARGE_IMAGES := $(addprefix $(LARGE_IMAGES_DIR), $(SOURCE_IMAGES))
 CURSOR_IMAGES := $(addprefix $(CURSOR_IMAGES_DIR), $(SOURCE_IMAGES))
+ALL_IMAGES := $(SMALL_IMAGES) $(LARGE_IMAGES) $(CURSOR_IMAGES)
 
-images: $(SMALL_IMAGES_DIR) $(SMALL_IMAGES) $(LARGE_IMAGES_DIR) $(LARGE_IMAGES) $(CURSOR_IMAGES_DIR) $(CURSOR_IMAGES)
+images: $(ALL_DIRS) $(ALL_IMAGES)
 clean_images:
-	rm -f $(SMALL_IMAGES) $(LARGE_IMAGES) $(CURSOR_IMAGES)
+	rm -f $(ALL_IMAGES)
+	- rmdir $(ALL_DIRS)
 
-$(SMALL_IMAGES_DIR):
-	mkdir -p $@
-
-$(LARGE_IMAGES_DIR):
-	mkdir -p $@
-
-$(CURSOR_IMAGES_DIR):
+$(ALL_DIRS):
 	mkdir -p $@
 
 $(SMALL_IMAGES_DIR)%.png : art/%.png
