@@ -117,6 +117,16 @@ r.f2p.Item.kinds = {
         }
     }),
 
+    inebriation: r.f2p.Item.extend({}, {
+        applyEffect: function($el) {
+            r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
+                return text
+                    .replace(/\bs/ig, 'sh')
+                    .replace(/\w+g\w+/ig, '&ndash; *hic* &ndash;')
+            })
+        }
+    }),
+
     intolerance: r.f2p.Item.extend({}, {
         applyEffect: function($el) {
             r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
