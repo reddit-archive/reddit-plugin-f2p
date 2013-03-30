@@ -16,4 +16,9 @@
       </div>
     </div>
   </td>
+  <td class="deltas">
+    % for team, delta in thing.deltas.iteritems():
+    <span class="team-${team}">${"%+d" % delta}</span>
+    % endfor
+  </td>
 </tr>

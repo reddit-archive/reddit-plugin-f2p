@@ -40,13 +40,13 @@ class GameLogTarget(Templated):
 
 
 class GameLogEntry(object):
-    def __init__(self, _id, user_fullname, target_fullname, item, date, points):
+    def __init__(self, _id, user_fullname, target_fullname, item, date, deltas):
         self._id = _id
         self.user_fullname = user_fullname
         self.target_fullname = target_fullname
         self.item = item
         self.date = date
-        self.points = points
+        self.deltas = deltas
 
     @classmethod
     def add_props(cls, user, wrapped):
@@ -99,10 +99,10 @@ class GameLogEntry(object):
         return '%s_%s' % (self.__class__.__name__, self._id)
 
     @classmethod
-    def create(cls, user_fullname, target_fullname, item, points):
+    def create(cls, user_fullname, target_fullname, item, deltas):
         _id = uuid1()
         date = datetime.datetime.now(g.tz)
-        obj = cls(_id, user_fullname, target_fullname, item, date, points)
+        obj = cls(_id, user_fullname, target_fullname, item, date, deltas)
         GameLog.add_object(obj)
         return obj
 
@@ -125,7 +125,7 @@ class GameLogEntry(object):
             'target': self.target_fullname,
             'item': self.item,
             'date': self.date_to_tuple(self.date),
-            'points': dict(self.points),
+            'deltas': dict(self.deltas),
         })
 
     @classmethod
@@ -135,8 +135,8 @@ class GameLogEntry(object):
         target = attr_dict.pop('target')
         item = attr_dict.pop('item')
         date = cls.date_from_tuple(attr_dict.pop('date'))
-        points = attr_dict.pop('points', {})
-        obj = cls(_id, user, target, item, date, points)
+        deltas = attr_dict.pop('deltas', {})
+        obj = cls(_id, user, target, item, date, deltas)
         return obj
 
     def __repr__(self):
