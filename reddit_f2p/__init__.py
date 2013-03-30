@@ -70,3 +70,4 @@ class FreeToPlay(Plugin):
         f2p.hooks.register_all()
 
         from reddit_f2p.steam import SteamController
+        from reddit_f2p.gamelog import GameLogController

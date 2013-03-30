@@ -1,14 +1,26 @@
 import datetime
 import json
-from uuid import uuid1
+from uuid import uuid1, UUID
 
 from pycassa.system_manager import TIME_UUID_TYPE
-from pylons import g
+from pylons import g, c
 
+from r2.controllers import add_controller
+from r2.controllers.reddit_base import RedditController
 from r2.lib.db import tdb_cassandra
-from r2.lib.pages import WrappedUser, Templated
+from r2.lib.pages import Reddit, WrappedUser, Templated
 from r2.lib.utils import tup
-from r2.models import Account, Thing, Subreddit, Link, Comment
+from r2.lib.validator import nop, validate, VLimit
+from r2.lib.wrapped import Wrapped
+from r2.models import (
+    Account,
+    Comment,
+    Link,
+    QueryBuilder,
+    Subreddit,
+    TableListing,
+    Thing,
+)
 
 from reddit_f2p import scores
 
@@ -182,3 +194,44 @@ class GameLog(tdb_cassandra.View):
             return objs[0]
         else:
             return objs
+
+
+@add_controller
+class GameLogController(RedditController):
+    @validate(num=VLimit('limit', default=100, max_limit=500),
+              after=nop('after'),
+              before=nop('before'))
+    def GET_listing(self, num, after, before):
+        if before:
+            after = before
+            reverse = True
+        else:
+            reverse = False
+
+        q = GameLog.query(reverse=reverse, num=num)
+
+        def after_fn(item):
+            if isinstance(item, basestring):
+                name, id = item.split('_')
+                q.column_start = UUID(id)
+            elif isinstance(item, GameLogEntry):
+                q.column_start = item._id
+        q._after = after_fn
+
+        if after:
+            q._after(after)
+
+        builder = QueryBuilder(q, skip=False, num=num, reverse=reverse)
+
+        def wrap_items_fn(items):
+            wrapped = []
+            for item in items:
+                w = Wrapped(item)
+                wrapped.append(w)
+            GameLogEntry.add_props(c.user, wrapped)
+            return wrapped
+
+        builder.wrap_items = wrap_items_fn
+        listing = TableListing(builder)
+        return Reddit(content=listing.listing(),
+                      extension_handling=False).render()

@@ -1,33 +1,26 @@
 import random
-from uuid import UUID
 
 from pylons import g, c, request
 
 from r2.controllers import add_controller
 from r2.controllers.reddit_base import RedditController
 from r2.lib.base import abort
-from r2.lib.db.thing import Thing
 from r2.lib.errors import errors
 from r2.lib.hooks import HookRegistrar
-from r2.lib.pages import Reddit
 from r2.lib.utils import weighted_lottery
 from r2.lib.validator import (
-    nop,
     validate,
     VLimit,
     VRequired,
     VByName,
 )
-from r2.lib.wrapped import Wrapped
 from r2.models import (
     Account,
     Comment,
     Link,
-    QueryBuilder,
     Subreddit,
-    TableListing,
 )
-from reddit_f2p import procs, inventory, effects, scores, gamelog
+from reddit_f2p import procs, inventory, effects, scores
 
 
 hooks = HookRegistrar()
@@ -169,44 +162,3 @@ class FreeToPlayApiController(RedditController):
 
         proc = procs.get_item_proc("use", item)
         proc(c.user, target, item)
-
-
-@add_controller
-class GameLogController(RedditController):
-    @validate(num=VLimit('limit', default=100, max_limit=500),
-              after=nop('after'),
-              before=nop('before'))
-    def GET_listing(self, num, after, before):
-        if before:
-            after = before
-            reverse = True
-        else:
-            reverse = False
-
-        q = gamelog.GameLog.query(reverse=reverse, num=num)
-
-        def after_fn(item):
-            if isinstance(item, basestring):
-                name, id = item.split('_')
-                q.column_start = UUID(id)
-            elif isinstance(item, gamelog.GameLogEntry):
-                q.column_start = item._id
-        q._after = after_fn
-
-        if after:
-            q._after(after)
-
-        builder = QueryBuilder(q, skip=False, num=num, reverse=reverse)
-
-        def wrap_items_fn(items):
-            wrapped = []
-            for item in items:
-                w = Wrapped(item)
-                wrapped.append(w)
-            gamelog.GameLogEntry.add_props(c.user, wrapped)
-            return wrapped
-
-        builder.wrap_items = wrap_items_fn
-        listing = TableListing(builder)
-        return Reddit(content=listing.listing(),
-                      extension_handling=False).render()
