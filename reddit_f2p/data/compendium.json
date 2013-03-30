@@ -16,6 +16,18 @@
         ], 
         "title": "Extremely Uplifting Anti-Gravity Gun"
     }, 
+    "ass_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
+    "baker_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
     "banana": {
         "flavor": "<p>Personally, I prefer pickles.</p>\n", 
         "rarity": "rare", 
@@ -24,6 +36,36 @@
         ], 
         "title": "Banana of Downtime", 
         "visibility": "self"
+    }, 
+    "barbershop_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
+    "baseball_cap": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
+    "beach_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
+    "beanie_cap": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
+    "beer_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
     }, 
     "caltrops": {
         "flavor": "<p>The spines are covered with more spines for that double-spine goodness.</p>\n", 
@@ -51,6 +93,12 @@
         ], 
         "title": "Smpl Cdgl"
     }, 
+    "cheese_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
     "chirality": {
         "flavor": "<p>Hey, look over there!</p>\n", 
         "rarity": "common", 
@@ -59,6 +107,18 @@
         ], 
         "title": "Scimitar of Chirality"
     }, 
+    "clap_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
+    "clown_hair": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
     "compensation": {
         "flavor": "<p>Swinging the blade emits the sound of a large, unmuffled motorcycle engine.</p>\n", 
         "rarity": "rare", 
@@ -66,6 +126,12 @@
             "usertext"
         ], 
         "title": "Sizable Claymore of Compensation"
+    }, 
+    "crown": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
     }, 
     "cruise": {
         "flavor": "<p>Choosey moms choose Cruise.</p>\n", 
@@ -98,6 +164,19 @@
         "title": "Suspiciously Functional Booby-Trap Dowser", 
         "visibility": "self"
     }, 
+    "dunce_cap": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
+    "eggscellent_hat": {
+        "damage": "0", 
+        "flavor": "<p>BINGOOOOOOOOOOOOOOOOOOOOOOO!!!!!!</p>\n", 
+        "targets": [
+            "account"
+        ]
+    }, 
     "emphasis": {
         "flavor": "<p>Insert random emphasis quip <strong>here</strong>.</p>\n", 
         "rarity": "common", 
@@ -114,6 +193,12 @@
         ], 
         "title": "Royal Sceptre of the Queen's English"
     }, 
+    "fedora": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
     "handgrenade": {
         "flavor": "<p>O LORD, bless this Thy hand grenade that with it Thou mayest blow Thine enemies to tiny bits, in Thy mercy.</p>\n", 
         "rarity": "artifact", 
@@ -121,6 +206,12 @@
             "usertext"
         ], 
         "title": "Holy Hand Grenade"
+    }, 
+    "hard_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
     }, 
     "hatchet": {
         "flavor": "<p>Preferred weapon of the uninitiated <a href=\"/r/IAmA\">/r/IAmA</a> poster.</p>\n", 
@@ -153,6 +244,12 @@
             "account"
         ], 
         "title": "Curious Orb of Hemispherical Inversion"
+    }, 
+    "jake_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
     }, 
     "key": {
         "flavor": "<p>The key has &quot;Do Not Duplicate&quot; clearly etched in the bow. You marvel at this failsafe epitome of security.</p>\n", 
@@ -194,6 +291,18 @@
         ], 
         "title": "Wistful Panpipe Melodies"
     }, 
+    "military_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
+    "minecraft_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
     "mortar": {
         "flavor": "<p>Can also be used to obliterate herbs and spices into a vibrant m\u00e9lange.</p>\n", 
         "rarity": "artifact", 
@@ -201,6 +310,18 @@
             "usertext"
         ], 
         "title": "Cowardly Mortar of Indiscriminateness"
+    }, 
+    "mushroom_hat_green": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
+    "mushroom_hat_red": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
     }, 
     "nightfall": {
         "flavor": "<p>All that sunlight is cooking your brain.</p>\n", 
@@ -248,6 +369,12 @@
         ], 
         "title": "Huge Syringe of Soothing Panacea"
     }, 
+    "party_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
     "patriotism": {
         "flavor": "<p>A small label bearing the name &#39;D Cheney&#39; can be found on the inside of each spool.</p>\n", 
         "rarity": "common", 
@@ -255,6 +382,18 @@
             "usertext"
         ], 
         "title": "Redacting Tape of Patriotism"
+    }, 
+    "pimp_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
+    "pope_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
     }, 
     "propinquity": {
         "flavor": "<p>Pistols only in the Facility.  No Oddjob.</p>\n", 
@@ -272,6 +411,24 @@
             "usertext"
         ], 
         "title": "Ineffective Trebuchet of Rampart Surmounting"
+    }, 
+    "reddit_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
+    "rooster_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
+    "santa_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
     }, 
     "scrambler": {
         "flavor": "<p>Over 0090 sold!</p>\n", 
@@ -298,6 +455,30 @@
         ], 
         "title": "Cryptographic Shuffler of Pelcgbtencuvp Fuhssyre"
     }, 
+    "skull_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
+    "spikey_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
+    "stainless_pot": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
+    "stans_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
     "subterfuge": {
         "flavor": "<p>They&#39;ll never see you coming, provided the spirit gum and popsicle sticks hold together.</p>\n", 
         "rarity": "rare", 
@@ -305,6 +486,24 @@
             "account.self"
         ], 
         "title": "Poorly Crafted but Utterly Convincing Mask of Subterfuge"
+    }, 
+    "ten_gallon_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
+    "top_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
+    "top_hat_gold": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
     }, 
     "torpor": {
         "flavor": "<p>The prod and bow string appear severely worn. You being to wonder if it will even fire anymore.</p>\n", 
@@ -314,10 +513,34 @@
         ], 
         "title": "Hackneyed Crossbow of Memetic Torpor"
     }, 
+    "trucker_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
+    "viking_helmet": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
     "wand": {
         "flavor": "<p>What could possibly go wrong?</p>\n", 
         "rarity": "rare", 
         "targets": [], 
         "title": "cursed wand"
+    }, 
+    "white_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
+    }, 
+    "wizard_hat": {
+        "damage": "0", 
+        "targets": [
+            "account"
+        ]
     }
 }
