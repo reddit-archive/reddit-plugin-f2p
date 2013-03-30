@@ -35,6 +35,7 @@
     }, 
     "capitulation": {
         "damage": "1", 
+        "flavor": "<p>Because what reddit needs most is more ways for people to annoy each other.</p>\n", 
         "rarity": "common", 
         "targets": [
             "account"
@@ -50,6 +51,7 @@
         "title": "Smpl Cdgl"
     }, 
     "chirality": {
+        "flavor": "<p>Hey, look over there!</p>\n", 
         "rarity": "common", 
         "targets": [
             "usertext"
@@ -57,7 +59,7 @@
         "title": "Scimitar of Chirality"
     }, 
     "compensation": {
-        "flavor": "<p>Brought to you by the makers of ... ?</p>\n", 
+        "flavor": "<p>Swinging the blade emits the sound of a large, unmuffled motorcycle engine.</p>\n", 
         "rarity": "common", 
         "targets": [
             "usertext"
@@ -65,6 +67,7 @@
         "title": "Sizable Claymore of Compensation"
     }, 
     "cruise": {
+        "flavor": "<p>Choosey moms choose Cruise.</p>\n", 
         "rarity": "common", 
         "targets": [
             "usertext"
@@ -119,7 +122,7 @@
         "title": "Holy Hand Grenade"
     }, 
     "hatchet": {
-        "flavor": "<p>Preferred weapon of the uninitiated IAmA poster.</p>\n", 
+        "flavor": "<p>Preferred weapon of the uninitiated <a href=\"/r/IAmA\">/r/IAmA</a> poster.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "usertext"
@@ -151,6 +154,7 @@
         "title": "Curious Orb of Hemispherical Inversion"
     }, 
     "key": {
+        "flavor": "<p>The key has &quot;Do Not Duplicate&quot; clearly etched in the bow. You marvel at this failsafe epitome of security.</p>\n", 
         "rarity": "artifact", 
         "targets": [
             "account:not(.self)"
@@ -202,6 +206,7 @@
         "title": "Enveloping Cloak of Nightfall"
     }, 
     "nostalgia": {
+        "flavor": "<p>&quot;cl\u1ebdan m\u1ebd up!&quot; ... shit</p>\n", 
         "rarity": "rare", 
         "targets": [
             "usertext"
@@ -216,7 +221,7 @@
         "title": "Nucular and Present Danger"
     }, 
     "overpowered": {
-        "flavor": "<p><strong>WARNING</strong> - Keep pointy end pointed away from self.</p>\n", 
+        "flavor": "<p>Instructions: Point pointy end away from self. Apply force.</p>\n", 
         "rarity": "rare", 
         "targets": [
             "acount"
@@ -233,6 +238,7 @@
         "title": "Mirrored Shield of Palindromic Failure"
     }, 
     "panacea": {
+        "flavor": "<p><strong>Warning</strong> - Expel all air from syringe before use. Failure to do so may result in unexpected consequences.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "account"
@@ -256,6 +262,7 @@
         "visibility": "team"
     }, 
     "rampart": {
+        "flavor": "<p>The trebuchet bears the damage of overuse and poor timing.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "usertext"
@@ -263,11 +270,12 @@
         "title": "Ineffective Trebuchet of Rampart Surmounting"
     }, 
     "scrambler": {
+        "flavor": "<p>Over 0090 sold!</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "link"
         ], 
-        "title": "Lysdexial Tome of something"
+        "title": "Jumbled Tome of Significance Shuffling"
     }, 
     "shrouding": {
         "flavor": "<p>Known to have led to several wars during the shitty-LCD era.</p>\n", 
@@ -278,6 +286,7 @@
         "title": "Smoke Bomb of Vague Shrouding"
     }, 
     "shuffler": {
+        "flavor": "<p>You spot the logo of your bank on the underside of the weapon.</p>\n", 
         "rarity": "common", 
         "targets": [
             "usertext", 
@@ -294,6 +303,7 @@
         "title": "Poorly Crafted but Utterly Convincing Mask of Subterfuge"
     }, 
     "torpor": {
+        "flavor": "<p>The prod and bow string appear severely worn. You being to wonder if it will even fire anymore.</p>\n", 
         "rarity": "common", 
         "targets": [
             "usertext"
@@ -301,6 +311,7 @@
         "title": "Hackneyed Crossbow of Memetic Torpor"
     }, 
     "wand": {
+        "flavor": "<p>What could possibly go wrong?</p>\n", 
         "rarity": "rare", 
         "targets": [], 
         "title": "cursed wand"
