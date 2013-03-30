@@ -13,7 +13,7 @@ def add_to_inventory(user, item):
     """Add a given item-name to the user's inventory."""
     with mutate_key("inventory_%d" % user._id, type_=dict) as inventory:
         inventory[item] = inventory.get(item, 0) + 1
-    c.state_changes["inventory"]["add"].append(item)
+    c.state_changes["inventory"]["add"].append(g.f2pitems[item])
 
 
 def consume_item(user, item):
