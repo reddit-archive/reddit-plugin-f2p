@@ -24,12 +24,12 @@
     "ass_hat": {
         "damage": "0", 
         "description": "", 
-        "flavor": "", 
+        "flavor": "<p>Extra smelly when combined with beans.</p>\n", 
         "rarity": "", 
         "targets": [
             "account"
         ], 
-        "title": "", 
+        "title": "Asshat", 
         "visibility": "all"
     }, 
     "baker_hat": {
@@ -101,12 +101,12 @@
     "beer_hat": {
         "damage": "0", 
         "description": "", 
-        "flavor": "", 
+        "flavor": "<p>Delivers 48 fl oz of courage when most needed.</p>\n", 
         "rarity": "", 
         "targets": [
             "account"
         ], 
-        "title": "", 
+        "title": "Beer Mate 3000", 
         "visibility": "all"
     }, 
     "caltrops": {
@@ -154,7 +154,7 @@
         "visibility": "all"
     }, 
     "chirality": {
-        "damage": 5, 
+        "damage": 0, 
         "description": "", 
         "flavor": "<p>Hey, look over there!</p>\n", 
         "rarity": "common", 
@@ -297,12 +297,12 @@
     "fedora": {
         "damage": "0", 
         "description": "", 
-        "flavor": "", 
+        "flavor": "<p>Decidedly not red.</p>\n", 
         "rarity": "", 
         "targets": [
             "account"
         ], 
-        "title": "", 
+        "title": "Dapper \u2019Dora", 
         "visibility": "all"
     }, 
     "handgrenade": {
@@ -407,7 +407,7 @@
     }, 
     "magnet": {
         "damage": 0, 
-        "description": "", 
+        "description": "<p>Steals an item from an unsuspecting victim&#39;s inventory.</p>\n", 
         "flavor": "<p>How do they work?</p>\n", 
         "rarity": "uncommon", 
         "targets": [
@@ -480,18 +480,18 @@
         "targets": [
             "account"
         ], 
-        "title": "", 
+        "title": "Freaky Green Fungus", 
         "visibility": "all"
     }, 
     "mushroom_hat_red": {
         "damage": "0", 
         "description": "", 
-        "flavor": "", 
+        "flavor": "<p>Transports you to Texas, where everything is bigger.</p>\n", 
         "rarity": "", 
         "targets": [
             "account"
         ], 
-        "title": "", 
+        "title": "Freaky Red Fungus", 
         "visibility": "all"
     }, 
     "nightfall": {
@@ -506,7 +506,7 @@
     "nostalgia": {
         "damage": 0, 
         "description": "", 
-        "flavor": "<p>&quot;cl\u1ebdan m\u1ebd up!&quot; ... shit</p>\n", 
+        "flavor": "<p>&quot;cl\u1ebdan m\u1ebd up!&quot; ... ugh</p>\n", 
         "rarity": "rare", 
         "targets": [
             "usertext"
@@ -527,7 +527,7 @@
     }, 
     "overpowered": {
         "damage": 0, 
-        "description": "", 
+        "description": "<p>Removes all items and effects from your target.</p>\n", 
         "flavor": "<p>Instructions: Point pointy end away from self. Apply force.</p>\n", 
         "rarity": "rare", 
         "targets": [
@@ -549,7 +549,7 @@
         "visibility": "all"
     }, 
     "panacea": {
-        "damage": -1, 
+        "damage": 0, 
         "description": "", 
         "flavor": "<p><strong>Warning</strong> - Expel all air from syringe before use. Failure to do so may result in unexpected consequences.</p>\n", 
         "rarity": "uncommon", 
@@ -595,12 +595,12 @@
     "pope_hat": {
         "damage": "0", 
         "description": "", 
-        "flavor": "", 
+        "flavor": "<p>Will cause your enemies to spew black smoke.</p>\n", 
         "rarity": "", 
         "targets": [
             "account"
         ], 
-        "title": "", 
+        "title": "Fightin\u2019 Francis", 
         "visibility": "all"
     }, 
     "propinquity": {
@@ -650,12 +650,12 @@
     "santa_hat": {
         "damage": "0", 
         "description": "", 
-        "flavor": "", 
+        "flavor": "<p>Increases the probability that a kid will pee on you by 37%.</p>\n", 
         "rarity": "", 
         "targets": [
             "account"
         ], 
-        "title": "", 
+        "title": "Ho Ho Hat", 
         "visibility": "all"
     }, 
     "scrambler": {
@@ -686,8 +686,7 @@
         "flavor": "<p>You spot the logo of your bank on the underside of the weapon.</p>\n", 
         "rarity": "common", 
         "targets": [
-            "usertext", 
-            "account"
+            "usertext"
         ], 
         "title": "Cryptographic Shuffler of Pelcgbtencuvp Fuhssyre", 
         "visibility": "all"
@@ -815,7 +814,7 @@
     }, 
     "wand": {
         "damage": 0, 
-        "description": "", 
+        "description": "<p>Affects your target with a random affliction. Prone to backfiring.</p>\n", 
         "flavor": "<p>What could possibly go wrong?</p>\n", 
         "rarity": "rare", 
         "targets": [], 
@@ -825,12 +824,12 @@
     "white_hat": {
         "damage": "0", 
         "description": "", 
-        "flavor": "", 
+        "flavor": "<p>Responsibly disposes downvotes.</p>\n", 
         "rarity": "", 
         "targets": [
             "account"
         ], 
-        "title": "", 
+        "title": "The Great Protector", 
         "visibility": "all"
     }, 
     "wizard_hat": {
