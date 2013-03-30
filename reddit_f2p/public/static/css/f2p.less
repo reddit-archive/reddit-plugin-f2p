@@ -354,8 +354,8 @@
     color: blue;
 }
 
-.md {
-    &.flattened {
+.entry.effect-flattened {
+    .md {
         * {
             display: inline
         }
@@ -364,14 +364,19 @@
             display: none;
         }
     }
+}
 
-    .redacted {
-        background: black;
-    }
-
-    &.shrouded {
+.entry.effect-shrouded {
+    .md {
         background: #111;
         border-radius: 5px;
         text-shadow: 0 0 8px rgba(255, 255, 255, .5);
+    }
+}
+
+
+.md {
+    .effect-redacted {
+        background: black;
     }
 }

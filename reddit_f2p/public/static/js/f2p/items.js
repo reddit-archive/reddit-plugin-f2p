@@ -71,7 +71,7 @@ r.f2p.Item.kinds = {
 
     hatchet: r.f2p.Item.extend({}, {
         applyEffect: function($el) {
-            $el.find('.md:first').addClass('flattened')
+            $el.find('.entry:first').addClass('effect-flattened')
         }
     }),
 
@@ -124,7 +124,7 @@ r.f2p.Item.kinds = {
                 function(idx, textEl) {
                     var $parent = $(textEl).parent()
                     $parent.html(
-                        $parent.text().replace(/(\w+w\w+|\w+a\w+|\w+s\w+)/ig, '<span class="redacted">$1</span>')
+                        $parent.text().replace(/(\w+w\w+|\w+a\w+|\w+s\w+)/ig, '<span class="effect-redacted">$1</span>')
                     )
                 }
             )
@@ -133,7 +133,7 @@ r.f2p.Item.kinds = {
 
     shrouding: r.f2p.Item.extend({}, {
         applyEffect: function($el) {
-            $el.find('.md:first').addClass('shrouded')
+            $el.find('.entry:first').addClass('effect-shrouded')
         }
     })
 }
