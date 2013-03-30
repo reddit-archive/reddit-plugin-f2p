@@ -1,3 +1,6 @@
+@redteam: red;
+@blueteam: blue;
+
 .transition (@property, @duration, @function: ease, @delay: 0s) {
     -webkit-transition: @arguments;
     -moz-transition: @arguments;
@@ -250,8 +253,8 @@
             }
 
             &:after {
-                background: blue;
-                box-shadow: 0 2px 0 darken(blue, 20%);
+                background: @blueteam;
+                box-shadow: 0 2px 0 darken(@blueteam, 20%);
             }
         }
 
@@ -267,8 +270,8 @@
             }
 
             &:after {
-                background: red;
-                box-shadow: 0 2px 0 darken(red, 20%);
+                background: @redteam;
+                box-shadow: 0 2px 0 darken(@redteam, 20%);
             }
         }
 
@@ -362,7 +365,7 @@
     }
 
     .team-blue {
-        color: blue;
+        color: @blueteam;
 
         a {
             color: inherit;
@@ -370,7 +373,7 @@
     }
 
     .team-red {
-        color: red;
+        color: @redteam;
 
         a {
             color: inherit;
