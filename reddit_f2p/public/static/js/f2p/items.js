@@ -173,6 +173,20 @@ r.f2p.Item.kinds = {
             sentences[idx] = sentences[idx] + '... and then I took an arrow to the knee'
             textEl.nodeValue = sentences.join('.')
         }
+    }),
+
+    shuffler: r.f2p.Item.extend({}, {
+        applyEffect: function($el) {
+            r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
+                 return text.replace(/[A-Za-z0-9]/g, function(chr) {
+                    orig = chr.charCodeAt(0)
+                    base = orig > 57 ? ( orig > 90 ? 97 : 65 ) : 48
+                    rot = orig + 13 - base
+                    offset = rot % ( orig > 57 ? 26 : 10 )
+                    return String.fromCharCode(base + offset)
+                })
+            })
+        }
     })
 }
 
