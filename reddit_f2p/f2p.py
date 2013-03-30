@@ -100,8 +100,7 @@ def on_request():
     if check_for_banana() and random.random() < 0.05:
         abort(503)
 
-    #check_for_drops()
-    c.js_preload.set("#drop", ["banana"])
+    check_for_drops()
 
     if c.user_is_loggedin:
         c.js_preload.set("#myeffects", effects.get_my_effects(c.user))
@@ -146,9 +145,9 @@ def comment_reply_effect(comment):
     else:
         parent = Link._byID(comment.link_id)
     parent_effects = effects.get_all_effects([parent._fullname])
-    reply_effects = []
-    if reply_effects:
-        pass
+    for item_name in parent_effects:
+        proc = procs.get_item_proc("reply", item_name)
+        proc(c.user, parent)
 
 
 @add_controller

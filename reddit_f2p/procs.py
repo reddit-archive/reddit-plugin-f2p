@@ -41,6 +41,9 @@ class Item(object):
         effects.add_effect(target, self.item_name)
         log_and_score(user, target, self.item_name, points=1)
 
+    def on_reply(self, user, parent):
+        pass
+
 
 @registered_item
 class Abstinence(Item):
