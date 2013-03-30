@@ -1,3 +1,5 @@
+import collections
+import json
 import random
 
 from pylons import g, c, request
@@ -107,6 +109,7 @@ def on_request():
         c.js_preload.set("#inventory", inventory.get_inventory(c.user))
     c.js_preload.set("#game_status", scores.get_game_status())
     c.visible_effects = {}
+    c.score_deltas = collections.Counter()
 
 
 @hooks.on("add_props")
@@ -164,3 +167,7 @@ class FreeToPlayApiController(RedditController):
         if not item.is_target_valid(target):
             abort(400)
         item.on_use(c.user, target)
+
+        return json.dumps({
+            "score_deltas": dict(c.score_deltas),
+        })
