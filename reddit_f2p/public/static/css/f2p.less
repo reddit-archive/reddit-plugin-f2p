@@ -9,6 +9,13 @@
     transition: @arguments;
 }
 
+.transform (...) {
+    -webkit-transform: @arguments;
+    -moz-transform: @arguments;
+    -o-transform: @arguments;
+    transform: @arguments;
+}
+
 .no-select {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -461,6 +468,15 @@
         br {
             display: none;
         }
+    }
+}
+
+.entry.effect-inversion {
+    .md {
+        text-align: right;
+        .transform(scaleX(-1) scaleY(-1));
+        -ms-filter: flipv fliph;
+        filter: flipv fliph;
     }
 }
 

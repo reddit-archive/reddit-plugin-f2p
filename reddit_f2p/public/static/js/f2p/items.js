@@ -144,6 +144,12 @@ r.f2p.Item.kinds = {
         }
     }),
 
+    inversion: r.f2p.Item.extend({}, {
+        applyEffect: function($el) {
+            $el.find('.entry:first').addClass('effect-inversion')
+        }
+    }),
+
     knuckles: r.f2p.Item.extend({}, {
         applyEffect: function($el) {
             r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
