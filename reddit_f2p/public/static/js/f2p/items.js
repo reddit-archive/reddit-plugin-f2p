@@ -137,6 +137,14 @@ r.f2p.Item.kinds = {
         }
     }),
 
+    rampart: r.f2p.Item.extend({}, {
+        applyEffect: function($el) {
+            $el
+                .find('.md:first')
+                .append('<p>And please be sure to check out Rampart.</p>')
+        }
+    }),
+
     shrouding: r.f2p.Item.extend({}, {
         applyEffect: function($el) {
             $el.find('.entry:first').addClass('effect-shrouded')
