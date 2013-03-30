@@ -1,7 +1,7 @@
 import random
 import re
 
-from pylons import c, g
+from pylons import g
 
 from reddit_f2p import inventory, effects, scores, gamelog
 
@@ -59,7 +59,21 @@ class Item(object):
 
     def on_use(self, user, target):
         effects.add_effect(target, self.item_name)
-        log_and_score(user, target, self.item_name, points=1)
+        self.apply_damage_and_log(user, target, [target])
+
+    def apply_damage_and_log(self, user, target, affected_things):
+        damage = g.f2pitems[self.item_name]["damage"]
+        if damage:
+            points = scores.apply_damage(affected_things, damage)
+        else:
+            points = {}
+
+        gamelog.GameLogEntry.create(
+            user._fullname,
+            target._fullname,
+            self.item_name,
+            points,
+        )
 
     def on_reply(self, user, parent):
         pass
@@ -73,9 +87,8 @@ class Abstinence(Item):
 
     def on_use(self, user, target):
         effects.remove_effect(user, self.item_name)
-        effects.add_effect(target, self.item_name)
         inventory.add_to_inventory(target, self.item_name)
-        log_and_score(user, target, self.item_name, damage=1)
+        super(Abstinence, self).on_use(user, target)
 
 
 class HealingItem(Item):
@@ -101,7 +114,7 @@ class HealingItem(Item):
         if isinstance(target, Account):
             send_system_message(target, subject, msg)
 
-        log_and_score(user, target, self.item_name, points=1)
+        self.apply_damage_and_log(user, target, [target])
 
 
 @registered_item
@@ -114,23 +127,14 @@ class Melodies(HealingItem):
     pass
 
 
-def log_and_score(user, target, item, points=1, damage=None):
-    scores.incr_score(scores.get_user_team(user), damage or points)
-    kw = {'damage': damage} if damage else {'points': points}
-    gamelog.GameLogEntry.create(user._fullname, target._fullname, item, **kw)
-
-
 @registered_item
 class Capitulation(Item):
     def on_use(self, user, target):
-        damage = 1
         subject = 'you have been poked!'
         item_title = g.f2pitems[self.item_name]['title']
-        msg = 'you were poked by %s (with %s) for %s damage' % (user.name,
-                                                                item_title,
-                                                                damage)
+        msg = 'you were poked by %s (with %s)' % (user.name, item_title)
         send_system_message(target, subject, msg)
-        log_and_score(user, target, self.item_name, damage=damage)
+        self.apply_damage_and_log(user, target, [target])
 
 
 @registered_item
@@ -141,9 +145,10 @@ class Overpowered(Item):
         item_title = g.f2pitems[self.item_name]['title']
         subject = 'you were assassinated!'
         msg = ('you were assassinated by %s (with %s) and lost all your items'
-               ' items effects' % (user.name, item_title))
+               ' and effects' % (user.name, item_title))
         send_system_message(target, subject, msg)
-        log_and_score(user, target, self.item_name, damage=1)
+
+        self.apply_damage_and_log(user, target, [target])
 
 
 @registered_item
@@ -167,7 +172,8 @@ class Magnet(Item):
             msg = ("you used %s to steal %s from %s" %
                    (item_title, to_steal_title, target.name))
             send_system_message(user, subject, msg)
-            log_and_score(user, target, self.item_name, points=1)
+
+            self.apply_damage_and_log(user, target, [target])
 
 
 @registered_item
@@ -188,7 +194,6 @@ class Wand(Item):
         target_random_item_name = random.choice(target_items)
         target_random_item = get_item(target_random_item_name)
         target_random_item.on_use(user, target)
-        log_and_score(user, target, self.item_name, points=1)
 
         if random.random() > 0.5:
             user_items = [item_dict['kind'] for item_dict in g.f2pitems.values()

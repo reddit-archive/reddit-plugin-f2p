@@ -40,14 +40,13 @@ class GameLogTarget(Templated):
 
 
 class GameLogEntry(object):
-    def __init__(self, _id, user_fullname, target_fullname, item, date,
-                 **extras):
+    def __init__(self, _id, user_fullname, target_fullname, item, date, points):
         self._id = _id
         self.user_fullname = user_fullname
         self.target_fullname = target_fullname
         self.item = item
         self.date = date
-        self.extras = extras
+        self.points = points
 
     @classmethod
     def add_props(cls, user, wrapped):
@@ -95,25 +94,15 @@ class GameLogEntry(object):
                 target_user = authors[targets[w.target_fullname].author_id]
             w.target_team = scores.get_user_team(target_user)
 
-            w.text = ''
-            if 'damage' in w.extras:
-                damage = w.extras['damage']
-                w.text = ('(%s point%s of damage to the %s team)' %
-                          (damage, 's' if damage > 1 else '', w.target_team))
-            elif 'points' in w.extras:
-                points = w.extras['points']
-                w.text = ('(+%s point%s for the %s team)' %
-                          (points, 's' if points > 1 else '', w.user_team))
-
     @property
     def _fullname(self):
         return '%s_%s' % (self.__class__.__name__, self._id)
 
     @classmethod
-    def create(cls, user_fullname, target_fullname, item, **extras):
+    def create(cls, user_fullname, target_fullname, item, points):
         _id = uuid1()
         date = datetime.datetime.now(g.tz)
-        obj = cls(_id, user_fullname, target_fullname, item, date, **extras)
+        obj = cls(_id, user_fullname, target_fullname, item, date, points)
         GameLog.add_object(obj)
         return obj
 
@@ -131,14 +120,13 @@ class GameLogEntry(object):
         return date
 
     def to_json(self):
-        d = self.extras
-        d.update({
+        return json.dumps({
             'user': self.user_fullname,
             'target': self.target_fullname,
             'item': self.item,
             'date': self.date_to_tuple(self.date),
+            'points': dict(self.points),
         })
-        return json.dumps(d)
 
     @classmethod
     def from_json(cls, _id, blob):
@@ -147,7 +135,8 @@ class GameLogEntry(object):
         target = attr_dict.pop('target')
         item = attr_dict.pop('item')
         date = cls.date_from_tuple(attr_dict.pop('date'))
-        obj = cls(_id, user, target, item, date, **attr_dict)
+        points = attr_dict.pop('points', {})
+        obj = cls(_id, user, target, item, date, points)
         return obj
 
     def __repr__(self):

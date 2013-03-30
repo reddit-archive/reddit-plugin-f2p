@@ -17,6 +17,7 @@ FIELDS = {
 
 DEFAULTS = {
     "visibility": "all",
+    "damage": 0,
 }
 
 
