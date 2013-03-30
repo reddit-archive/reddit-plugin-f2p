@@ -38,16 +38,11 @@ r.f2p.Inventory = Backbone.Collection.extend({
 r.f2p.Item.kinds = {
     antigravity: r.f2p.Item.extend({}, {
         applyEffect: function($el) {
-            r.f2p.utils.modifyText($el.find('.usertext-body .md:first'),
-                function(idx, textEl) {
-                    var $parent = $(textEl).parent()
-                    $parent.html(
-                        $parent.text().replace(/(\w+k\w+|\w+u\w+)/ig, function(match) {
-                            return '<sup>' + match.split('').join('<sup>') + Array(match.length + 1).join('</sup>')
-                        })
-                    )
-                }
-            )
+            r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
+                return text.replace(/(\w+k\w+|\w+u\w+)/ig, function(match) {
+                    return '<sup>' + match.split('').join('<sup>') + Array(match.length + 1).join('</sup>')
+                })
+            })
         }
     }),
 
@@ -79,20 +74,15 @@ r.f2p.Item.kinds = {
 
     emphasis: r.f2p.Item.extend({}, {
         applyEffect: function($el) {
-            r.f2p.utils.modifyText($el.find('.usertext-body .md:first'),
-                function(idx, textEl) {
-                    var $parent = $(textEl).parent()
-                    $parent.html(
-                        $parent.text().replace(/(\w+b\w+|\w+e\w+|\w+i\w+)/ig, function(match, group, offset) {
-                            if (offset % 2 == 0) {
-                                return '<strong>' + match + '</strong>'
-                            } else {
-                                return '<em>' + match + '</em>'
-                            }
-                        })
-                    )
-                }
-            )
+            r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
+                return text.replace(/(\w+b\w+|\w+e\w+|\w+i\w+)/ig, function(match, group, offset) {
+                    if (offset % 2 == 0) {
+                        return '<strong>' + match + '</strong>'
+                    } else {
+                        return '<em>' + match + '</em>'
+                    }
+                })
+            })
         }
     }),
 
@@ -172,14 +162,9 @@ r.f2p.Item.kinds = {
 
     patriotism: r.f2p.Item.extend({}, {
         applyEffect: function($el) {
-            r.f2p.utils.modifyText($el.find('.usertext-body .md:first'),
-                function(idx, textEl) {
-                    var $parent = $(textEl).parent()
-                    $parent.html(
-                        $parent.text().replace(/(\w+w\w+|\w+a\w+|\w+s\w+)/ig, '<span class="effect-redacted">$1</span>')
-                    )
-                }
-            )
+            r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
+                return text.replace(/(\w+w\w+|\w+a\w+|\w+s\w+)/ig, '<span class="effect-redacted">$1</span>')
+            })
         }
     }),
 

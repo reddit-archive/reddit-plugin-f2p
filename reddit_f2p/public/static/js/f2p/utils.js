@@ -10,13 +10,12 @@ r.f2p.utils = {
             })
     },
 
-    modifyText: function(el, modifier) {
-        r.f2p.utils.textNodes(el).each(modifier)
-    },
-
     replaceText: function(el, modifier) {
-        r.f2p.utils.modifyText(el, function(idx, textEl) {
-            textEl.nodeValue = modifier(textEl.nodeValue)
+        r.f2p.utils.textNodes(el).each(function(idx, textEl) {
+            var $parent = $(textEl).parent()
+            $parent.html(
+                modifier($parent.text())
+            )
         })
     }
 }
