@@ -26,7 +26,7 @@ def add_effect(thing, effect):
     """Apply an effect to a thing."""
     with mutate_key("effect_%s" % thing._fullname, type_=list) as effects:
         effects.append((c.user._id, effect))
-
+    c.state_changes["effects"]["add"][thing._fullname].append(effect)
 
 def get_all_effects(fullnames):
     """Return a dict of fullname -> [effects] for the given fullnames."""
@@ -58,6 +58,7 @@ def remove_effect(thing, effect):
             effects.remove(effect)
         except ValueError:
             pass
+    c.state_changes["effects"]["remove"][thing._fullname].append(effect)
 
 
 def get_my_effects(user):
@@ -69,4 +70,5 @@ def get_my_effects(user):
 
 def clear_effects(thing):
     with mutate_key("effect_%s" % thing._fullname, type_=list) as effects:
+        c.state_changes["effects"]["remove"][thing._fullname].extend(effects[:])
         del effects[:]

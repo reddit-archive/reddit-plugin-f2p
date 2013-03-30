@@ -108,8 +108,14 @@ def on_request():
         c.js_preload.set("#myeffects", effects.get_my_effects(c.user))
         c.js_preload.set("#inventory", inventory.get_inventory(c.user))
     c.js_preload.set("#game_status", scores.get_game_status())
+
     c.visible_effects = {}
-    c.score_deltas = collections.Counter()
+    c.state_changes = {
+        "scores": collections.Counter(),
+        "inventory": collections.defaultdict(list),
+        "effects": collections.defaultdict(lambda:
+                                           collections.defaultdict(list)),
+    }
 
 
 @hooks.on("add_props")
@@ -168,6 +174,4 @@ class FreeToPlayApiController(RedditController):
             abort(400)
         item.on_use(c.user, target)
 
-        return json.dumps({
-            "score_deltas": dict(c.score_deltas),
-        })
+        return json.dumps(c.state_changes)
