@@ -1,0 +1,4 @@
+<%namespace file="utils.html" import="plain_link"/>
+
+${plain_link(thing.text, thing.url, sr_path=False, cname=False,
+             target='_blank' if c.user.pref_newwindow else '')}

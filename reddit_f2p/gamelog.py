@@ -6,12 +6,18 @@ from pycassa.system_manager import TIME_UUID_TYPE
 from pylons import g
 
 from r2.lib.db import tdb_cassandra
-from r2.lib.filters import _force_unicode
-from r2.lib.pages import WrappedUser
+from r2.lib.pages import WrappedUser, Templated
 from r2.lib.utils import tup
 from r2.models import Account, Thing, Subreddit, Link, Comment
 
 from reddit_f2p import scores
+
+
+class GameLogTarget(Templated):
+    def __init__(self, target, permalink, author):
+        self.text = "%s (%s)" % (target.__class__.__name__, author.name)
+        self.url = permalink
+        Templated.__init__(self)
 
 
 class GameLogEntry(object):
@@ -26,8 +32,6 @@ class GameLogEntry(object):
 
     @classmethod
     def add_props(cls, user, wrapped):
-        TITLE_MAX_WIDTH = 50
-
         user_fullnames = {w.user_fullname for w in wrapped}
         target_fullnames = {w.target_fullname for w in wrapped}
 
@@ -50,35 +54,19 @@ class GameLogEntry(object):
         for fullname, target in targets.iteritems():
             if isinstance(target, (Comment, Link)):
                 author = authors[target.author_id]
-                link = (target if isinstance(target, Link)
-                        else links[target.link_id])
-                title = _force_unicode(link.title)
-                if len(title) > TITLE_MAX_WIDTH:
-                    short_title = title[:TITLE_MAX_WIDTH] + '...'
-                else:
-                    short_title = title
-
                 if isinstance(target, Link):
-                    pieces = ('link', short_title, 'by', author.name)
-                    
+                    path = target.make_permalink(subreddits[target.sr_id])
                 else:
-                    pieces = ('comment by', author.name, 'on', short_title)
-                text = ' '.join(pieces)
-                if isinstance(target, Link):
-                    path = target.make_permalink(subreddits[link.sr_id])
-                else:
+                    link = links[target.link_id]
                     path = target.make_permalink(link, subreddits[link.sr_id])
-                target_things[fullname] = (text, path, title)
+                target_things[fullname] = GameLogTarget(target, path, author)
             elif isinstance(target, Account):
                 target_things[fullname] = WrappedUser(target)
 
         for w in wrapped:
             w.user = WrappedUser(users[w.user_fullname])
             w.target = target_things[w.target_fullname]
-            try:
-                w.item = g.f2pitems[w.item]['title']
-            except KeyError:
-                pass
+            w.item = g.f2pitems[w.item]
             w.user_team = scores.get_user_team(users[w.user_fullname])
             if isinstance(w.target, WrappedUser):
                 target_user = targets[w.target.fullname]

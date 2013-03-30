@@ -1,23 +1,19 @@
-<%namespace file="utils.html" import="timestamp, plain_link"/>
+<%namespace file="utils.html" import="timestamp"/>
 
 <%
   from r2.lib.pages import WrappedUser
+  from r2.lib.template_helpers import static
 %>
 
 <tr class="gamelogentry">
-  <td class="timestamp whitespace:nowrap">${timestamp(thing.date)}&#32;ago</td>
-  <td class="user  ${thing.user_team}-team">${thing.user}</td>
-  <td class="item">${thing.item}</td>
-  <td class="target ${thing.target_team}-team">
-    %if isinstance(thing.target, WrappedUser):
-      ${thing.target}
-    %else:
-      ${plain_link(thing.target[0], thing.target[1], title=thing.target[2],
-                 sr_path=False, cname=False, _class="subreddit hover",
-                 target='_blank' if c.user.pref_newwindow else '')}
-    %endif
+  <td class="timestamp">${timestamp(thing.date)}&#32;ago</td>
+  <td>
+    <div class="interaction">
+      <div class="actor team-${thing.user_team}">${thing.user}</div>
+      <img src="${static('images/sil/' + thing.item['kind'] + '.png')}" title="${thing.item['title']}">
+      <div class="actor target team-${thing.target_team}">
+        ${thing.target}
+      </div>
+    </div>
   </td>
-  %if thing.text:
-    <td>${thing.text}</td>
-  %endif
 </tr>
