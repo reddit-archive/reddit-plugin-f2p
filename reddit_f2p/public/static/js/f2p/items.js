@@ -56,7 +56,7 @@ r.f2p.Item.kinds = {
 
     chirality: r.f2p.Item.extend({}, {
         applyEffect: function($el) {
-            $el.find('.usertext-body .md:first').css('text-align', 'right')
+            $el.find('.entry:first').addClass('effect-chirality')
         }
     }),
 
