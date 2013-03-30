@@ -20,7 +20,7 @@ from r2.models import (
     Link,
     Subreddit,
 )
-from reddit_f2p import procs, inventory, effects, scores
+from reddit_f2p import items, inventory, effects, scores
 
 
 hooks = HookRegistrar()
@@ -62,8 +62,8 @@ def drop_item():
                                if i.get("rarity", "common") == item_class])
 
     g.log.debug("dropping item %r for %r", item_name, c.user.name)
-    proc = procs.get_item_proc("drop", item_name)
-    proc(c.user)
+    item = items.get_item(item_name)
+    item.on_drop(c.user)
     c.js_preload.set("#drop", [item_name])
 
 
@@ -146,19 +146,19 @@ def comment_reply_effect(comment):
         parent = Link._byID(comment.link_id)
     parent_effects = effects.get_all_effects([parent._fullname])
     for item_name in parent_effects:
-        proc = procs.get_item_proc("reply", item_name)
-        proc(c.user, parent)
+        item = items.get_item(item_name)
+        item.on_reply(c.user, parent)
 
 
 @add_controller
 class FreeToPlayApiController(RedditController):
-    @validate(item=VRequired('item', errors.NO_NAME),
+    @validate(item_name=VRequired('item', errors.NO_NAME),
               target=VByName('target'))
-    def POST_use_item(self, item, target):
+    def POST_use_item(self, item_name, target):
         try:
-            inventory.consume_item(c.user, item)
+            inventory.consume_item(c.user, item_name)
         except inventory.NoSuchItemError:
             abort(400)
 
-        proc = procs.get_item_proc("use", item)
-        proc(c.user, target)
+        item = items.get_item(item_name)
+        item.on_use(c.user, target)

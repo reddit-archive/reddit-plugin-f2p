@@ -18,10 +18,9 @@ def title_to_camel(name):
     return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
 
 
-def get_item_proc(type, item_name):
+def get_item(item_name):
     item_cls = ITEMS.get(item_name, Item)
-    item = item_cls(item_name)
-    return getattr(item, "on_" + type)
+    return item_cls(item_name)
 
 
 def registered_item(cls):
@@ -165,16 +164,16 @@ class Wand(Item):
         target_items = [item_dict['kind'] for item_dict in g.f2pitems.values()
                         if (item_dict['targets'] and
                             target_type in item_dict['targets'])]
-        target_random_item = random.choice(target_items)
-        proc = get_item_proc('use', target_random_item)
-        proc(user, target)
+        target_random_item_name = random.choice(target_items)
+        target_random_item = get_item(target_random_item_name)
+        target_random_item.on_use(user, target)
         log_and_score(user, target, self.item_name, points=1)
 
         if random.random() > 0.5:
             user_items = [item_dict['kind'] for item_dict in g.f2pitems.values()
                           if (item_dict['targets'] and
                               'account' in item_dict['targets'])]
-            user_random_item = random.choice(user_items)
-            proc = get_item_proc('use', user_random_item)
-            proc(user, user)
+            user_random_item_name = random.choice(user_items)
+            user_random_item = get_item(user_random_item_name)
+            user_random_item.on_use(user, user)
         # TODO: messages?
