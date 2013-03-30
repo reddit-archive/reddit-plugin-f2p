@@ -7,7 +7,7 @@ r.f2p.utils = {
             .andSelf()
             .contents()
             .filter(function() {
-                return this.nodeType == Node.TEXT_NODE
+                return this.nodeType == 3  // Node.TEXT_NODE
             })
     },
 
