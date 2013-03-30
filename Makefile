@@ -2,6 +2,8 @@ all: images
 
 clean: clean_images
 
+static:
+
 IMAGES_DIR = reddit_f2p/public/static/images
 SMALL_IMAGES_DIR = $(IMAGES_DIR)/sm/
 LARGE_IMAGES_DIR := $(IMAGES_DIR)/lg/
