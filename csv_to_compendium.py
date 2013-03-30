@@ -45,8 +45,8 @@ for row in reader:
         value = value.strip()
         if output_key in MARKDOWN and value:
             item_data[output_key] = snudown.markdown(value)
-        elif value and value != DEFAULTS.get(output_key):
-            item_data[output_key] = value
+        else:
+            item_data[output_key] = value or DEFAULTS.get(output_key, "")
 
     compendium[item_name] = item_data
 

@@ -1,5 +1,7 @@
 {
     "abstinence": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>Over 100% effective at preventing vote-communicated diseases.</p>\n", 
         "rarity": "artifact", 
         "targets": [
@@ -9,26 +11,41 @@
         "visibility": "self"
     }, 
     "antigravity": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>Infamous for leading to several squabbles and one knife fight in <a href=\"/r/math\">/r/math</a>.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "usertext"
         ], 
-        "title": "Extremely Uplifting Anti-Gravity Gun"
+        "title": "Extremely Uplifting Anti-Gravity Gun", 
+        "visibility": "all"
     }, 
     "ass_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "baker_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "banana": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>Personally, I prefer pickles.</p>\n", 
         "rarity": "rare", 
         "targets": [
@@ -39,35 +56,62 @@
     }, 
     "barbershop_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "baseball_cap": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "beach_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "beanie_cap": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "beer_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "caltrops": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>The spines are covered with more spines for that double-spine goodness.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
@@ -78,76 +122,116 @@
     }, 
     "capitulation": {
         "damage": "1", 
+        "description": "", 
         "flavor": "<p>Because what reddit needs most is more ways for people to annoy each other.</p>\n", 
         "rarity": "common", 
         "targets": [
             "account"
         ], 
-        "title": "Pokey Stick of Social Capitulation"
+        "title": "Pokey Stick of Social Capitulation", 
+        "visibility": "all"
     }, 
     "cdgl": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>Dvlpd ftr yrs f nthcl, ghstly rsrch n <a href=\"/r/nmlswthtncks\">/r/nmlswthtncks</a>.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "usertext"
         ], 
-        "title": "Smpl Cdgl"
+        "title": "Smpl Cdgl", 
+        "visibility": "all"
     }, 
     "cheese_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "chirality": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>Hey, look over there!</p>\n", 
         "rarity": "common", 
         "targets": [
             "usertext"
         ], 
-        "title": "Scimitar of Chirality"
+        "title": "Scimitar of Chirality", 
+        "visibility": "all"
     }, 
     "clap_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "clown_hair": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "compensation": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>Swinging the blade emits the sound of a large, unmuffled motorcycle engine.</p>\n", 
         "rarity": "rare", 
         "targets": [
             "usertext"
         ], 
-        "title": "Sizable Claymore of Compensation"
+        "title": "Sizable Claymore of Compensation", 
+        "visibility": "all"
     }, 
     "crown": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "cruise": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>Choosey moms choose Cruise.</p>\n", 
         "rarity": "common", 
         "targets": [
             "usertext"
         ], 
-        "title": "Cruise Missile"
+        "title": "Cruise Missile", 
+        "visibility": "all"
     }, 
     "daystar": {
+        "damage": "", 
+        "description": "", 
+        "flavor": "", 
         "rarity": "rare", 
         "targets": [], 
         "title": "Blinding Saber of the Daystar", 
         "visibility": "self"
     }, 
     "discombobulation": {
+        "damage": "", 
+        "description": "", 
+        "flavor": "", 
         "rarity": "rare", 
         "targets": [
             "account"
@@ -156,6 +240,8 @@
         "visibility": "self"
     }, 
     "dowser": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>The trusty RDT-651.  Though you suspect it is just filled with lint and sauce tartare, it sure does the job.</p>\n", 
         "rarity": "rare", 
         "targets": [
@@ -166,236 +252,360 @@
     }, 
     "dunce_cap": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "eggscellent_hat": {
         "damage": "0", 
+        "description": "", 
         "flavor": "<p>BINGOOOOOOOOOOOOOOOOOOOOOOO!!!!!!</p>\n", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "emphasis": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>Insert random emphasis quip <strong>here</strong>.</p>\n", 
         "rarity": "common", 
         "targets": [
             "usertext"
         ], 
-        "title": "Indiscriminate Scattergun of Emphasis"
+        "title": "Indiscriminate Scattergun of Emphasis", 
+        "visibility": "all"
     }, 
     "english": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>Her Britannic Majesty&#39;s Secretary of State Requests and requires in the Name of Her Majesty all those whom it may concern to allow the bearer to pass freely without let or hindrance, and to afford the bearer such assistance and protection as may be necessary.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "usertext"
         ], 
-        "title": "Royal Sceptre of the Queen's English"
+        "title": "Royal Sceptre of the Queen's English", 
+        "visibility": "all"
     }, 
     "fedora": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "handgrenade": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>O LORD, bless this Thy hand grenade that with it Thou mayest blow Thine enemies to tiny bits, in Thy mercy.</p>\n", 
         "rarity": "artifact", 
         "targets": [
             "usertext"
         ], 
-        "title": "Holy Hand Grenade"
+        "title": "Holy Hand Grenade", 
+        "visibility": "all"
     }, 
     "hard_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "hatchet": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>Preferred weapon of the uninitiated <a href=\"/r/IAmA\">/r/IAmA</a> poster.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "usertext"
         ], 
-        "title": "Crude Hatchet of Paragraphical Indifference"
+        "title": "Crude Hatchet of Paragraphical Indifference", 
+        "visibility": "all"
     }, 
     "inebriation": {
+        "damage": "", 
+        "description": "", 
+        "flavor": "", 
         "rarity": "common", 
         "targets": [
             "usertext"
         ], 
-        "title": "Clumsy Mallet of Inebriation"
+        "title": "Clumsy Mallet of Inebriation", 
+        "visibility": "all"
     }, 
     "intolerance": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>Rumored to have been forged in the fires of eBay.</p>\n", 
         "rarity": "rare", 
         "targets": [
             "usertext"
         ], 
-        "title": "Mighty Megaphone of Internet Intolerance"
+        "title": "Mighty Megaphone of Internet Intolerance", 
+        "visibility": "all"
     }, 
     "inversion": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>Objects in orb may appear more Australian than they actually are.</p>\n", 
         "rarity": "rare", 
         "targets": [
             "usertext", 
             "account"
         ], 
-        "title": "Curious Orb of Hemispherical Inversion"
+        "title": "Curious Orb of Hemispherical Inversion", 
+        "visibility": "all"
     }, 
     "jake_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "key": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>The key has &quot;Do Not Duplicate&quot; clearly etched in the bow. You marvel at this failsafe epitome of security.</p>\n", 
         "rarity": "artifact", 
         "targets": [
             "account.other"
         ], 
-        "title": "Launch Key"
+        "title": "Launch Key", 
+        "visibility": "all"
     }, 
     "knuckles": {
+        "damage": "", 
+        "description": "", 
+        "flavor": "", 
         "rarity": "uncommon", 
         "targets": [
             "usertext"
         ], 
-        "title": "Dastardly Knuckles"
+        "title": "Dastardly Knuckles", 
+        "visibility": "all"
     }, 
     "magnet": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>How do they work?</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "account"
         ], 
-        "title": "Magnet of Un-Magnanimity"
+        "title": "Magnet of Un-Magnanimity", 
+        "visibility": "all"
     }, 
     "medal": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>Some people say that Manbearpig isn&#39;t real. Well, I&#39;m here to tell you now, Manbearpig is very real, and he most certainly exists.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "usertext"
         ], 
-        "title": "Distinguished Medal of Something Significant"
+        "title": "Distinguished Medal of Something Significant", 
+        "visibility": "all"
     }, 
     "melodies": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>Only rivers flow....wait for me......w..e.....i..g...h...t......f...o.....r.....m......e......</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "account", 
             "usertext"
         ], 
-        "title": "Wistful Panpipe Melodies"
+        "title": "Wistful Panpipe Melodies", 
+        "visibility": "all"
     }, 
     "military_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "minecraft_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "mortar": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>Can also be used to obliterate herbs and spices into a vibrant m\u00e9lange.</p>\n", 
         "rarity": "artifact", 
         "targets": [
             "usertext"
         ], 
-        "title": "Cowardly Mortar of Indiscriminateness"
+        "title": "Cowardly Mortar of Indiscriminateness", 
+        "visibility": "all"
     }, 
     "mushroom_hat_green": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "mushroom_hat_red": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "nightfall": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>All that sunlight is cooking your brain.</p>\n", 
         "rarity": "rare", 
         "targets": [], 
-        "title": "Enveloping Cloak of Nightfall"
+        "title": "Enveloping Cloak of Nightfall", 
+        "visibility": "all"
     }, 
     "nostalgia": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>&quot;cl\u1ebdan m\u1ebd up!&quot; ... shit</p>\n", 
         "rarity": "rare", 
         "targets": [
             "usertext"
         ], 
-        "title": "Moldy Boot of Nostalgia"
+        "title": "Moldy Boot of Nostalgia", 
+        "visibility": "all"
     }, 
     "nuke": {
+        "damage": "", 
+        "description": "", 
+        "flavor": "", 
         "rarity": "artifact", 
         "targets": [
             "usertext"
         ], 
-        "title": "Nucular and Present Danger"
+        "title": "Nucular and Present Danger", 
+        "visibility": "all"
     }, 
     "overpowered": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>Instructions: Point pointy end away from self. Apply force.</p>\n", 
         "rarity": "rare", 
         "targets": [
             "account"
         ], 
-        "title": "Pointy Dagger of Mortal Strike"
+        "title": "Pointy Dagger of Mortal Strike", 
+        "visibility": "all"
     }, 
     "palindrome": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>The question is: how does the mirror know to get the left and right mixed up, but not the up and the down?</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "link", 
             "usertext"
         ], 
-        "title": "Mirrored Shield of Palindromic Failure"
+        "title": "Mirrored Shield of Palindromic Failure", 
+        "visibility": "all"
     }, 
     "panacea": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p><strong>Warning</strong> - Expel all air from syringe before use. Failure to do so may result in unexpected consequences.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "account"
         ], 
-        "title": "Huge Syringe of Soothing Panacea"
+        "title": "Huge Syringe of Soothing Panacea", 
+        "visibility": "all"
     }, 
     "party_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "patriotism": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>A small label bearing the name &#39;D Cheney&#39; can be found on the inside of each spool.</p>\n", 
         "rarity": "common", 
         "targets": [
             "usertext"
         ], 
-        "title": "Redacting Tape of Patriotism"
+        "title": "Redacting Tape of Patriotism", 
+        "visibility": "all"
     }, 
     "pimp_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "pope_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "propinquity": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>Pistols only in the Facility.  No Oddjob.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
@@ -405,142 +615,233 @@
         "visibility": "team"
     }, 
     "rampart": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>The trebuchet bears the damage of overuse and poor timing.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "usertext"
         ], 
-        "title": "Ineffective Trebuchet of Rampart Surmounting"
+        "title": "Ineffective Trebuchet of Rampart Surmounting", 
+        "visibility": "all"
     }, 
     "reddit_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "rooster_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "santa_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "scrambler": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>Over 0090 sold!</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "link"
         ], 
-        "title": "Jumbled Tome of Significance Shuffling"
+        "title": "Jumbled Tome of Significance Shuffling", 
+        "visibility": "all"
     }, 
     "shrouding": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>Known to have instigated several wars during the shitty-LCD era.</p>\n", 
         "rarity": "rare", 
         "targets": [
             "usertext"
         ], 
-        "title": "Smoke Bomb of Vague Shrouding"
+        "title": "Smoke Bomb of Vague Shrouding", 
+        "visibility": "all"
     }, 
     "shuffler": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>You spot the logo of your bank on the underside of the weapon.</p>\n", 
         "rarity": "common", 
         "targets": [
             "usertext", 
             "account"
         ], 
-        "title": "Cryptographic Shuffler of Pelcgbtencuvp Fuhssyre"
+        "title": "Cryptographic Shuffler of Pelcgbtencuvp Fuhssyre", 
+        "visibility": "all"
     }, 
     "skull_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "spikey_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "stainless_pot": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "stans_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "subterfuge": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>They&#39;ll never see you coming, provided the spirit gum and popsicle sticks hold together.</p>\n", 
         "rarity": "rare", 
         "targets": [
             "account.self"
         ], 
-        "title": "Poorly Crafted but Utterly Convincing Mask of Subterfuge"
+        "title": "Poorly Crafted but Utterly Convincing Mask of Subterfuge", 
+        "visibility": "all"
     }, 
     "ten_gallon_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "top_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "top_hat_gold": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "torpor": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>The prod and bow string appear severely worn. You being to wonder if it will even fire anymore.</p>\n", 
         "rarity": "common", 
         "targets": [
             "usertext"
         ], 
-        "title": "Hackneyed Crossbow of Memetic Torpor"
+        "title": "Hackneyed Crossbow of Memetic Torpor", 
+        "visibility": "all"
     }, 
     "trucker_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "viking_helmet": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "wand": {
+        "damage": "", 
+        "description": "", 
         "flavor": "<p>What could possibly go wrong?</p>\n", 
         "rarity": "rare", 
         "targets": [], 
-        "title": "cursed wand"
+        "title": "cursed wand", 
+        "visibility": "all"
     }, 
     "white_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }, 
     "wizard_hat": {
         "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
         "targets": [
             "account"
-        ]
+        ], 
+        "title": "", 
+        "visibility": "all"
     }
 }
