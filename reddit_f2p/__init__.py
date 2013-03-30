@@ -19,6 +19,7 @@ class FreeToPlay(Plugin):
 
     js = {
         'reddit': Module('reddit.js',
+            'lib/iso8601.js',
             'f2p/scrollupdater.js',
             'f2p/f2p.js',
             'f2p/utils.js',

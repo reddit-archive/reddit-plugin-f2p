@@ -168,7 +168,8 @@ r.f2p.Item.kinds = {
             var textEls = r.f2p.utils.textNodes($el.find('.md:first')),
                 textEl = textEls[_.random(textEls.length - 1)],
                 sentences = textEl.nodeValue.split('.'),
-                idx = _.random(sentences.length - 2)
+                ts = Date.parse($el.find('.tagline time').attr('datetime')),
+                idx = (textEl.nodeValue.length + ts / 1000) % sentences.length
 
             sentences[idx] = sentences[idx] + '... and then I took an arrow to the knee'
             textEl.nodeValue = sentences.join('.')
