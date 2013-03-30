@@ -1,4 +1,16 @@
-r.f2p.Item = Backbone.Model.extend({})
+r.f2p.targetTypes = {
+    'account': 'users',
+    'usertext': 'comments and self-posts',
+    'link': 'links'
+}
+
+r.f2p.Item = Backbone.Model.extend({
+    parse: function(response, options) {
+        attributes = Backbone.Model.prototype.parse.apply(this, [response, options])
+        attributes['use_on'] = _.map(attributes['targets'], function (t) { return r.f2p.targetTypes[t] || t })
+        return attributes
+    }
+})
 
 r.f2p.Inventory = Backbone.Collection.extend({
     url: '#inventory',
