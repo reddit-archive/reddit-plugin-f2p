@@ -29,9 +29,30 @@ def registered_item(cls):
     return cls
 
 
+TARGET_DISCRIMINATORS = {
+    "account": lambda t: isinstance(t, Account),
+    "usertext": lambda t: (isinstance(t, Comment) or
+                           (isinstance(t, Link) and t.is_self)),
+    "link": lambda t: isinstance(t, Link),
+}
+
+
 class Item(object):
     def __init__(self, item_name):
         self.item_name = item_name
+
+    def is_target_valid(self, target):
+        target_types = g.f2pitems[self.item_name]["targets"]
+        for target_type in target_types:
+            discriminator = TARGET_DISCRIMINATORS.get(target_type)
+            if not discriminator:
+                g.log.debug("don't know how to validate target type %s",
+                            target_type)
+                continue
+
+            if discriminator(target):
+                return True
+        return False
 
     def on_drop(self, user):
         inventory.add_to_inventory(user, self.item_name)

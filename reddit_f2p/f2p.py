@@ -161,4 +161,6 @@ class FreeToPlayApiController(RedditController):
             abort(400)
 
         item = items.get_item(item_name)
+        if not item.is_target_valid(target):
+            abort(400)
         item.on_use(c.user, target)
