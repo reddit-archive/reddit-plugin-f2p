@@ -4,6 +4,7 @@ r.f2p.utils = {
     textNodes: function(el) {
         return $(el)
             .find('*')
+            .andSelf()
             .contents()
             .filter(function() {
                 return this.nodeType == Node.TEXT_NODE

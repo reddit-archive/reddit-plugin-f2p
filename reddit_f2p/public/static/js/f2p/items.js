@@ -186,6 +186,23 @@ r.f2p.Item.kinds = {
         }
     }),
 
+    scrambler: r.f2p.Item.extend({}, {
+        applyEffect: function($el) {
+            r.f2p.utils.replaceText($el.find('.midcol:first .score'), function(text) {
+                var digits = text.split(''),
+                    newDigits = []
+
+                _.times(digits.length, function() {
+                    var idx = _.random(digits.length - 1)
+                    newDigits.push(digits[idx])
+                    digits.splice(idx, 1)
+                })
+
+                return newDigits.join('')
+            })
+        }
+    }),
+
     shrouding: r.f2p.Item.extend({}, {
         applyEffect: function($el) {
             $el.find('.entry:first').addClass('effect-shrouded')
