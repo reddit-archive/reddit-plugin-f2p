@@ -63,7 +63,7 @@ def drop_item():
 
     g.log.debug("dropping item %r for %r", item_name, c.user.name)
     proc = procs.get_item_proc("drop", item_name)
-    proc(c.user, item_name)
+    proc(c.user)
     c.js_preload.set("#drop", [item_name])
 
 
@@ -100,7 +100,8 @@ def on_request():
     if check_for_banana() and random.random() < 0.05:
         abort(503)
 
-    check_for_drops()
+    #check_for_drops()
+    c.js_preload.set("#drop", ["banana"])
 
     if c.user_is_loggedin:
         c.js_preload.set("#myeffects", effects.get_my_effects(c.user))
@@ -161,4 +162,4 @@ class FreeToPlayApiController(RedditController):
             abort(400)
 
         proc = procs.get_item_proc("use", item)
-        proc(c.user, target, item)
+        proc(c.user, target)
