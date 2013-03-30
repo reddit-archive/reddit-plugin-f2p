@@ -17,6 +17,7 @@
         "title": "Extremely Uplifting Anti-Gravity Gun"
     }, 
     "banana": {
+        "flavor": "<p>Personally, I prefer pickles.</p>\n", 
         "rarity": "rare", 
         "targets": [
             "account"
@@ -60,7 +61,7 @@
     }, 
     "compensation": {
         "flavor": "<p>Swinging the blade emits the sound of a large, unmuffled motorcycle engine.</p>\n", 
-        "rarity": "common", 
+        "rarity": "rare", 
         "targets": [
             "usertext"
         ], 
@@ -89,7 +90,7 @@
         "visibility": "self"
     }, 
     "dowser": {
-        "flavor": "<p>&quot;RDT-651&quot;</p>\n", 
+        "flavor": "<p>The trusty RDT-651.  Though you suspect it is filled with lint and sauce tartare, it sure does the job.</p>\n", 
         "rarity": "rare", 
         "targets": [
             "usertext"
@@ -185,6 +186,7 @@
         "title": "Distinguished Medal of Something Significant"
     }, 
     "melodies": {
+        "flavor": "<p>Only rivers flow....wait for me......wei..g...h...t......f...o.....r.....m......e......</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "account", 
@@ -193,6 +195,7 @@
         "title": "Wistful Panpipe Melodies"
     }, 
     "mortar": {
+        "flavor": "<p>Can also be used to obliterate herbs and spices into a vibrant m\u00e9lange.</p>\n", 
         "rarity": "artifact", 
         "targets": [
             "usertext"
@@ -254,6 +257,7 @@
         "title": "Redacting Tape of Patriotism"
     }, 
     "propinquity": {
+        "flavor": "<p>Pistols only in the Facility.  No Oddjob.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "usertext"
@@ -278,7 +282,7 @@
         "title": "Jumbled Tome of Significance Shuffling"
     }, 
     "shrouding": {
-        "flavor": "<p>Known to have led to several wars during the shitty-LCD era.</p>\n", 
+        "flavor": "<p>Known to have instigated several wars during the shitty-LCD era.</p>\n", 
         "rarity": "rare", 
         "targets": [
             "usertext"
