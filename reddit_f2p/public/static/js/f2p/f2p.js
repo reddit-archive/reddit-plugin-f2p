@@ -354,13 +354,13 @@ r.f2p.EffectUpdater = r.ScrollUpdater.extend({
         if ($el.data('_updated')) {
             return
         }
+        $el.data('_updated', true)
 
         var fullname = $el.data('fullname'),
             effects = this.model.get(fullname)
         _.each(effects, function(kind) {
             this.applyItem(kind, $el)
         }, this)
-        $el.data('_updated', true)
     }
 })
 
