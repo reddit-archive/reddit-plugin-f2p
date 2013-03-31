@@ -27,7 +27,7 @@ r.f2p = {
 
         this.pageEffects = new r.f2p.Effects()
         this.pageEffects.fetch()
-        new r.f2p.EffectUpdater({
+        this.effectUpdater = new r.f2p.EffectUpdater({
             model: this.pageEffects
         }).start()
 
@@ -37,6 +37,32 @@ r.f2p = {
                 hats: [1, 2, 3, 4, 5, 6, 7, 8, 9]
             }).render()
         })
+    },
+
+    updateState: function(updates) {
+        r.debug('updating f2p game state', updates)
+
+        r.f2p.gameStatus.set(updates.scores)
+
+        if (updates.inventory.add) {
+            r.f2p.inventory.add(updates.inventory.add)
+        }
+
+        if (updates.inventory.consume) {
+            r.f2p.inventory.consume(updates.inventory.consume)
+        }
+
+        if (updates.effects.add) {
+            _.each(updates.effects.add, function(kinds, targetId) {
+                r.f2p.pageEffects.add(targetId, kinds)
+            })
+        }
+
+        if (updates.effects.remove) {
+            _.each(updates.effects.remove, function(kinds, targetId) {
+                r.f2p.pageEffects.remove(targetId, kinds)
+            })
+        }
     }
 }
 
@@ -47,12 +73,30 @@ r.f2p.GameStatus = Backbone.Model.extend({
 r.f2p.Effects = Backbone.Model.extend({
     url: '#effects',
 
-    applyItem: function(item, targetId) {
+    _touch: function(targetId) {
         if (!this.has(targetId)) {
             this.set(targetId, [])
         }
-        this.get(targetId).push(item.kind)
-        this.trigger('apply', item.get('kind'), targetId)
+        return this.get(targetId)
+    },
+
+    add: function(targetId, kinds) {
+        var effects = this._touch(targetId)
+        r.f2p.utils.tupEach(kinds, function(kind) {
+            effects.push(kind)
+            this.trigger('add', targetId, kind)
+        }, this)
+    },
+
+    remove: function(targetId, kinds) {
+        var effects = this._touch(targetId)
+        r.f2p.utils.tupEach(kinds, function(kind) {
+            var idx = _.indexOf(effects, kind)
+            if (idx != -1) {
+                effects.splice(idx, 1)
+            }
+            this.trigger('remove', targetId, kind)
+        }, this)
     }
 })
 
@@ -330,24 +374,47 @@ r.f2p.HatPile = Backbone.View.extend({
 })
 
 r.f2p.EffectUpdater = r.ScrollUpdater.extend({
+    // todo: effect removals. save html in data
     selector: '.thing',
 
     initialize: function() {
-        this.model.on('apply', this.applyItem, this)
+        this.model.on('add', this.apply, this)
+        this.model.on('remove', this.applyAll, this)
     },
 
-    applyItem: function(kind, target) {
-        var $el
+    _target: function(target) {
         if (_.isString(target)) {
-            $el = $('[data-fullname="' + target + '"]')
+            return $('[data-fullname="' + target + '"]')
         } else {
-            $el = $(target)
+            return $(target)
         }
+    },
 
-        var itemKind = r.f2p.Item.kinds[kind]
-        if (itemKind) {
-            itemKind.applyEffect($el)
+    apply: function(target, kinds) {
+        r.f2p.utils.tupEach(kinds, function(kind) {
+            var $els = this._target(target),
+                itemKind = r.f2p.Item.kinds[kind]
+            _.each($els, function(el) {
+                itemKind.applyEffect($(el))
+            })
+        }, this)
+    },
+
+    reset: function(el) {
+        var $el = $(el),
+            oldHTML = $el.data('_pre_effects')
+        if (oldHTML) {
+            $el.html(oldHTML)
+        } else {
+            $el.data('_pre_effects', $el.html())
         }
+    },
+
+    applyAll: function(target) {
+        var $els = this._target(target)
+        _.each($els, _.bind(this.reset, this))
+        var fullname = $els.data('fullname')
+        this.apply($els, this.model.get(fullname))
     },
 
     update: function($el) {
@@ -355,12 +422,7 @@ r.f2p.EffectUpdater = r.ScrollUpdater.extend({
             return
         }
         $el.data('_updated', true)
-
-        var fullname = $el.data('fullname'),
-            effects = this.model.get(fullname)
-        _.each(effects, function(kind) {
-            this.applyItem(kind, $el)
-        }, this)
+        this.applyAll($el)
     }
 })
 

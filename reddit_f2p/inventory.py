@@ -27,7 +27,7 @@ def consume_item(user, item):
         if inventory[item] == 0:
             del inventory[item]
 
-    c.state_changes["inventory"]["remove"].append(item)
+    c.state_changes["inventory"]["consume"].append(item)
 
 
 def _expand_inventory(inventory_dict):
@@ -46,6 +46,6 @@ def get_inventory(user):
 
 def clear_inventory(user):
     with mutate_key("inventory_%d" % user._id, type_=dict) as inventory:
-        c.state_changes["inventory"]["remove"].extend(
+        c.state_changes["inventory"]["consume"].extend(
             _expand_inventory(inventory))
         inventory.clear()

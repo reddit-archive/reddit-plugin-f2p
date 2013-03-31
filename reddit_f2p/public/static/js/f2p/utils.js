@@ -1,6 +1,17 @@
 r.f2p.utils = {
     vowels: /a|i|e|o|u/ig,
 
+    tupEach: function(list, iterator, context) {
+        if (list == null) {
+            return
+        }
+
+        if (!_.isArray(list)) {
+            list = [list]
+        }
+        _.each(list, iterator, context)
+    },
+
     textNodes: function(el) {
         return $(el)
             .find('*')

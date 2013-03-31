@@ -19,6 +19,15 @@ r.f2p.Inventory = Backbone.Collection.extend({
         return new itemKind(attrs, options)
     },
 
+    consume: function(kinds) {
+        r.f2p.utils.tupEach(kinds, function(kind) {
+            var item = this.findWhere({kind: kind})
+            if (item) {
+                this.remove(item)
+            }
+        }, this)
+    },
+
     use: function(item, targetId) {
         $.ajax({
             type: 'post',
@@ -27,10 +36,8 @@ r.f2p.Inventory = Backbone.Collection.extend({
                 item: item.get('kind'),
                 target: targetId
             },
-            success: _.bind(function() {
-                this.remove(item)
-                r.f2p.pageEffects.applyItem(item, targetId)
-            }, this)
+            dataType: 'json',
+            success: r.f2p.updateState
         })
     }
 })
