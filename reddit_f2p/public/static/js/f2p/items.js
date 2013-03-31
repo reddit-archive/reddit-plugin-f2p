@@ -305,7 +305,7 @@ r.f2p.Effects = Backbone.Model.extend({
 
 r.f2p.EffectUpdater = r.ScrollUpdater.extend({
     // todo: effect removals. save html in data
-    selector: '.thing, .tagline .author',
+    selector: '.thing, .noncollapsed .tagline .author',
 
     initialize: function() {
         this.model.on('add', this.apply, this)
@@ -362,10 +362,8 @@ r.f2p.HatPile = Backbone.View.extend({
     className: 'hats',
 
     dims: {
-        width: 24,
-        height: 15,
-        xJitter: 3,
-        yJitter: 1
+        width: 22,
+        height: 13
     },
 
     initialize: function() {
@@ -379,29 +377,34 @@ r.f2p.HatPile = Backbone.View.extend({
     },
 
     render: function() {
-        var maxLeft = this.$el.width(),
-            curRow = 0,
-            curLeft = 0
+        var $author = $(this.options.authorEl),
+            $thingEl = $author.closest('.thing'),
+            width = $author.width(),
+            columnCount = Math.max(1, Math.floor(width / this.dims.width))
 
         this.$el.empty()
 
-        var $stack = $('<span class="stack">')
+        var cols = []
+        _.times(columnCount, function(idx) {
+            var $col = $('<span class="stack">')
+                .css('left', idx * this.dims.width)
+            cols.push($col)
+        }, this)
 
+        var curCol = 0
         _.each(this.hats, function(kind, idx) {
             var hat = $('<img class="hat">')
                 .attr('src', '/static/images/hat/' + kind + '.png')
                 .css('z-index', 100 + idx)
-
-            $stack.prepend(hat)
-
-            curLeft += this.dims.width + _.random(this.dims.xJitter)
-            if (curLeft + this.dims.width > maxLeft) {
-                curRow += 1
-                curLeft = 0
-            }
+            cols[curCol].prepend(hat)
+            curCol = (curCol + 1) % columnCount
         }, this)
 
-        this.$el.append($stack)
+        this.$el.append.apply(this.$el, cols)
+
+        $thingEl.css('padding-top', cols[0].children().length * this.dims.height)
+        $author.before(this.$el)
+
         return this
     }
 }, {
@@ -410,10 +413,10 @@ r.f2p.HatPile = Backbone.View.extend({
         if (existing) {
             return existing
         } else {
-            var pile = new r.f2p.HatPile()
-            $el
-                .before(pile.el)
-                .data('HatPile', pile)
+            var pile = new r.f2p.HatPile({
+                authorEl: $el
+            })
+            $el.data('HatPile', pile)
             return pile
         }
     }

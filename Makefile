@@ -39,7 +39,7 @@ $(LARGE_IMAGES_DIR)%.png : art/%.png
 	$(CONVERT_SQUARE) -resize 140x140 $< -unsharp 0x0.5 $@
 
 $(HAT_IMAGES_DIR)%.png : art/%.png
-	$(CONVERT) -resize 24x24 $< -channel RGBA -unsharp 0x0.5 $@
+	$(CONVERT) -resize 22x22 $< -channel RGBA -unsharp 0x0.65 $@
 
 $(CURSOR_IMAGES_DIR)%.png: art/%.png
 	$(CONVERT_SQUARE) -resize 32x32 $< -unsharp 0x2 $@
