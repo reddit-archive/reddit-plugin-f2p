@@ -1,6 +1,6 @@
 {
     "abstinence": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>Over 100% effective at preventing vote-communicated diseases.</p>\n", 
         "rarity": "artifact", 
@@ -11,7 +11,7 @@
         "visibility": "self"
     }, 
     "antigravity": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>Infamous for leading to several squabbles and one knife fight in <a href=\"/r/math\">/r/math</a>.</p>\n", 
         "rarity": "uncommon", 
@@ -44,7 +44,7 @@
         "visibility": "all"
     }, 
     "banana": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>Personally, I prefer pickles.</p>\n", 
         "rarity": "rare", 
@@ -110,7 +110,7 @@
         "visibility": "all"
     }, 
     "caltrops": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>The spines are covered with more spines for that double-spine goodness.</p>\n", 
         "rarity": "uncommon", 
@@ -132,7 +132,7 @@
         "visibility": "all"
     }, 
     "cdgl": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>Dvlpd ftr yrs f nthcl, ghstly rsrch n <a href=\"/r/nmlswthtncks\">/r/nmlswthtncks</a>.</p>\n", 
         "rarity": "uncommon", 
@@ -154,7 +154,7 @@
         "visibility": "all"
     }, 
     "chirality": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>Hey, look over there!</p>\n", 
         "rarity": "common", 
@@ -187,7 +187,7 @@
         "visibility": "all"
     }, 
     "compensation": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>Swinging the blade emits the sound of a large, unmuffled motorcycle engine.</p>\n", 
         "rarity": "rare", 
@@ -209,7 +209,7 @@
         "visibility": "all"
     }, 
     "cruise": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>Choosey moms choose Cruise.</p>\n", 
         "rarity": "common", 
@@ -220,7 +220,7 @@
         "visibility": "all"
     }, 
     "daystar": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "", 
         "rarity": "rare", 
@@ -229,7 +229,7 @@
         "visibility": "self"
     }, 
     "discombobulation": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>What say you to a spot of pugilism, old bean?</p>\n", 
         "rarity": "rare", 
@@ -240,7 +240,7 @@
         "visibility": "self"
     }, 
     "dowser": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>The trusty RDT-651.  Though you suspect it is just filled with lint and sauce tartare, it sure does the job.</p>\n", 
         "rarity": "rare", 
@@ -273,7 +273,7 @@
         "visibility": "all"
     }, 
     "emphasis": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>Insert random emphasis quip <strong>here</strong>.</p>\n", 
         "rarity": "common", 
@@ -284,7 +284,7 @@
         "visibility": "all"
     }, 
     "english": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>Her Britannic Majesty&#39;s Secretary of State Requests and requires in the Name of Her Majesty all those whom it may concern to allow the bearer to pass freely without let or hindrance, and to afford the bearer such assistance and protection as may be necessary.</p>\n", 
         "rarity": "uncommon", 
@@ -328,7 +328,7 @@
         "visibility": "all"
     }, 
     "handgrenade": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>O LORD, bless this Thy hand grenade that with it Thou mayest blow Thine enemies to tiny bits, in Thy mercy.</p>\n", 
         "rarity": "artifact", 
@@ -350,7 +350,7 @@
         "visibility": "all"
     }, 
     "hatchet": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>Preferred weapon of the uninitiated <a href=\"/r/IAmA\">/r/IAmA</a> poster.</p>\n", 
         "rarity": "uncommon", 
@@ -361,7 +361,7 @@
         "visibility": "all"
     }, 
     "inebriation": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "", 
         "rarity": "common", 
@@ -372,7 +372,7 @@
         "visibility": "all"
     }, 
     "intolerance": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>Rumored to have been forged in the fires of eBay.</p>\n", 
         "rarity": "rare", 
@@ -383,7 +383,7 @@
         "visibility": "all"
     }, 
     "inversion": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>Objects in orb may appear more Australian than they actually are.</p>\n", 
         "rarity": "rare", 
@@ -406,7 +406,7 @@
         "visibility": "all"
     }, 
     "key": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>The key has &quot;Do Not Duplicate&quot; clearly etched in the bow. You take a moment to marvel at this epitome of security.</p>\n", 
         "rarity": "artifact", 
@@ -417,7 +417,7 @@
         "visibility": "all"
     }, 
     "knuckles": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "", 
         "rarity": "uncommon", 
@@ -428,7 +428,7 @@
         "visibility": "all"
     }, 
     "magnet": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "<p>Steals an item from an unsuspecting victim&#39;s inventory.</p>\n", 
         "flavor": "<p>How do they work?</p>\n", 
         "rarity": "uncommon", 
@@ -439,7 +439,7 @@
         "visibility": "all"
     }, 
     "medal": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>Some people say that Manbearpig isn&#39;t real. Well, I&#39;m here to tell you now, Manbearpig is very real, and he most certainly exists.</p>\n", 
         "rarity": "uncommon", 
@@ -484,7 +484,7 @@
         "visibility": "all"
     }, 
     "mortar": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>Can also be used to obliterate herbs and spices into a vibrant m\u00e9lange.</p>\n", 
         "rarity": "artifact", 
@@ -495,7 +495,7 @@
         "visibility": "all"
     }, 
     "nightfall": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>All that sunlight is cooking your brain.</p>\n", 
         "rarity": "rare", 
@@ -504,7 +504,7 @@
         "visibility": "all"
     }, 
     "nostalgia": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>&quot;cl\u1ebdan m\u1ebd up!&quot; ... ugh</p>\n", 
         "rarity": "rare", 
@@ -515,7 +515,7 @@
         "visibility": "all"
     }, 
     "nuke": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "", 
         "rarity": "artifact", 
@@ -526,7 +526,7 @@
         "visibility": "all"
     }, 
     "overpowered": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "<p>Removes all items and effects from your target.</p>\n", 
         "flavor": "<p>Instructions: Point pointy end away from self. Apply force.</p>\n", 
         "rarity": "rare", 
@@ -537,7 +537,7 @@
         "visibility": "all"
     }, 
     "palindrome": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>The question is: how does the mirror know to get the left and right mixed up, but not the up and the down?</p>\n", 
         "rarity": "uncommon", 
@@ -571,7 +571,7 @@
         "visibility": "all"
     }, 
     "patriotism": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>A small label bearing the name &quot;D Cheney&quot; can be found on the inside of each spool.</p>\n", 
         "rarity": "common", 
@@ -604,7 +604,7 @@
         "visibility": "all"
     }, 
     "propinquity": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>Pistols only in the Facility.  No Oddjob.</p>\n", 
         "rarity": "uncommon", 
@@ -615,7 +615,7 @@
         "visibility": "team"
     }, 
     "rampart": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>The trebuchet bears the damage of overuse and poor timing.</p>\n", 
         "rarity": "uncommon", 
@@ -670,7 +670,7 @@
         "visibility": "all"
     }, 
     "scrambler": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>Over 0090 sold!</p>\n", 
         "rarity": "uncommon", 
@@ -681,7 +681,7 @@
         "visibility": "all"
     }, 
     "shrouding": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>Known to have instigated several wars during the shitty-LCD era.</p>\n", 
         "rarity": "rare", 
@@ -692,7 +692,7 @@
         "visibility": "all"
     }, 
     "shuffler": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "<p>Applies an unbreakable cipher to the target text.</p>\n", 
         "flavor": "<p>You spot the logo of your bank on the underside of the cylinder.</p>\n", 
         "rarity": "uncommon", 
@@ -747,7 +747,7 @@
         "visibility": "all"
     }, 
     "subterfuge": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>They&#39;ll never see you coming, provided the spirit gum and popsicle sticks hold together.</p>\n", 
         "rarity": "rare", 
@@ -780,7 +780,7 @@
         "visibility": "all"
     }, 
     "torpor": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>The prod and bow string appear severely worn. You begin to wonder if it will even fire anymore.</p>\n", 
         "rarity": "common", 
@@ -813,7 +813,7 @@
         "visibility": "all"
     }, 
     "wand": {
-        "damage": 0, 
+        "damage": 1, 
         "description": "<p>Affects your target with a random affliction. Prone to backfiring.</p>\n", 
         "flavor": "<p>What could possibly go wrong?</p>\n", 
         "rarity": "rare", 
