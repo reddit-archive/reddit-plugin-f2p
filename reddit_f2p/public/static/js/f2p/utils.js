@@ -18,7 +18,8 @@ r.f2p.utils = {
             .andSelf()
             .contents()
             .filter(function() {
-                return this.nodeType == 3  // Node.TEXT_NODE
+                // Node.TEXT_NODE == 3
+                return this.nodeType == 3 && $.trim(this.nodeValue)
             })
     },
 
