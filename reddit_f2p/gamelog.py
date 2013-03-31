@@ -2,7 +2,7 @@ import datetime
 import json
 from uuid import uuid1, UUID
 
-from pycassa.system_manager import TIME_UUID_TYPE
+from pycassa.system_manager import TIME_UUID_TYPE, UTF8_TYPE
 from pylons import g, c
 
 from r2.controllers import add_controller
@@ -148,6 +148,9 @@ class GameLog(tdb_cassandra.View):
     _connection_pool = 'main'
     _compare_with = TIME_UUID_TYPE
     _read_consistency_level = tdb_cassandra.CL.ONE
+    _extra_schema_creation_args = {
+        "default_validation_class": UTF8_TYPE,
+    }
 
     _ROWKEY = 'ALL'
 
