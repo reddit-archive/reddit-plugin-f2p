@@ -209,7 +209,7 @@ r.f2p.TargetOverlay = Backbone.View.extend({
             }
         },
         'usertext': {
-            selector: '.usertext-body',
+            selector: '.comment .usertext-body, .link .usertext-body',
             getId: function(el) {
                 return $(el).parents('.thing').data('fullname')
             }
