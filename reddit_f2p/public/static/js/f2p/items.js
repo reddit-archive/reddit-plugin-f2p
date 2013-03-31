@@ -420,15 +420,20 @@ r.f2p.EffectUpdater = r.ScrollUpdater.extend({
         }
     },
 
-    applyAll: function(target) {
+    applyAll: function(target, fullname) {
         var $els = this._target(target)
         _.each($els, _.bind(this.reset, this))
-        var fullname = $els.data('fullname')
+        fullname = fullname || $els.data('fullname')
         this.apply($els, this.model.get(fullname))
     },
 
     start: function() {
         r.ScrollUpdater.prototype.start.apply(this)
+
+        $(document).on('expando_thing', _.bind(function(ev, thing) {
+            this.applyAll($(thing).find('.expando'), $(thing).data('fullname'))
+        }, this))
+
         $(document).on('new_thing', _.bind(function(ev, thing) {
             this.update($(thing))
             this.update($(thing).find('.noncollapsed .tagline .author:first'))
