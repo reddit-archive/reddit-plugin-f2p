@@ -120,7 +120,7 @@ class Downtime(Templated):
 
 @hooks.on("reddit.request.begin")
 def on_request():
-    if check_for_banana() and random.random() < 0.01:
+    if check_for_banana() and random.random() < 0.04:
         request.environ["usable_error_content"] = Downtime().render()
         abort(503)
 
