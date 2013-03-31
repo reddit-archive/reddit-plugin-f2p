@@ -94,10 +94,10 @@ class Abstinence(Item):
 
 class HealingItem(Item):
     def on_use(self, user, target):
-        effect_dict = effects.get_all_effects([target._fullname])
-        target_afflictions = []
-        if isinstance(effect_dict, dict) and target._fullname in effect_dict:
-            target_afflictions = effect_dict[target._fullname]
+        all_effects = effects.get_all_effects([target._fullname])
+        target_effects = all_effects.get(target._fullname, [])
+        target_afflictions = [e for e in target_effects
+                              if not e.endswith("_hat")]
 
         if target_afflictions:
             to_heal = random.choice(target_afflictions)
