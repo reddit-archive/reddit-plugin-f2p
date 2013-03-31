@@ -27,7 +27,7 @@ r.f2p.utils = {
         r.f2p.utils.textNodes(el).each(function(idx, textEl) {
             var $textEl = $(textEl)
             $textEl.replaceWith(
-                modifier($textEl.text())
+                modifier($('<div>').text(textEl.nodeValue).html())
             )
         })
     }
