@@ -84,5 +84,7 @@ class SteamController(RedditController):
         g.log.warning("successful steam auth for %r", steamid)
 
         # TODO: insert into a claim queue or something?
+        c.user.f2p = "claimed"
+        c.user._commit()
 
         return Reddit(content=SteamStop()).render()
