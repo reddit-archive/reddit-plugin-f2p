@@ -427,6 +427,14 @@ r.f2p.EffectUpdater = r.ScrollUpdater.extend({
         this.apply($els, this.model.get(fullname))
     },
 
+    start: function() {
+        r.ScrollUpdater.prototype.start.apply(this)
+        $(document).on('new_thing', _.bind(function(ev, thing) {
+            this.update($(thing))
+            this.update($(thing).find('.noncollapsed .tagline .author:first'))
+        }, this))
+    },
+
     update: function($el) {
         if ($el.data('_updated')) {
             return
