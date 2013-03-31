@@ -206,8 +206,7 @@ class Wand(Item):
         # TODO: messages?
 
 
-@registered_item
-class Caltrops(Item):
+class Trap(Item):
     def on_use(self, user, target):
         effects.add_effect(target, self.item_name)
 
@@ -215,3 +214,13 @@ class Caltrops(Item):
         effector = effects.get_effector(self.item_name, target._fullname)
         effects.remove_effect(target, self.item_name)
         self.apply_damage_and_log(effector, target, [user])
+
+
+@registered_item
+class Caltrops(Trap):
+    pass
+
+
+@registered_item
+class Propinquity(Trap):
+    pass
