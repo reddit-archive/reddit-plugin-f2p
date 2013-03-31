@@ -15,6 +15,10 @@ class FreeToPlay(Plugin):
         ConfigValue.tuple: [
             "f2pcaches",
         ],
+
+        ConfigValue.dict(str, str): [
+            "team_subreddits",
+        ],
     }
 
     js = {
@@ -69,6 +73,7 @@ class FreeToPlay(Plugin):
 
         from reddit_f2p import f2p
         f2p.hooks.register_all()
+        f2p.monkeypatch()
 
         from reddit_f2p.steam import SteamController
         from reddit_f2p.gamelog import GameLogController

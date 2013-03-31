@@ -7,6 +7,7 @@ Add the following to your `.update` file:
 [DEFAULT]
 f2pcaches = localhost:11211
 plugins = f2p
+team_subreddits = orangered:red, periwinkle:blue
 
 [live_config]
 # In seconds (decimals allowed)
