@@ -92,11 +92,12 @@
     }
 }
 
-.item-view {
+.item-view, .login-message {
     @border-width: 1px;
     @icon-size: 64px;
     @item-width: @icon-size + 10px;
     @item-margin: 10px;
+    @width: 2 * (@item-width + 2 * @item-margin);
 
     background: white;
     padding: 8px;
@@ -106,7 +107,7 @@
     overflow-y: auto;
 
     ul {
-        width: 2 * (@item-width + 2 * @item-margin);
+        width: @width;
     }
 
     .item {
@@ -154,7 +155,16 @@
     &.inventory-view {
         height: 300px;
     }
+
+    &.login-message {
+        width: @width;
+        p {
+            font-size: 1.65em;
+            padding: 1em;
+        }
+    }
 }
+
 
 .item-bubble {
     z-index: 15000;

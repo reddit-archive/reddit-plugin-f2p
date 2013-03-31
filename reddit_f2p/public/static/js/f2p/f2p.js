@@ -5,14 +5,16 @@ r.f2p = {
         this.inventoryPanel = new r.f2p.Panel({
             id: 'items-panel',
             title: 'items',
-            content: [
-                new r.f2p.MyEffectsView({
-                    collection: this.myEffects,
-                }),
-                new r.f2p.InventoryView({
-                    collection: this.inventory,
-                })
-            ]
+            content: r.config.logged
+                ? [
+                    new r.f2p.MyEffectsView({
+                        collection: this.myEffects,
+                    }),
+                    new r.f2p.InventoryView({
+                        collection: this.inventory,
+                    })
+                ]
+                : new r.f2p.LoginMessageView()
         })
         $('body').append(this.inventoryPanel.render().el)
         this.inventory.fetch()
@@ -122,6 +124,15 @@ r.f2p.Panel = Backbone.View.extend({
     minimize: function() {
         this._minimize(!this.$el.hasClass('minimized'))
     }
+})
+
+r.f2p.LoginMessageView = Backbone.View.extend({
+    className: 'login-message',
+
+    render: function() {
+        this.$el.html(r.templates.make('f2p/login-message'))
+        return this
+    },
 })
 
 r.f2p.ItemsView = Backbone.View.extend({

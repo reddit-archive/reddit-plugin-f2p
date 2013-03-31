@@ -29,6 +29,7 @@ class FreeToPlay(Plugin):
             'f2p/utils.js',
             'f2p/items.js',
             TemplateFileSource('f2p/panel.html'),
+            TemplateFileSource('f2p/login-message.html'),
             TemplateFileSource('f2p/item.html'),
             TemplateFileSource('f2p/item-bubble.html'),
             TemplateFileSource('f2p/scores.html'),
