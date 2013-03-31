@@ -197,7 +197,7 @@ r.f2p.TargetOverlay = Backbone.View.extend({
 
     targetKinds: {
         'account': {
-            selector: '.tagline .author',
+            selector: '.tagline a.author',
             getId: function(el) {
                 return $(el).data('fullname')
             }
