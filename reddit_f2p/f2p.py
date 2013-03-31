@@ -110,6 +110,7 @@ def on_request():
         "inventory": collections.defaultdict(list),
         "effects": collections.defaultdict(lambda:
                                            collections.defaultdict(list)),
+        "myeffects": collections.defaultdict(list),
     }
 
     check_for_drops()

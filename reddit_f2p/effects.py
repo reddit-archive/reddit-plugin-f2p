@@ -28,6 +28,9 @@ def add_effect(thing, effect):
         effects.append((c.user._id, effect))
     c.state_changes["effects"]["add"][thing._fullname].append(effect)
 
+    if thing._fullname == c.user._fullname:
+        c.state_changes["myeffects"]["add"].append(g.f2pitems[effect])
+
 
 def get_all_effects(fullnames):
     """Return a dict of fullname -> [effects] for the given fullnames."""
@@ -60,6 +63,8 @@ def remove_effect(thing, effect):
         except ValueError:
             pass
     c.state_changes["effects"]["remove"][thing._fullname].append(effect)
+    if thing._fullname == c.user._fullname:
+        c.state_changes["myeffects"]["remove"].append(effect)
 
 
 def get_my_effects(user):
@@ -71,5 +76,7 @@ def get_my_effects(user):
 
 def clear_effects(thing):
     with mutate_key("effect_%s" % thing._fullname, type_=list) as effects:
-        c.state_changes["effects"]["remove"][thing._fullname].extend(effects[:])
+        c.state_changes["effects"]["remove"][thing._fullname].extend(effects)
+        if thing._fullname == c.user._fullname:
+            c.state_changes["myeffects"]["remove"].extend(effects)
         del effects[:]
