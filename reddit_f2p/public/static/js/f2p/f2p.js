@@ -8,10 +8,10 @@ r.f2p = {
             content: r.config.logged
                 ? [
                     new r.f2p.MyEffectsView({
-                        collection: this.myEffects,
+                        collection: this.myEffects
                     }),
                     new r.f2p.InventoryView({
-                        collection: this.inventory,
+                        collection: this.inventory
                     })
                 ]
                 : new r.f2p.LoginMessageView()
@@ -132,7 +132,7 @@ r.f2p.LoginMessageView = Backbone.View.extend({
     render: function() {
         this.$el.html(r.templates.make('f2p/login-message'))
         return this
-    },
+    }
 })
 
 r.f2p.ItemsView = Backbone.View.extend({
@@ -241,7 +241,7 @@ r.f2p.TargetOverlay = Backbone.View.extend({
 
     events: {
         'click .shade': 'cancel',
-        'click .target-cover': 'select',
+        'click .target-cover': 'select'
     },
 
     targetKinds: {
