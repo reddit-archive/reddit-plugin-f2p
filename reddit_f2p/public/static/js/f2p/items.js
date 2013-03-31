@@ -247,6 +247,32 @@ r.f2p.Item.kinds = {
         }
     }),
 
+    nostalgia: r.f2p.Item.extend({}, {
+        applyThingEffect: function($el) {
+            r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
+                swaps = {
+                    'N': '&Ntilde;',
+                    'O': '&Ograve;',
+                    'a': '&acirc;',
+                    'e': '&eacute;',
+                    'i': '&iuml;',
+                    'o': '&oslash;',
+                    'u': '&ugrave;',
+                    'c': '&ccedil;',
+                    'n': '&ntilde;',
+                    's': '&scaron;',
+                    'y': '&yacute;',
+                    'x': '&times;'
+                },
+                swapRe = new RegExp(_.keys(swaps).join('|'), 'g')
+
+                return text.replace(swapRe, function(match) {
+                    return swaps[match]
+                })
+            })
+        }
+    }),
+
     palindrome: r.f2p.Item.extend({}, {
         applyThingEffect: function($el) {
             var $author = $el.find('.tagline .author:first')
