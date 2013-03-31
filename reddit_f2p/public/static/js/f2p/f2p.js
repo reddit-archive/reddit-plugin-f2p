@@ -393,7 +393,8 @@ r.f2p.EffectUpdater = r.ScrollUpdater.extend({
     apply: function(target, kinds) {
         r.f2p.utils.tupEach(kinds, function(kind) {
             var $els = this._target(target),
-                itemKind = r.f2p.Item.kinds[kind]
+                itemKind = r.f2p.Item.getKind(kind)
+
             _.each($els, function(el) {
                 itemKind.applyEffect($(el))
             })

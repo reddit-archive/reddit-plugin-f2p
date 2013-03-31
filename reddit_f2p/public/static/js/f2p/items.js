@@ -10,6 +10,12 @@ r.f2p.Item = Backbone.Model.extend({
         attributes['use_on'] = _.map(attributes['targets'], function (t) { return r.f2p.targetTypes[t] || t })
         return attributes
     }
+}, {
+    getKind: function(kind) {
+        return r.f2p.Item.kinds[kind] || r.f2p.Item
+    },
+
+    applyEffect: function() {}
 })
 
 r.f2p.Inventory = Backbone.Collection.extend({
