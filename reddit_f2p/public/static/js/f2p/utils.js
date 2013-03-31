@@ -23,12 +23,15 @@ r.f2p.utils = {
             })
     },
 
+    replaceTextNode: function(textNode, modifier) {
+        $(textNode).replaceWith(
+            modifier($('<div>').text(textNode.nodeValue).html())
+        )
+    },
+
     replaceText: function(el, modifier) {
-        r.f2p.utils.textNodes(el).each(function(idx, textEl) {
-            var $textEl = $(textEl)
-            $textEl.replaceWith(
-                modifier($('<div>').text(textEl.nodeValue).html())
-            )
+        r.f2p.utils.textNodes(el).each(function(idx, textNode) {
+            r.f2p.utils.replaceTextNode(textNode, modifier)
         })
     }
 }

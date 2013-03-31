@@ -261,14 +261,17 @@ r.f2p.Item.kinds = {
 
     torpor: r.f2p.Item.extend({}, {
         applyEffect: function($el) {
-            var textEls = r.f2p.utils.textNodes($el.find('.md:first')),
-                textEl = textEls[_.random(textEls.length - 1)],
-                sentences = textEl.nodeValue.split('.'),
-                ts = Date.parse($el.find('.tagline time').attr('datetime')),
-                idx = (textEl.nodeValue.length + ts / 1000) % sentences.length
+            var textNodes = r.f2p.utils.textNodes($el.find('.md:first')),
+                textNode = textNodes[_.random(textNodes.length - 1)]
 
-            sentences[idx] = sentences[idx] + '... and then I took an arrow to the knee'
-            textEl.nodeValue = sentences.join('.')
+            r.f2p.utils.replaceTextNode(textNode, function(text) {
+                var sentences = text.split('.'),
+                    ts = Date.parse($el.find('.tagline time').attr('datetime')),
+                    idx = (text.length + ts / 1000) % sentences.length
+
+                sentences[idx] = sentences[idx] + '&hellip; and then I took an arrow to the knee'
+                return sentences.join('.')
+            })
         }
     })
 }
