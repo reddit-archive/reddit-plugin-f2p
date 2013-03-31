@@ -2,7 +2,7 @@ import collections
 import json
 import random
 
-from pylons import g, c, request
+from pylons import g, c, request, response
 
 from r2.controllers import add_controller
 from r2.controllers.reddit_base import RedditController
@@ -120,7 +120,8 @@ class Downtime(Templated):
 
 @hooks.on("reddit.request.begin")
 def on_request():
-    if check_for_banana() and random.random() < 0.04:
+    is_html = response.content_type == 'text/html'
+    if is_html and check_for_banana() and random.random() < 0.04:
         request.environ["usable_error_content"] = Downtime().render()
         abort(503)
 
