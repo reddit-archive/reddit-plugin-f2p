@@ -18,7 +18,7 @@ def mutate_key(key, type_=dict):
 
     """
     with g.make_lock("f2p", "f2p_%s" % key):
-        raw_json = g.f2pcache.get(key)
+        raw_json = g.f2pcache.get(key, allow_local=False)
         data = json.loads(raw_json) if raw_json else type_()
         yield data
         g.f2pcache.set(key, json.dumps(data))
