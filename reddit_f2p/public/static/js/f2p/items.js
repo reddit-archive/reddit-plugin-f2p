@@ -179,7 +179,9 @@ r.f2p.Item.kinds = {
 
     hat: r.f2p.Item.extend({}, {
         applyThingEffect: function($authorEl, kind) {
-            r.f2p.HatPile.getPile($authorEl).addHat(kind)
+            if ($authorEl.parents('.comment').length) {
+                r.f2p.HatPile.getPile($authorEl).addHat(kind)
+            }
         }
     }),
 
