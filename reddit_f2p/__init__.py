@@ -2,7 +2,6 @@ import json
 
 import pkg_resources
 
-from r2.lib.cache import CMemcache, MemcacheChain, LocalCache
 from r2.lib.configparse import ConfigValue
 from r2.lib.plugin import Plugin
 from r2.lib.js import Module, TemplateFileSource
@@ -49,6 +48,8 @@ class FreeToPlay(Plugin):
     }
 
     def on_load(self, g):
+        from r2.lib.cache import CMemcache, MemcacheChain, LocalCache
+
         # TODO: use SelfEmptyingCache for localcache if we use this in jobs
         f2p_memcaches = CMemcache(g.f2pcaches, num_clients=g.num_mc_clients)
         g.f2pcache = MemcacheChain((
