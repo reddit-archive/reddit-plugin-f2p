@@ -105,7 +105,11 @@ r.f2p.Item.kinds = {
 
     cruise: r.f2p.Item.extend({}, {
         applyThingEffect: function($el) {
-            $el.find('.usertext-body .md:first').html('<p>Tom Cruise</p>')
+            var $md = $el.find('.usertext-body .md:first'),
+                $cruise = $('<p>Tom Cruise</p>')
+
+            $cruise.attr('title', $.trim($md.text()))
+            $md.empty().append($cruise)
         }
     }),
 
