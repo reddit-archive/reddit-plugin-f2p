@@ -1,15 +1,22 @@
 r.f2p = {
     init: function() {
+        this.myEffects = new r.f2p.PlayerEffects()
         this.inventory = new r.f2p.Inventory()
         this.inventoryPanel = new r.f2p.Panel({
-            id: 'inventory-panel',
-            title: 'inventory',
-            content: new r.f2p.InventoryView({
-                collection: this.inventory,
-            })
+            id: 'items-panel',
+            title: 'items',
+            content: [
+                new r.f2p.MyEffectsView({
+                    collection: this.myEffects,
+                }),
+                new r.f2p.InventoryView({
+                    collection: this.inventory,
+                })
+            ]
         })
         $('body').append(this.inventoryPanel.render().el)
         this.inventory.fetch()
+        this.myEffects.fetch()
 
         this.gameStatus = new r.f2p.GameStatus()
         this.scorePanel = new r.f2p.Panel({
@@ -30,9 +37,6 @@ r.f2p = {
         this.effectUpdater = new r.f2p.EffectUpdater({
             model: this.pageEffects
         }).start()
-
-        this.myEffects = new r.f2p.PlayerEffects()
-        this.myEffects.fetch()
     },
 
     updateState: function(updates) {
@@ -91,13 +95,20 @@ r.f2p.Panel = Backbone.View.extend({
     },
 
     render: function() {
-        this.$('.panel-content').empty().append(
-            this.options.content.render().el
-        )
+        this.$('.panel-content').empty()
+        r.f2p.utils.tupEach(this.options.content, function(contentView) {
+            this.$('.panel-content').append(
+                contentView.render().el
+            )
+        }, this)
 
         // once content is positioned, set max-height required for css transition.
         _.defer(_.bind(function() {
-            this.$('.panel-content').css('max-height', this.options.content.$el.outerHeight())
+            var height = 0
+            r.f2p.utils.tupEach(this.options.content, function(contentView) {
+                height += contentView.$el.outerHeight()
+            }, this)
+            this.$('.panel-content').css('max-height', height)
         }, this))
 
         return this
@@ -113,9 +124,7 @@ r.f2p.Panel = Backbone.View.extend({
     }
 })
 
-r.f2p.InventoryView = Backbone.View.extend({
-    className: 'inventory-view',
-
+r.f2p.ItemsView = Backbone.View.extend({
     initialize: function() {
         this._itemViews = {}
         this.bubbleGroup = {}
@@ -144,8 +153,33 @@ r.f2p.InventoryView = Backbone.View.extend({
 
     removeOne: function(item) {
         var view = this._itemViews[item.cid]
-        view.remove()
-        delete this._itemViews[view.cid]
+        if (view) {
+            view.remove()
+            delete this._itemViews[view.cid]
+        }
+    }
+})
+
+r.f2p.InventoryView = r.f2p.ItemsView.extend({
+    className: 'item-view inventory-view'
+})
+
+r.f2p.MyEffectsView = r.f2p.ItemsView.extend({
+    className: 'item-view myeffects-view',
+
+    initialize: function() {
+        r.f2p.ItemsView.prototype.initialize.call(this)
+        this.listenTo(this.collection, 'all', this.setVisibility)
+    },
+
+    addOne: function(item) {
+        if (!/_hat$/.test(item.get('kind'))) {
+            r.f2p.ItemsView.prototype.addOne.call(this, item)
+        }
+    },
+
+    setVisibility: function() {
+        this.$el.toggle(!!this.collection.length)
     }
 })
 

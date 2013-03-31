@@ -78,7 +78,7 @@
     }
 }
 
-#inventory-panel {
+#items-panel {
     position: fixed;
     right: 5px;
     bottom: 0;
@@ -92,13 +92,12 @@
     }
 }
 
-.inventory-view {
+.item-view {
     @border-width: 1px;
     @icon-size: 64px;
     @item-width: @icon-size + 10px;
     @item-margin: 10px;
 
-    height: 400px;
     background: white;
     padding: 8px;
     border: 1px solid #5f99cf;
@@ -150,6 +149,10 @@
             padding: 2px 0;
             text-transform: lowercase;
         }
+    }
+
+    &.inventory-view {
+        height: 300px;
     }
 }
 
