@@ -1,3 +1,5 @@
+import re
+
 import openid.consumer.consumer
 from pylons import g, c, request
 from pylons.controllers.util import redirect_to, abort
@@ -11,6 +13,7 @@ from r2.lib.template_helpers import add_sr
 
 
 STEAM_AUTH_URL = "http://steamcommunity.com/openid"
+STEAMID_EXTRACTOR = re.compile("steamcommunity.com/openid/id/(.*?)$")
 
 
 class SteamStart(Templated):
@@ -43,7 +46,6 @@ class SteamController(RedditController):
         g.log.debug("started steam auth for %s", c.user.name)
         return redirect_to(url)
 
-
     @validate(VUser())
     def GET_postlogin(self):
         session = g.f2pcache.get("steam_session_%d" % c.user._id)
@@ -53,11 +55,19 @@ class SteamController(RedditController):
         consumer = openid.consumer.consumer.Consumer(session, store=None)
         auth_response = consumer.complete(request.params, request.url)
 
-        g.log.warning("steam auth response %r for %s",
-                      auth_response.status,
-                      c.user.name)
+        if auth_response.status == openid.consumer.consumer.CANCEL:
+            return redirect_to("/f2p/steam")
 
         if auth_response.status != openid.consumer.consumer.SUCCESS:
             abort(404)
+
+        steamid_match = STEAMID_EXTRACTOR.search(auth_response.identity_url)
+        if not steamid_match:
+            abort(404)
+
+        steamid = steamid_match.group(1)
+        g.log.warning("successful steam auth for %r", steamid)
+
+        # TODO: insert into a claim queue or something?
 
         return Reddit(content=SteamStop()).render()
