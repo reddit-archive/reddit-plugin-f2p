@@ -261,13 +261,23 @@ r.f2p.TargetOverlay = Backbone.View.extend({
             })
         }, this)
 
+        $(window).on('keydown.targetOverlay', $.proxy(this, 'keydown'))
+
         this.$el.show()
+    },
+
+    keydown: function(ev) {
+        if (ev.which == 27) {
+            // ESC
+            this.cancel()
+        }
     },
 
     cancel: function() {
         this.$el.hide()
         this.$el.empty()
         this.activeItem = null
+        $(window).off('keydown.targetOverlay')
         $('body').css({'cursor': 'auto'})
     },
 
