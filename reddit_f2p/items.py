@@ -40,9 +40,10 @@ TARGET_DISCRIMINATORS = {
 class Item(object):
     def __init__(self, item_name):
         self.item_name = item_name
+        self.item = g.f2pitems[self.item_name]
 
     def is_target_valid(self, target):
-        target_types = g.f2pitems[self.item_name]["targets"]
+        target_types = self.item["targets"]
         for target_type in target_types:
             discriminator = TARGET_DISCRIMINATORS.get(target_type)
             if not discriminator:
@@ -62,7 +63,7 @@ class Item(object):
         self.apply_damage_and_log(user, target, [target])
 
     def apply_damage_and_log(self, user, target, affected_things):
-        damage = g.f2pitems[self.item_name]["damage"]
+        damage = self.item["damage"]
         if damage:
             points = scores.apply_damage(affected_things, damage)
         else:
@@ -102,11 +103,11 @@ class HealingItem(Item):
             to_heal = random.choice(target_afflictions)
             effects.remove_effect(target, to_heal)
             to_heal_title = g.f2pitems[to_heal]['title']
-            item_title = g.f2pitems[self.item_name]['title']
+            item_title = self.item['title']
             msg = '%s used %s to heal of %s' % (user.name, item_title,
                                                 to_heal_title)
         else:
-            item_title = g.f2pitems[self.item_name]['title']
+            item_title = self.item['title']
             msg = ('%s used %s to heal you but you were '
                    'fully healthy. what a waste' % (user.name, item_title))
         subject = 'you have been healed!'
@@ -131,7 +132,7 @@ class Melodies(HealingItem):
 class Capitulation(Item):
     def on_use(self, user, target):
         subject = 'you have been poked!'
-        item_title = g.f2pitems[self.item_name]['title']
+        item_title = self.item['title']
         msg = 'you were poked by %s (with %s)' % (user.name, item_title)
         send_system_message(target, subject, msg)
         self.apply_damage_and_log(user, target, [target])
@@ -142,7 +143,7 @@ class Overpowered(Item):
     def on_use(self, user, target):
         effects.clear_effects(target)
         inventory.clear_inventory(target)
-        item_title = g.f2pitems[self.item_name]['title']
+        item_title = self.item['title']
         subject = 'you were assassinated!'
         msg = ('you were assassinated by %s (with %s) and lost all your items'
                ' and effects' % (user.name, item_title))
@@ -162,7 +163,7 @@ class Magnet(Item):
             inventory.add_to_inventory(user, to_steal)
 
             to_steal_title = g.f2pitems[to_steal]['title']
-            item_title = g.f2pitems[self.item_name]['title']
+            item_title = self.item['title']
             subject = "you've been robbed!"
             msg = ('%s used %s to steal your %s' %
                    (user.name, item_title, to_steal_title))
