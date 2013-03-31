@@ -70,6 +70,18 @@ def drop_item():
     c.js_preload.set("#drop", [item_name])
 
 
+def award_gold_tophat():
+    if not c.user.gold:
+        return
+
+    all_effects = effects.get_all_effects([c.user._fullname])
+    user_effects = all_effects.get(c.user._fullname, [])
+
+    ITEM_NAME = "gold_top_hat"
+    if ITEM_NAME not in user_effects:
+        effects.add_effect(effector=c.user, thing=c.user, effect=ITEM_NAME)
+
+
 def check_for_drops():
     """Determine if it is time to give the user a new item and do so."""
     if not c.user_is_loggedin:
@@ -77,6 +89,8 @@ def check_for_drops():
 
     if not is_eligible_request():
         return
+
+    award_gold_tophat()
 
     # if we do get a drop, how long should we wait 'til the next one?
     mu = g.live_config["drop_cooldown_mu"]
