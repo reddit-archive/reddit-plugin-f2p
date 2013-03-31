@@ -95,7 +95,7 @@ def check_for_banana():
         return False
 
     all_effects = effects.get_all_effects([c.user._fullname])
-    user_effects = all_effects[c.user._fullname]
+    user_effects = all_effects.get(c.user._fullname, [])
     return 'banana' in user_effects
 
 
@@ -169,7 +169,7 @@ def comment_reply_effect(comment):
     else:
         parent = Link._byID(comment.link_id, data=True)
     all_effects = effects.get_all_effects([parent._fullname])
-    parent_effects = all_effects[parent._fullname]
+    parent_effects = all_effects.get(parent._fullname, [])
     for item_name in parent_effects:
         item = items.get_item(item_name)
         item.on_reply(c.user, parent)
