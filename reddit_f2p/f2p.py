@@ -65,6 +65,7 @@ def drop_item():
                                if i.get("rarity", "common") == item_class])
 
     g.log.debug("dropping item %r for %r", item_name, c.user.name)
+    g.stats.event_count("f2p.drop", item_name)
     item = items.get_item(item_name)
     item.on_drop(c.user)
     c.js_preload.set("#drop", [item_name])
