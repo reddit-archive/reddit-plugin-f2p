@@ -443,11 +443,31 @@ r.f2p.EffectUpdater = r.ScrollUpdater.extend({
         }, this))
     },
 
+    addAuthorBauble: function($el) {
+        var $author = $el.filter('a.author')
+        if (!$author.length) {
+            return
+        }
+
+        var fullname = $author.data('fullname')
+        if (!fullname) {
+            return
+        }
+
+        // todo: add a team data attribute and don't duplicate this in js?
+        var userId = parseInt(fullname.split('_')[1], 36),
+            team = (userId % 2 == 0) ? 'red' : 'blue'
+
+        $author.before($('<span class="author-bauble team-' + team + '"></span>'))
+    },
+
     update: function($el) {
         if ($el.data('_updated')) {
             return
         }
+
         $el.data('_updated', true)
+        this.addAuthorBauble($el)
         this.applyAll($el)
     }
 })
