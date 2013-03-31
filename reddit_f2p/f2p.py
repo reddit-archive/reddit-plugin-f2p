@@ -10,6 +10,7 @@ from r2.lib.base import abort
 from r2.lib.errors import errors
 from r2.lib.hooks import HookRegistrar
 from r2.lib.utils import weighted_lottery
+from r2.lib.wrapped import Templated
 from r2.lib.validator import (
     validate,
     VLimit,
@@ -93,13 +94,19 @@ def check_for_banana():
     if not c.user_is_loggedin or not is_eligible_request():
         return False
 
-    user_effects = effects.get_all_effects([c.user._fullname])
+    all_effects = effects.get_all_effects([c.user._fullname])
+    user_effects = all_effects[c.user._fullname]
     return 'banana' in user_effects
+
+
+class Downtime(Templated):
+    pass
 
 
 @hooks.on("reddit.request.begin")
 def on_request():
-    if check_for_banana() and random.random() < 0.05:
+    if check_for_banana() and random.random() < 0.01:
+        request.environ["usable_error_content"] = Downtime().render()
         abort(503)
 
     scoreboard = scores.get_game_status()
