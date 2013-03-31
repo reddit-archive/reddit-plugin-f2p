@@ -48,12 +48,12 @@ r.f2p.Item = Backbone.Model.extend({
         return r.f2p.Item.kinds[kind] || r.f2p.Item
     },
 
-    applyEffect: function() {}
+    applyThingEffect: function() {}
 })
 
 r.f2p.Item.kinds = {
     antigravity: r.f2p.Item.extend({}, {
-        applyEffect: function($el) {
+        applyThingEffect: function($el) {
             r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
                 return text.replace(/(\w+k\w+|\w+u\w+)/ig, function(match) {
                     return '<sup>' + match.split('').join('<sup>') + Array(match.length + 1).join('</sup>')
@@ -63,7 +63,7 @@ r.f2p.Item.kinds = {
     }),
 
     cdgl: r.f2p.Item.extend({}, {
-        applyEffect: function($el) {
+        applyThingEffect: function($el) {
             r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
                 return text.replace(r.f2p.utils.vowels, '')
             })
@@ -71,25 +71,25 @@ r.f2p.Item.kinds = {
     }),
 
     chirality: r.f2p.Item.extend({}, {
-        applyEffect: function($el) {
+        applyThingEffect: function($el) {
             $el.find('.entry:first').addClass('effect-chirality')
         }
     }),
 
     compensation: r.f2p.Item.extend({}, {
-        applyEffect: function($el) {
+        applyThingEffect: function($el) {
             $el.find('.entry:first').addClass('effect-compensation')
         }
     }),
 
     cruise: r.f2p.Item.extend({}, {
-        applyEffect: function($el) {
+        applyThingEffect: function($el) {
             $el.find('.usertext-body .md:first').html('<p>Tom Cruise</p>')
         }
     }),
 
     emphasis: r.f2p.Item.extend({}, {
-        applyEffect: function($el) {
+        applyThingEffect: function($el) {
             r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
                 return text.replace(/(\w+b\w+|\w+e\w+|\w+i\w+)/ig, function(match, group, offset) {
                     if (offset % 2 == 0) {
@@ -103,7 +103,7 @@ r.f2p.Item.kinds = {
     }),
 
     english: r.f2p.Item.extend({}, {
-        applyEffect: function($el) {
+        applyThingEffect: function($el) {
             r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
                 var wordSwaps = {
                         'a lot': 'alot',
@@ -128,19 +128,19 @@ r.f2p.Item.kinds = {
     }),
 
     hat: r.f2p.Item.extend({}, {
-        applyEffect: function($el, kind) {
-            r.f2p.HatPile.getPile($el).addHat(kind)
+        applyThingEffect: function($authorEl, kind) {
+            r.f2p.HatPile.getPile($authorEl).addHat(kind)
         }
     }),
 
     hatchet: r.f2p.Item.extend({}, {
-        applyEffect: function($el) {
+        applyThingEffect: function($el) {
             $el.find('.entry:first').addClass('effect-flattened')
         }
     }),
 
     inebriation: r.f2p.Item.extend({}, {
-        applyEffect: function($el) {
+        applyThingEffect: function($el) {
             r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
                 return text
                     .replace(/\bs/ig, 'sh')
@@ -150,7 +150,7 @@ r.f2p.Item.kinds = {
     }),
 
     intolerance: r.f2p.Item.extend({}, {
-        applyEffect: function($el) {
+        applyThingEffect: function($el) {
             r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
                 return text.toUpperCase().replace(/[.,]/g, function() {
                     tail = []
@@ -167,13 +167,13 @@ r.f2p.Item.kinds = {
     }),
 
     inversion: r.f2p.Item.extend({}, {
-        applyEffect: function($el) {
+        applyThingEffect: function($el) {
             $el.find('.entry:first').addClass('effect-inversion')
         }
     }),
 
     knuckles: r.f2p.Item.extend({}, {
-        applyEffect: function($el) {
+        applyThingEffect: function($el) {
             r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
                 vowels = text.match(r.f2p.utils.vowels)
 
@@ -190,7 +190,7 @@ r.f2p.Item.kinds = {
     }),
 
     medal: r.f2p.Item.extend({}, {
-        applyEffect: function($el) {
+        applyThingEffect: function($el) {
             $el
                 .find('.md:first')
                 .append('<p>Excelsior!</p>')
@@ -198,7 +198,7 @@ r.f2p.Item.kinds = {
     }),
 
     palindrome: r.f2p.Item.extend({}, {
-        applyEffect: function($el) {
+        applyThingEffect: function($el) {
             var $author = $el.find('.tagline .author:first')
             $author.text(
                 $author.text().split('').reverse().join('')
@@ -207,7 +207,7 @@ r.f2p.Item.kinds = {
     }),
 
     patriotism: r.f2p.Item.extend({}, {
-        applyEffect: function($el) {
+        applyThingEffect: function($el) {
             r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
                 return text.replace(/(\w+w\w+|\w+a\w+|\w+s\w+)/ig, '<span class="effect-redacted">$1</span>')
             })
@@ -215,7 +215,7 @@ r.f2p.Item.kinds = {
     }),
 
     rampart: r.f2p.Item.extend({}, {
-        applyEffect: function($el) {
+        applyThingEffect: function($el) {
             $el
                 .find('.md:first')
                 .append('<p>And please be sure to check out Rampart.</p>')
@@ -223,7 +223,7 @@ r.f2p.Item.kinds = {
     }),
 
     scrambler: r.f2p.Item.extend({}, {
-        applyEffect: function($el) {
+        applyThingEffect: function($el) {
             r.f2p.utils.replaceText($el.find('.midcol:first .score'), function(text) {
                 var digits = text.split(''),
                     newDigits = []
@@ -240,13 +240,13 @@ r.f2p.Item.kinds = {
     }),
 
     shrouding: r.f2p.Item.extend({}, {
-        applyEffect: function($el) {
+        applyThingEffect: function($el) {
             $el.find('.entry:first').addClass('effect-shrouded')
         }
     }),
 
     shuffler: r.f2p.Item.extend({}, {
-        applyEffect: function($el) {
+        applyThingEffect: function($el) {
             r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
                 return text.replace(/[A-Za-z0-9]/g, function(chr) {
                     orig = chr.charCodeAt(0)
@@ -260,7 +260,7 @@ r.f2p.Item.kinds = {
     }),
 
     torpor: r.f2p.Item.extend({}, {
-        applyEffect: function($el) {
+        applyThingEffect: function($el) {
             var textNodes = r.f2p.utils.textNodes($el.find('.md:first')),
                 textNode = textNodes[_.random(textNodes.length - 1)]
 
@@ -329,7 +329,7 @@ r.f2p.EffectUpdater = r.ScrollUpdater.extend({
                 itemKind = r.f2p.Item.getKind(kind)
 
             _.each($els, function(el) {
-                itemKind.applyEffect($(el), kind)
+                itemKind.applyThingEffect($(el), kind)
             })
         }, this)
     },
