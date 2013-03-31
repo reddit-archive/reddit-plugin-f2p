@@ -59,7 +59,7 @@ class Item(object):
         inventory.add_to_inventory(user, self.item_name)
 
     def on_use(self, user, target):
-        effects.add_effect(target, self.item_name)
+        effects.add_effect(user, target, self.item_name)
         self.apply_damage_and_log(user, target, [target])
 
     def apply_damage_and_log(self, user, target, affected_things):
@@ -83,7 +83,7 @@ class Item(object):
 @registered_item
 class Abstinence(Item):
     def on_drop(self, user):
-        effects.add_effect(user, self.item_name)
+        effects.add_effect(user, user, self.item_name)
         super(Abstinence, self).on_drop(user)
 
     def on_use(self, user, target):
@@ -208,7 +208,7 @@ class Wand(Item):
 
 class Trap(Item):
     def on_use(self, user, target):
-        effects.add_effect(target, self.item_name)
+        effects.add_effect(user, target, self.item_name)
 
     def on_reply(self, user, target):
         effector = effects.get_effector(self.item_name, target._fullname)

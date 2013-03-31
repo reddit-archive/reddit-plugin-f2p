@@ -23,10 +23,10 @@ def is_effect_visible(effector, effect_item):
         return True
 
 
-def add_effect(thing, effect):
+def add_effect(effector, thing, effect):
     """Apply an effect to a thing."""
     with mutate_key("effect_%s" % thing._fullname, type_=list) as effects:
-        effects.append((c.user._id, effect))
+        effects.append((effector._id, effect))
     state_changes("effects")["add"][thing._fullname].append(effect)
 
     if thing._fullname == c.user._fullname:
