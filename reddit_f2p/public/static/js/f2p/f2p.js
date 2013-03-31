@@ -223,9 +223,9 @@ r.f2p.ItemView = Backbone.View.extend({
 })
 
 r.f2p.ItemBubble = r.ui.Bubble.extend({
-    className: 'item-bubble hover-bubble anchor-right',
+    className: 'item-bubble hover-bubble anchor-right-fixed',
 
-    showDelay: 0,
+    showDelay: 250,
     hideDelay: 0,
 
     render: function() {
