@@ -32,10 +32,22 @@ class SteamController(RedditController):
 
     @validate(VUser())
     def GET_start(self):
-        return Reddit(content=SteamStart()).render()
+        f2p_status = getattr(c.user, "f2p")
+
+        if f2p_status == "participated":
+            return Reddit(content=SteamStart()).render()
+        elif f2p_status == "claimed":
+            return Reddit(content=SteamStop()).render()
+        else:
+            # TODO: something nicer?
+            abort(404)
+
 
     @validate(VUser())
     def POST_auth(self):
+        if getattr(c.user, "f2p") != "participated":
+            abort(403)
+
         session = {}
         consumer = openid.consumer.consumer.Consumer(session, store=None)
         auth_request = consumer.begin(STEAM_AUTH_URL)
@@ -48,6 +60,9 @@ class SteamController(RedditController):
 
     @validate(VUser())
     def GET_postlogin(self):
+        if getattr(c.user, "f2p") != "participated":
+            abort(403)
+
         session = g.f2pcache.get("steam_session_%d" % c.user._id)
         if not session:
             abort(404)
