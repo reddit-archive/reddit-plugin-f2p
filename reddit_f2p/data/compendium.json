@@ -178,7 +178,7 @@
     "clown_hair_hat": {
         "damage": "0", 
         "description": "", 
-        "flavor": "", 
+        "flavor": "<p>Definitely not terrifying. Definitely.</p>\n", 
         "rarity": "", 
         "targets": [
             "account"
@@ -231,7 +231,7 @@
     "discombobulation": {
         "damage": 0, 
         "description": "", 
-        "flavor": "<p>What say you to a spot of pudigilism, old bean?</p>\n", 
+        "flavor": "<p>What say you to a spot of pugilism, old bean?</p>\n", 
         "rarity": "rare", 
         "targets": [
             "account"
@@ -550,7 +550,7 @@
     }, 
     "panacea": {
         "damage": "-2", 
-        "description": "<p>Heals your target of one malady.</p>\n", 
+        "description": "", 
         "flavor": "<p><strong>Warning</strong> &mdash; Expel all air from syringe before use. Failure to do so may result in unexpected consequences.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
@@ -695,7 +695,7 @@
         "damage": 0, 
         "description": "<p>Applies an unbreakable cipher to the target text.</p>\n", 
         "flavor": "<p>You spot the logo of your bank on the underside of the cylinder.</p>\n", 
-        "rarity": "common", 
+        "rarity": "uncommon", 
         "targets": [
             "usertext"
         ], 
@@ -818,7 +818,7 @@
         "flavor": "<p>What could possibly go wrong?</p>\n", 
         "rarity": "rare", 
         "targets": [], 
-        "title": "cursed wand", 
+        "title": "Cursed Wand", 
         "visibility": "all"
     }, 
     "white_hat": {
