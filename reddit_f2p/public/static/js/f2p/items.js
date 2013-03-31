@@ -387,7 +387,7 @@ r.f2p.Effects = Backbone.Model.extend({
 
 r.f2p.EffectUpdater = r.ScrollUpdater.extend({
     // todo: effect removals. save html in data
-    selector: '.thing, .noncollapsed .tagline .author',
+    selector: '.thing, .noncollapsed .tagline .author, .link .tagline .author, .titlebox .author, #header .user',
 
     initialize: function() {
         this.model.on('add', this.apply, this)
@@ -444,12 +444,12 @@ r.f2p.EffectUpdater = r.ScrollUpdater.extend({
     },
 
     addAuthorBauble: function($el) {
-        var $author = $el.filter('a.author')
-        if (!$author.length) {
+        var $user = $el.filter('a.author, .user')
+        if (!$user.length) {
             return
         }
 
-        var fullname = $author.data('fullname')
+        var fullname = $user.data('fullname')
         if (!fullname) {
             return
         }
@@ -458,7 +458,7 @@ r.f2p.EffectUpdater = r.ScrollUpdater.extend({
         var userId = parseInt(fullname.split('_')[1], 36),
             team = (userId % 2 == 0) ? 'red' : 'blue'
 
-        $author.before($('<span class="author-bauble team-' + team + '" title="' + team + ' team"></span>'))
+        $user.before($('<span class="author-bauble team-' + team + '" title="' + team + ' team"></span>'))
     },
 
     update: function($el) {
