@@ -44,7 +44,7 @@ def incr_score(team, delta):
     score_key = 'score_%s' % team
     g.f2pcache.add(score_key, 0)
     g.f2pcache.incr(score_key, delta=delta)
-    state_changes("scores")[team] += delta
+    state_changes("status")[team + "_score"] += delta
 
 
 def _get_thing_userid(thing):
