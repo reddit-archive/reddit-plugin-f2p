@@ -55,6 +55,7 @@ def _get_thing_userid(thing):
 
 
 def apply_damage(things, delta):
+    delta = int(delta)
     totals = collections.Counter()
 
     get_scoring_team = lambda uid: get_opposite_team(get_userid_team(uid))
