@@ -65,7 +65,7 @@
         "title": "", 
         "visibility": "all"
     }, 
-    "baseball_cap": {
+    "baseball_cap_hat": {
         "damage": "0", 
         "description": "", 
         "flavor": "", 
@@ -87,7 +87,7 @@
         "title": "", 
         "visibility": "all"
     }, 
-    "beanie_cap": {
+    "beanie_hat": {
         "damage": "0", 
         "description": "", 
         "flavor": "", 
@@ -175,7 +175,7 @@
         "title": "", 
         "visibility": "all"
     }, 
-    "clown_hair": {
+    "clown_hair_hat": {
         "damage": "0", 
         "description": "", 
         "flavor": "", 
@@ -197,7 +197,7 @@
         "title": "Sizable Claymore of Compensation", 
         "visibility": "all"
     }, 
-    "crown": {
+    "crown_hat": {
         "damage": "0", 
         "description": "", 
         "flavor": "", 
@@ -231,7 +231,7 @@
     "discombobulation": {
         "damage": 0, 
         "description": "", 
-        "flavor": "", 
+        "flavor": "<p>What say you to a spot of pudigilism, old bean?</p>\n", 
         "rarity": "rare", 
         "targets": [
             "account"
@@ -250,7 +250,7 @@
         "title": "Suspiciously Functional Booby-Trap Dowser", 
         "visibility": "self"
     }, 
-    "dunce_cap": {
+    "dunce_cap_hat": {
         "damage": "0", 
         "description": "", 
         "flavor": "", 
@@ -294,7 +294,7 @@
         "title": "Royal Sceptre of the Queen's English", 
         "visibility": "all"
     }, 
-    "fedora": {
+    "fedora_hat": {
         "damage": "0", 
         "description": "", 
         "flavor": "<p>Decidedly not red.</p>\n", 
@@ -303,6 +303,28 @@
             "account"
         ], 
         "title": "Dapper \u2019Dora", 
+        "visibility": "all"
+    }, 
+    "gold_top_hat": {
+        "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
+        "targets": [
+            "account"
+        ], 
+        "title": "", 
+        "visibility": "all"
+    }, 
+    "green_mushroom_hat": {
+        "damage": "0", 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
+        "targets": [
+            "account"
+        ], 
+        "title": "Freaky Green Fungus", 
         "visibility": "all"
     }, 
     "handgrenade": {
@@ -428,7 +450,7 @@
         "visibility": "all"
     }, 
     "melodies": {
-        "damage": 0, 
+        "damage": "-2", 
         "description": "", 
         "flavor": "<p>Lonely rivers flow....wait for me...... w..a.....i...t...... f...o.....r..... m......e......</p>\n", 
         "rarity": "uncommon", 
@@ -458,7 +480,7 @@
         "targets": [
             "account"
         ], 
-        "title": "", 
+        "title": "Steve", 
         "visibility": "all"
     }, 
     "mortar": {
@@ -470,28 +492,6 @@
             "usertext"
         ], 
         "title": "Cowardly Mortar of Indiscriminateness", 
-        "visibility": "all"
-    }, 
-    "mushroom_hat_green": {
-        "damage": "0", 
-        "description": "", 
-        "flavor": "", 
-        "rarity": "", 
-        "targets": [
-            "account"
-        ], 
-        "title": "Freaky Green Fungus", 
-        "visibility": "all"
-    }, 
-    "mushroom_hat_red": {
-        "damage": "0", 
-        "description": "", 
-        "flavor": "<p>Transports you to Texas, where everything is bigger.</p>\n", 
-        "rarity": "", 
-        "targets": [
-            "account"
-        ], 
-        "title": "Freaky Red Fungus", 
         "visibility": "all"
     }, 
     "nightfall": {
@@ -549,8 +549,8 @@
         "visibility": "all"
     }, 
     "panacea": {
-        "damage": 0, 
-        "description": "", 
+        "damage": "-2", 
+        "description": "<p>Heals your target of one malady.</p>\n", 
         "flavor": "<p><strong>Warning</strong> &mdash; Expel all air from syringe before use. Failure to do so may result in unexpected consequences.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
@@ -625,6 +625,17 @@
         "title": "Ineffective Trebuchet of Rampart Surmounting", 
         "visibility": "all"
     }, 
+    "red_mushroom_hat": {
+        "damage": "0", 
+        "description": "", 
+        "flavor": "<p>Transports you to Texas, where everything is bigger.</p>\n", 
+        "rarity": "", 
+        "targets": [
+            "account"
+        ], 
+        "title": "Freaky Red Fungus", 
+        "visibility": "all"
+    }, 
     "reddit_hat": {
         "damage": "0", 
         "description": "", 
@@ -682,7 +693,7 @@
     }, 
     "shuffler": {
         "damage": 0, 
-        "description": "", 
+        "description": "<p>Applies an unbreakable cipher to the target text.</p>\n", 
         "flavor": "<p>You spot the logo of your bank on the underside of the cylinder.</p>\n", 
         "rarity": "common", 
         "targets": [
@@ -713,7 +724,7 @@
         "title": "", 
         "visibility": "all"
     }, 
-    "stainless_pot": {
+    "stainless_pot_hat": {
         "damage": "0", 
         "description": "", 
         "flavor": "", 
@@ -768,17 +779,6 @@
         "title": "", 
         "visibility": "all"
     }, 
-    "top_hat_gold": {
-        "damage": "0", 
-        "description": "", 
-        "flavor": "", 
-        "rarity": "", 
-        "targets": [
-            "account"
-        ], 
-        "title": "", 
-        "visibility": "all"
-    }, 
     "torpor": {
         "damage": 0, 
         "description": "", 
@@ -801,7 +801,7 @@
         "title": "", 
         "visibility": "all"
     }, 
-    "viking_helmet": {
+    "viking_helmet_hat": {
         "damage": "0", 
         "description": "", 
         "flavor": "", 
