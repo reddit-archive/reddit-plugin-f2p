@@ -248,7 +248,7 @@ r.f2p.Item.kinds = {
     shuffler: r.f2p.Item.extend({}, {
         applyEffect: function($el) {
             r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
-                 return text.replace(/[A-Za-z0-9]/g, function(chr) {
+                return text.replace(/[A-Za-z0-9]/g, function(chr) {
                     orig = chr.charCodeAt(0)
                     base = orig > 57 ? (orig > 90 ? 97 : 65) : 48
                     rot = orig + 13 - base
