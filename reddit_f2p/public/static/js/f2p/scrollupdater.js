@@ -21,6 +21,10 @@ r.ScrollUpdater = Backbone.View.extend({
     },
 
     _updateThings: function(ev) {
+        if (!this._elements.length) {
+            return
+        }
+
         var startTime = new Date()
 
         // update the current page of elements and half a page in the
