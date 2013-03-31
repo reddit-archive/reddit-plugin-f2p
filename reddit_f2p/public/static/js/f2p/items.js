@@ -91,6 +91,31 @@ r.f2p.Item.kinds = {
         }
     }),
 
+    discombobulation: r.f2p.Item.extend({
+        probability: .1,
+
+        applyPlayerEffect: function($el) {
+            $(document).on('mousedown', $.proxy(this, 'interceptClick'))
+        },
+
+        unapplyPlayerEffect: function($el) {
+            $(document).off('mousedown', $.proxy(this, 'interceptClick'))
+        },
+
+        interceptClick: function(ev) {
+            // only consider left clicks
+            if (ev.which == 1 && Math.random() < this.probability) {
+                if (confirm('Are you sure?')) {
+                    var $target = $(ev.target)
+                    if ($target.attr('href')) {
+                        window.location = $target.attr('href')
+                    }
+                    $target.click()
+                }
+            }
+        }
+    }),
+
     emphasis: r.f2p.Item.extend({}, {
         applyThingEffect: function($el) {
             r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
