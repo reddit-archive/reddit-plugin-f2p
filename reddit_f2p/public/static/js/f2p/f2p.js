@@ -42,7 +42,9 @@ r.f2p = {
     updateState: function(updates) {
         r.debug('updating f2p game state', updates)
 
-        r.f2p.gameStatus.set(updates.scores)
+        if (updates.status) {
+            r.f2p.gameStatus.set(updates.status)
+        }
 
         if (updates.inventory.add) {
             r.f2p.inventory.add(updates.inventory.add)

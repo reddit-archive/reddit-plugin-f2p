@@ -102,11 +102,12 @@ def on_request():
     if check_for_banana() and random.random() < 0.05:
         abort(503)
 
-    c.js_preload.set("#game_status", scores.get_game_status())
+    scoreboard = scores.get_game_status()
+    c.js_preload.set("#game_status", scoreboard)
 
     c.visible_effects = {}
     c.state_changes = {
-        "scores": collections.Counter(),
+        "status": scoreboard,
         "inventory": collections.defaultdict(list),
         "effects": collections.defaultdict(lambda:
                                            collections.defaultdict(list)),
