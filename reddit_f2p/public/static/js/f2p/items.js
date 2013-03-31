@@ -4,20 +4,6 @@ r.f2p.targetTypes = {
     'link': 'links'
 }
 
-r.f2p.Item = Backbone.Model.extend({
-    parse: function(response, options) {
-        attributes = Backbone.Model.prototype.parse.apply(this, [response, options])
-        attributes['use_on'] = _.map(attributes['targets'], function (t) { return r.f2p.targetTypes[t] || t })
-        return attributes
-    }
-}, {
-    getKind: function(kind) {
-        return r.f2p.Item.kinds[kind] || r.f2p.Item
-    },
-
-    applyEffect: function() {}
-})
-
 r.f2p.Inventory = Backbone.Collection.extend({
     url: '#inventory',
     model: function(attrs, options) {
@@ -46,6 +32,20 @@ r.f2p.Inventory = Backbone.Collection.extend({
             success: r.f2p.updateState
         })
     }
+})
+
+r.f2p.Item = Backbone.Model.extend({
+    parse: function(response, options) {
+        attributes = Backbone.Model.prototype.parse.apply(this, [response, options])
+        attributes['use_on'] = _.map(attributes['targets'], function (t) { return r.f2p.targetTypes[t] || t })
+        return attributes
+    }
+}, {
+    getKind: function(kind) {
+        return r.f2p.Item.kinds[kind] || r.f2p.Item
+    },
+
+    applyEffect: function() {}
 })
 
 r.f2p.Item.kinds = {
@@ -264,3 +264,138 @@ r.f2p.Item.kinds = {
     })
 }
 
+r.f2p.Effects = Backbone.Model.extend({
+    url: '#effects',
+
+    _touch: function(targetId) {
+        if (!this.has(targetId)) {
+            this.set(targetId, [])
+        }
+        return this.get(targetId)
+    },
+
+    add: function(targetId, kinds) {
+        var effects = this._touch(targetId)
+        r.f2p.utils.tupEach(kinds, function(kind) {
+            effects.push(kind)
+            this.trigger('add', targetId, kind)
+        }, this)
+    },
+
+    remove: function(targetId, kinds) {
+        var effects = this._touch(targetId)
+        r.f2p.utils.tupEach(kinds, function(kind) {
+            var idx = _.indexOf(effects, kind)
+            if (idx != -1) {
+                effects.splice(idx, 1)
+            }
+            this.trigger('remove', targetId, kind)
+        }, this)
+    }
+})
+
+r.f2p.EffectUpdater = r.ScrollUpdater.extend({
+    // todo: effect removals. save html in data
+    selector: '.thing',
+
+    initialize: function() {
+        this.model.on('add', this.apply, this)
+        this.model.on('remove', this.applyAll, this)
+    },
+
+    _target: function(target) {
+        if (_.isString(target)) {
+            return $('[data-fullname="' + target + '"]')
+        } else {
+            return $(target)
+        }
+    },
+
+    apply: function(target, kinds) {
+        r.f2p.utils.tupEach(kinds, function(kind) {
+            var $els = this._target(target),
+                itemKind = r.f2p.Item.getKind(kind)
+
+            _.each($els, function(el) {
+                itemKind.applyEffect($(el))
+            })
+        }, this)
+    },
+
+    reset: function(el) {
+        var $el = $(el),
+            oldHTML = $el.data('_pre_effects')
+        if (oldHTML) {
+            $el.html(oldHTML)
+        } else {
+            $el.data('_pre_effects', $el.html())
+        }
+    },
+
+    applyAll: function(target) {
+        var $els = this._target(target)
+        _.each($els, _.bind(this.reset, this))
+        var fullname = $els.data('fullname')
+        this.apply($els, this.model.get(fullname))
+    },
+
+    update: function($el) {
+        if ($el.data('_updated')) {
+            return
+        }
+        $el.data('_updated', true)
+        this.applyAll($el)
+    }
+})
+
+r.f2p.HatPile = Backbone.View.extend({
+    dims: {
+        width: 20,
+        height: 7,
+        xJitter: 3,
+        yJitter: 1,
+        rotJitter: 10
+    },
+
+    render: function() {
+        var pile = $('<span class="hats">'),
+            maxLeft = this.$el.width(),
+            curRow = 0,
+            curLeft = 0
+
+        _.each(this.options.hats, function() {
+            var hat = $('<span class="hat">')
+
+            hat.css({
+                position: 'absolute',
+                left: curLeft,
+                bottom: curRow * this.dims.height + _.random(this.dims.yJitter)
+            })
+
+            var rotation = _.random(-this.dims.rotJitter / 2, this.dims.rotJitter / 2),
+                transform = 'rotate(' + rotation + 'deg)'
+            hat.css({
+                '-webkit-transform': transform,
+                '-moz-transform': transform,
+                '-ms-transform': transform,
+                'transform': transform
+            })
+
+            pile.append(hat)
+
+            curLeft += this.dims.width + _.random(this.dims.xJitter)
+            if (curLeft + this.dims.width > maxLeft) {
+                curRow += 1
+                curLeft = 0
+            }
+        }, this)
+
+        var targetPos = this.$el.position()
+        pile.css({
+            position: 'absolute',
+            left: targetPos.left
+        })
+        this.$el.after(pile)
+        return this
+    }
+})
