@@ -337,9 +337,12 @@ r.f2p.Item.kinds = {
 
     torpor: r.f2p.Item.extend({}, {
         applyThingEffect: function($el) {
-            var textNodes = r.f2p.utils.textNodes($el.find('.md:first')),
-                textNode = textNodes[_.random(textNodes.length - 1)]
+            var textNodes = r.f2p.utils.textNodes($el.find('.md:first'))
+            if (!textNodes.length) {
+                return
+            }
 
+            var textNode = textNodes[_.random(textNodes.length - 1)]
             r.f2p.utils.replaceTextNode(textNode, function(text) {
                 var sentences = text.split('.'),
                     ts = Date.parse($el.find('.tagline time').attr('datetime')),
