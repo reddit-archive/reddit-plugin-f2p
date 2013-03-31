@@ -30,6 +30,9 @@ r.f2p = {
         this.effectUpdater = new r.f2p.EffectUpdater({
             model: this.pageEffects
         }).start()
+
+        this.myEffects = new r.f2p.PlayerEffects()
+        this.myEffects.fetch()
     },
 
     updateState: function(updates) {
@@ -57,6 +60,14 @@ r.f2p = {
             _.each(updates.effects.remove, function(kinds, targetId) {
                 r.f2p.pageEffects.remove(targetId, kinds)
             })
+        }
+
+        if (updates.myeffects.add) {
+            r.f2p.myEffects.add(updates.myeffects.add)
+        }
+
+        if (updates.myeffects.consume) {
+            r.f2p.myEffects.consume(updates.myeffects.consume)
         }
     }
 }

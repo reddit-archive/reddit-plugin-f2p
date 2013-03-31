@@ -39,7 +39,10 @@ r.f2p.Item = Backbone.Model.extend({
         attributes = Backbone.Model.prototype.parse.apply(this, [response, options])
         attributes['use_on'] = _.map(attributes['targets'], function (t) { return r.f2p.targetTypes[t] || t })
         return attributes
-    }
+    },
+
+    applyPlayerEffect: function() {},
+    unapplyPlayerEffect: function() {}
 }, {
     getKind: function(kind) {
         if (/_hat$/.test(kind)) {
@@ -422,5 +425,22 @@ r.f2p.HatPile = Backbone.View.extend({
             $el.data('HatPile', pile)
             return pile
         }
+    }
+})
+
+r.f2p.PlayerEffects = r.f2p.Inventory.extend({
+    url: '#myeffects',
+
+    initialize: function() {
+        this.on('add', this.applyEffect, this)
+        this.on('remove', this.unapplyEffect, this)
+    },
+
+    applyEffect: function(item) {
+        item.applyPlayerEffect()
+    },
+
+    unapplyEffect: function(item) {
+        item.unapplyPlayerEffect()
     }
 })

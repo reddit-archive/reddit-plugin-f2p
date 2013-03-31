@@ -76,7 +76,7 @@ def remove_effect(thing, effect):
             pass
     state_changes("effects")["remove"][thing._fullname].append(effect)
     if thing._fullname == c.user._fullname:
-        state_changes("myeffects")["remove"].append(effect)
+        state_changes("myeffects")["consume"].append(effect)
 
 
 def get_my_effects(user):
@@ -90,5 +90,5 @@ def clear_effects(thing):
     with mutate_key("effect_%s" % thing._fullname, type_=list) as effects:
         state_changes("effects")["remove"][thing._fullname].extend(effects)
         if thing._fullname == c.user._fullname:
-            state_changes("myeffects")["remove"].extend(effects)
+            state_changes("myeffects")["consume"].extend(effects)
         del effects[:]
