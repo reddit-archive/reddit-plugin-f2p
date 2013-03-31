@@ -55,6 +55,24 @@ r.f2p.Item = Backbone.Model.extend({
 })
 
 r.f2p.Item.kinds = {
+    abstinence: r.f2p.Item.extend({
+        applyPlayerEffect: function($el) {
+            $(document).on('mouseover', '.arrow', $.proxy(this, 'interceptVote'))
+        },
+
+        unapplyPlayerEffect: function($el) {
+            $(document).off('mouseover', '.arrow', $.proxy(this, 'interceptVote'))
+        },
+
+        interceptVote: function(ev) {
+            var $target = $(ev.target)
+            $target.prop('onclick', null)
+            $target.animate({opacity: 0}, function() {
+                $target.css('visibility', 'hidden')
+            })
+        }
+    }),
+
     antigravity: r.f2p.Item.extend({}, {
         applyThingEffect: function($el) {
             r.f2p.utils.replaceText($el.find('.usertext-body .md:first'), function(text) {
