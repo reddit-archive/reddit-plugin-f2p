@@ -458,7 +458,7 @@ r.f2p.EffectUpdater = r.ScrollUpdater.extend({
         var userId = parseInt(fullname.split('_')[1], 36),
             team = (userId % 2 == 0) ? 'red' : 'blue'
 
-        $author.before($('<span class="author-bauble team-' + team + '"></span>'))
+        $author.before($('<span class="author-bauble team-' + team + '" title="' + team + ' team"></span>'))
     },
 
     update: function($el) {
