@@ -176,6 +176,9 @@ class FreeToPlayApiController(RedditController):
         except inventory.NoSuchItemError:
             abort(400)
 
+        c.user.f2p = "participated"
+        c.user._commit()
+
         item = items.get_item(item_name)
         if not item.is_target_valid(target):
             abort(400)
