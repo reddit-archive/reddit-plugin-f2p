@@ -204,3 +204,14 @@ class Wand(Item):
             user_random_item = get_item(user_random_item_name)
             user_random_item.on_use(user, user)
         # TODO: messages?
+
+
+@registered_item
+class Caltrops(Item):
+    def on_use(self, user, target):
+        effects.add_effect(target, self.item_name)
+
+    def on_reply(self, user, target):
+        effector = effects.get_effector(self.item_name, target._fullname)
+        effects.remove_effect(target, self.item_name)
+        self.apply_damage_and_log(effector, target, [user])

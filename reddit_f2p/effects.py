@@ -2,6 +2,7 @@ import json
 
 from pylons import g, c
 
+from r2.models import Account
 from reddit_f2p import scores
 from reddit_f2p.utils import mutate_key, state_changes
 
@@ -39,6 +40,17 @@ def get_all_effects(fullnames):
         thing_effects = json.loads(effect_json)
         effects[fullname] = [effect for effector, effect in thing_effects]
     return effects
+
+
+def get_effector(effect, target_fullname):
+    # NOTE: this relies on localcache to prevent a second lookup, not that
+    # that would be the end of the world.
+    effects = g.f2pcache.get("effect_" + target_fullname, "[]")
+    effects = json.loads(effects)
+    for effector, eff in effects:
+        if eff == effect:
+            return Account._byID(effector, data=True)
+    return None
 
 
 def get_visible_effects(fullnames):
