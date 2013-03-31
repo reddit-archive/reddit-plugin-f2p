@@ -287,13 +287,13 @@ r.f2p.HatPile = Backbone.View.extend({
     },
 
     render: function() {
-        var pile = $('<div class="hats">'),
+        var pile = $('<span class="hats">'),
             maxLeft = this.$el.width(),
             curRow = 0,
             curLeft = 0
 
         _.each(this.options.hats, function() {
-            var hat = $('<div class="hat">')
+            var hat = $('<span class="hat">')
 
             hat.css({
                 position: 'absolute',
