@@ -42,6 +42,9 @@ r.f2p.Item = Backbone.Model.extend({
     }
 }, {
     getKind: function(kind) {
+        if (/_hat$/.test(kind)) {
+            kind = 'hat'
+        }
         return r.f2p.Item.kinds[kind] || r.f2p.Item
     },
 
@@ -121,6 +124,12 @@ r.f2p.Item.kinds = {
                         return wordSwaps[match]
                     })
             })
+        }
+    }),
+
+    hat: r.f2p.Item.extend({}, {
+        applyEffect: function($el, kind) {
+            r.f2p.HatPile.getPile($el).addHat(kind)
         }
     }),
 
@@ -296,7 +305,7 @@ r.f2p.Effects = Backbone.Model.extend({
 
 r.f2p.EffectUpdater = r.ScrollUpdater.extend({
     // todo: effect removals. save html in data
-    selector: '.thing',
+    selector: '.thing, .tagline .author',
 
     initialize: function() {
         this.model.on('add', this.apply, this)
@@ -317,7 +326,7 @@ r.f2p.EffectUpdater = r.ScrollUpdater.extend({
                 itemKind = r.f2p.Item.getKind(kind)
 
             _.each($els, function(el) {
-                itemKind.applyEffect($(el))
+                itemKind.applyEffect($(el), kind)
             })
         }, this)
     },
@@ -349,39 +358,41 @@ r.f2p.EffectUpdater = r.ScrollUpdater.extend({
 })
 
 r.f2p.HatPile = Backbone.View.extend({
+    tagName: 'span',
+    className: 'hats',
+
     dims: {
-        width: 20,
-        height: 7,
+        width: 24,
+        height: 15,
         xJitter: 3,
-        yJitter: 1,
-        rotJitter: 10
+        yJitter: 1
+    },
+
+    initialize: function() {
+        this.hats = []
+        this.render = _.debounce(this.render, 0)
+    },
+
+    addHat: function(kind) {
+        this.hats.push(kind)
+        this.render()
     },
 
     render: function() {
-        var pile = $('<span class="hats">'),
-            maxLeft = this.$el.width(),
+        var maxLeft = this.$el.width(),
             curRow = 0,
             curLeft = 0
 
-        _.each(this.options.hats, function() {
-            var hat = $('<span class="hat">')
+        this.$el.empty()
 
-            hat.css({
-                position: 'absolute',
-                left: curLeft,
-                bottom: curRow * this.dims.height + _.random(this.dims.yJitter)
-            })
+        var $stack = $('<span class="stack">')
 
-            var rotation = _.random(-this.dims.rotJitter / 2, this.dims.rotJitter / 2),
-                transform = 'rotate(' + rotation + 'deg)'
-            hat.css({
-                '-webkit-transform': transform,
-                '-moz-transform': transform,
-                '-ms-transform': transform,
-                'transform': transform
-            })
+        _.each(this.hats, function(kind, idx) {
+            var hat = $('<img class="hat">')
+                .attr('src', '/static/images/hat/' + kind + '.png')
+                .css('z-index', 100 + idx)
 
-            pile.append(hat)
+            $stack.prepend(hat)
 
             curLeft += this.dims.width + _.random(this.dims.xJitter)
             if (curLeft + this.dims.width > maxLeft) {
@@ -390,12 +401,20 @@ r.f2p.HatPile = Backbone.View.extend({
             }
         }, this)
 
-        var targetPos = this.$el.position()
-        pile.css({
-            position: 'absolute',
-            left: targetPos.left
-        })
-        this.$el.after(pile)
+        this.$el.append($stack)
         return this
+    }
+}, {
+    getPile: function($el) {
+        var existing = $el.data('HatPile')
+        if (existing) {
+            return existing
+        } else {
+            var pile = new r.f2p.HatPile()
+            $el
+                .before(pile.el)
+                .data('HatPile', pile)
+            return pile
+        }
     }
 })

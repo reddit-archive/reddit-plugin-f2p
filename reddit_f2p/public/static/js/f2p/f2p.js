@@ -30,13 +30,6 @@ r.f2p = {
         this.effectUpdater = new r.f2p.EffectUpdater({
             model: this.pageEffects
         }).start()
-
-        $('.tagline .author').each(function(idx, el) {
-            new r.f2p.HatPile({
-                el: el,
-                hats: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            }).render()
-        })
     },
 
     updateState: function(updates) {
