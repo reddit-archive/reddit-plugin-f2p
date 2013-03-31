@@ -1,8 +1,8 @@
 import json
 
-from reddit_f2p.utils import mutate_key
+from reddit_f2p.utils import mutate_key, state_changes
 
-from pylons import g, c
+from pylons import g
 
 
 class NoSuchItemError(Exception):
@@ -13,7 +13,7 @@ def add_to_inventory(user, item):
     """Add a given item-name to the user's inventory."""
     with mutate_key("inventory_%d" % user._id, type_=dict) as inventory:
         inventory[item] = inventory.get(item, 0) + 1
-    c.state_changes["inventory"]["add"].append(g.f2pitems[item])
+    state_changes("inventory")["add"].append(g.f2pitems[item])
 
 
 def consume_item(user, item):
@@ -27,7 +27,7 @@ def consume_item(user, item):
         if inventory[item] == 0:
             del inventory[item]
 
-    c.state_changes["inventory"]["consume"].append(item)
+    state_changes("inventory")["consume"].append(item)
 
 
 def _expand_inventory(inventory_dict):
@@ -46,6 +46,6 @@ def get_inventory(user):
 
 def clear_inventory(user):
     with mutate_key("inventory_%d" % user._id, type_=dict) as inventory:
-        c.state_changes["inventory"]["consume"].extend(
+        state_changes("inventory")["consume"].extend(
             _expand_inventory(inventory))
         inventory.clear()

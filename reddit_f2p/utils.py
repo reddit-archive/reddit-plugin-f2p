@@ -1,7 +1,8 @@
 import json
+import collections
 import contextlib
 
-from pylons import g
+from pylons import g, c
 
 
 @contextlib.contextmanager
@@ -21,3 +22,9 @@ def mutate_key(key, type_=dict):
         data = json.loads(raw_json) if raw_json else type_()
         yield data
         g.f2pcache.set(key, json.dumps(data))
+
+
+def state_changes(category):
+    if hasattr(c, "state_changes") and c.state_changes:
+        return c.state_changes[category]
+    return collections.defaultdict(list)

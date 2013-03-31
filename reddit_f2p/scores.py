@@ -4,6 +4,7 @@ from pylons import g, c
 
 from r2.lib.utils import tup
 from r2.models import Account
+from reddit_f2p.utils import state_changes
 
 
 TEAMS = {
@@ -43,7 +44,7 @@ def incr_score(team, delta):
     score_key = 'score_%s' % team
     g.f2pcache.add(score_key, 0)
     g.f2pcache.incr(score_key, delta=delta)
-    c.state_changes["status"][team + "_score"] += delta
+    state_changes("scores")[team] += delta
 
 
 def _get_thing_userid(thing):

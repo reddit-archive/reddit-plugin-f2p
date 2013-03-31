@@ -3,7 +3,7 @@ import json
 from pylons import g, c
 
 from reddit_f2p import scores
-from reddit_f2p.utils import mutate_key
+from reddit_f2p.utils import mutate_key, state_changes
 
 
 def is_effect_visible(effector, effect_item):
@@ -26,10 +26,10 @@ def add_effect(thing, effect):
     """Apply an effect to a thing."""
     with mutate_key("effect_%s" % thing._fullname, type_=list) as effects:
         effects.append((c.user._id, effect))
-    c.state_changes["effects"]["add"][thing._fullname].append(effect)
+    state_changes("effects")["add"][thing._fullname].append(effect)
 
     if thing._fullname == c.user._fullname:
-        c.state_changes["myeffects"]["add"].append(g.f2pitems[effect])
+        state_changes("myeffects")["add"].append(g.f2pitems[effect])
 
 
 def get_all_effects(fullnames):
@@ -62,9 +62,9 @@ def remove_effect(thing, effect):
             effects.remove(effect)
         except ValueError:
             pass
-    c.state_changes["effects"]["remove"][thing._fullname].append(effect)
+    state_changes("effects")["remove"][thing._fullname].append(effect)
     if thing._fullname == c.user._fullname:
-        c.state_changes["myeffects"]["remove"].append(effect)
+        state_changes("myeffects")["remove"].append(effect)
 
 
 def get_my_effects(user):
@@ -76,7 +76,7 @@ def get_my_effects(user):
 
 def clear_effects(thing):
     with mutate_key("effect_%s" % thing._fullname, type_=list) as effects:
-        c.state_changes["effects"]["remove"][thing._fullname].extend(effects)
+        state_changes("effects")["remove"][thing._fullname].extend(effects)
         if thing._fullname == c.user._fullname:
-            c.state_changes["myeffects"]["remove"].extend(effects)
+            state_changes("myeffects")["remove"].extend(effects)
         del effects[:]
