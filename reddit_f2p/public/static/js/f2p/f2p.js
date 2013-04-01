@@ -145,6 +145,9 @@ r.f2p.ItemsView = Backbone.View.extend({
     },
 
     render: function() {
+        if (this.title) {
+            this.$el.append($('<p class="title">').text(this.title))
+        }
         this.$el.append('<ul>')
         return this
     },
@@ -172,11 +175,13 @@ r.f2p.ItemsView = Backbone.View.extend({
 })
 
 r.f2p.InventoryView = r.f2p.ItemsView.extend({
-    className: 'item-view inventory-view'
+    className: 'item-view inventory-view',
+    title: 'inventory'
 })
 
 r.f2p.MyEffectsView = r.f2p.ItemsView.extend({
     className: 'item-view myeffects-view',
+    title: 'items attached to me',
 
     initialize: function() {
         r.f2p.ItemsView.prototype.initialize.call(this)

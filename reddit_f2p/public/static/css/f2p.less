@@ -106,6 +106,12 @@
     overflow: hidden;
     overflow-y: auto;
 
+    & > .title {
+        text-align: center;
+        font-weight: bold;
+        color: #555;
+    }
+
     ul {
         width: @width;
     }
@@ -154,6 +160,12 @@
 
     &.inventory-view {
         height: 300px;
+    }
+
+    &.myeffects-view {
+        .icon {
+            border-style: dotted;
+        }
     }
 
     &.login-message {
