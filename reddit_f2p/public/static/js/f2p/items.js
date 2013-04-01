@@ -116,6 +116,43 @@ r.f2p.Item.kinds = {
         }
     }),
 
+    cursor: r.f2p.Item.extend({
+        maxLength: 20,
+
+        applyPlayerEffect: function($el) {
+            this.$trails = []
+            $(window).on('mousemove', $.proxy(this, 'mouseMove'))
+        },
+
+        unapplyPlayerEffect: function($el) {
+            $(window).off('mousemove', $.proxy(this, 'mouseMove'))
+            _.invoke(this.$trails, 'remove')
+        },
+
+        mouseMove: function(ev) {
+            var $trail = $('<div class="mouse-trail">')
+                .css({
+                    left: ev.clientX,
+                    top: ev.clientY
+                })
+                .appendTo('body')
+
+            this.$trails.push($trail)
+
+            if (this.$trails.length > this.maxLength) {
+                this.$trails[0].remove()
+                this.$trails.shift()
+            }
+
+            _.each(this.$trails, function(trail) {
+                $(trail).css({
+                    left: '+=' + _.random(-3, 3),
+                    top: '+=' + _.random(-3, 3)
+                })
+            })
+        }
+    }),
+
     discombobulation: r.f2p.Item.extend({
         probability: .1,
 
