@@ -51,6 +51,19 @@ def is_eligible_request():
         return False
 
 
+def choose_random_item(keep_fn=None):
+    item_class = weighted_lottery(g.live_config["f2p_rarity_weights"])
+    items_in_class = [i["kind"] for i in g.f2pitems.itervalues()
+                      if i.get("rarity", "common") == item_class]
+
+    if keep_fn:
+        available_items = [i for i in items_in_class if keep_fn(i)]
+    else:
+        available_items = items_in_class
+
+    return random.choice(available_items)
+
+
 def drop_item():
     """Choose an item and add it to the user's inventory.
 
@@ -60,9 +73,7 @@ def drop_item():
 
     """
 
-    item_class = weighted_lottery(g.live_config["f2p_rarity_weights"])
-    item_name = random.choice([i["kind"] for i in g.f2pitems.itervalues()
-                               if i.get("rarity", "common") == item_class])
+    item_name = choose_random_item()
 
     g.log.debug("dropping item %r for %r", item_name, c.user.name)
     g.stats.event_count("f2p.drop", item_name)
@@ -174,8 +185,9 @@ def coalesce_effects_for_preload(js_preload):
 def gild_comment_effect(comment, gilder):
     """Add an effect to the gilded comment author."""
     author = Account._byID(comment.author_id, data=True)
-    g.log.debug('%s got gilded, give them an effect!' % author.name)
-    pass
+    hat = choose_random_item(lambda i: i.endswith("_hat"))
+    item = items.get_item(hat)
+    item.on_use(c.user, author)
 
 
 @hooks.on("comment.new")
