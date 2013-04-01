@@ -1,5 +1,10 @@
 r.f2p = {
     init: function() {
+        if (!$('#header-img').length) {
+            // don't display on pages without a header (toolbar, etc)
+            return
+        }
+
         this.myEffects = new r.f2p.PlayerEffects()
         this.inventory = new r.f2p.Inventory()
         this.inventoryPanel = new r.f2p.Panel({
