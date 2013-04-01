@@ -1,6 +1,6 @@
 {
     "abstinence": {
-        "damage": 1, 
+        "damage": 0, 
         "description": "<p>You may not vote while the ring is in your possion.</p>\n", 
         "flavor": "<p>Over 100% effective at preventing vote-communicated diseases.</p>\n", 
         "rarity": "artifact", 
@@ -10,9 +10,20 @@
         "title": "Purest Ring of Abstain-ence", 
         "visibility": "self"
     }, 
+    "admin_hat": {
+        "damage": 0, 
+        "description": "", 
+        "flavor": "<p>It&#39;s 9 AM and I haven&#39;t slept. Too tired to think of something clever. Bacon.</p>\n", 
+        "rarity": "never", 
+        "targets": [
+            "account"
+        ], 
+        "title": "Respect My Authoritah!", 
+        "visibility": "all"
+    }, 
     "antigravity": {
         "damage": 1, 
-        "description": "<p>Random words will float to the top of their line.</p>\n", 
+        "description": "", 
         "flavor": "<p>Infamous for leading to several squabbles and one knife fight in <a href=\"/r/math\">/r/math</a>.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
@@ -54,26 +65,15 @@
         "title": "Banana of Downtime", 
         "visibility": "self"
     }, 
-    "banana_hat": {
+    "banana_cap_hat": {
         "damage": 0, 
         "description": "", 
-        "flavor": "<p>Sure-sure, the guy in the $600 banana suit? C&#39;MON!</p>\n", 
-        "rarity": "", 
+        "flavor": "<p>C&#39;MON!!!</p>\n", 
+        "rarity": "uncommon", 
         "targets": [
             "account"
         ], 
-        "title": "", 
-        "visibility": "all"
-    }, 
-    "barbershop_hat": {
-        "damage": 0, 
-        "description": "", 
-        "flavor": "", 
-        "rarity": "", 
-        "targets": [
-            "account"
-        ], 
-        "title": "", 
+        "title": "Mr. Banana Grabber", 
         "visibility": "all"
     }, 
     "baseball_cap_hat": {
@@ -142,7 +142,7 @@
     }, 
     "cdgl": {
         "damage": 2, 
-        "description": "<p>Removes vowels from a comment.</p>\n", 
+        "description": "", 
         "flavor": "<p>Dvlpd ftr yrs f nthcl, ghstly rsrch n <a href=\"/r/nmlswthtncks\">/r/nmlswthtncks</a>.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
@@ -164,7 +164,7 @@
     }, 
     "chirality": {
         "damage": 1, 
-        "description": "<p>What was on the left is now on the right.</p>\n", 
+        "description": "", 
         "flavor": "<p>Hey, look over there!</p>\n", 
         "rarity": "common", 
         "targets": [
@@ -176,12 +176,12 @@
     "clap_hat": {
         "damage": 0, 
         "description": "", 
-        "flavor": "", 
-        "rarity": "", 
+        "flavor": "<p>Now THAT&#39;S a million dollar hat!</p>\n", 
+        "rarity": "artifact", 
         "targets": [
             "account"
         ], 
-        "title": "", 
+        "title": "Werbenjagermangensen", 
         "visibility": "all"
     }, 
     "clown_hair_hat": {
@@ -197,7 +197,7 @@
     }, 
     "compensation": {
         "damage": 3, 
-        "description": "<p>Your victim&#39;s text will increase, however their name must decrease as well.</p>\n", 
+        "description": "", 
         "flavor": "<p>Swinging the blade emits the sound of a large, unmuffled motorcycle engine.</p>\n", 
         "rarity": "rare", 
         "targets": [
@@ -219,7 +219,7 @@
     }, 
     "cruise": {
         "damage": 1, 
-        "description": "<p>Replaces comments with Tom Cruise.</p>\n", 
+        "description": "", 
         "flavor": "<p>Choosey moms choose Cruise.</p>\n", 
         "rarity": "common", 
         "targets": [
@@ -239,15 +239,6 @@
         "title": "Wand of Cursory Gestures", 
         "visibility": "all"
     }, 
-    "daystar": {
-        "damage": 1, 
-        "description": "<p>Your target&#39;s display will brighten.</p>\n", 
-        "flavor": "<p>My eyes!</p>\n", 
-        "rarity": "rare", 
-        "targets": [], 
-        "title": "Blinding Saber of the Daystar", 
-        "visibility": "self"
-    }, 
     "discombobulation": {
         "damage": 3, 
         "description": "<p>Your victim will be bombarded with confirmation dialogs.</p>\n", 
@@ -257,17 +248,6 @@
             "account"
         ], 
         "title": "Boxing Gloves of Discombobulation", 
-        "visibility": "self"
-    }, 
-    "dowser": {
-        "damage": -3, 
-        "description": "<p>Detects booby-traps that have been placed on comments.  Use it on a comment to disarm the trap.</p>\n", 
-        "flavor": "<p>The trusty RDT-651.  Though you suspect it is just filled with lint and sauce tartare, it sure does the job.</p>\n", 
-        "rarity": "rare", 
-        "targets": [
-            "usertext"
-        ], 
-        "title": "Suspiciously Functional Booby-Trap Dowser", 
         "visibility": "self"
     }, 
     "dunce_cap_hat": {
@@ -294,7 +274,7 @@
     }, 
     "emphasis": {
         "damage": 1, 
-        "description": "<p>Makes certain words more important than others.</p>\n", 
+        "description": "", 
         "flavor": "<p>Insert random emphasis quip <strong>here</strong>.</p>\n", 
         "rarity": "common", 
         "targets": [
@@ -305,24 +285,13 @@
     }, 
     "english": {
         "damage": 1, 
-        "description": "<p>Translates proper English into proper Internet English.</p>\n", 
+        "description": "", 
         "flavor": "<p>Her Britannic Majesty&#39;s Secretary of State Requests and requires in the Name of Her Majesty all those whom it may concern to allow the bearer to pass freely without let or hindrance, and to afford the bearer such assistance and protection as may be necessary.</p>\n", 
         "rarity": "common", 
         "targets": [
             "usertext"
         ], 
         "title": "Royal Sceptre of the Queen's English", 
-        "visibility": "all"
-    }, 
-    "fedora_green_hat": {
-        "damage": 0, 
-        "description": "", 
-        "flavor": "<p>I&#39;m wearing my green fedora. For Dora, for Dora.</p>\n", 
-        "rarity": "artifact", 
-        "targets": [
-            "account"
-        ], 
-        "title": "My Green Fedora", 
         "visibility": "all"
     }, 
     "fedora_hat": {
@@ -345,6 +314,17 @@
             "account"
         ], 
         "title": "Millionaires' Headpiece", 
+        "visibility": "all"
+    }, 
+    "green_fedora_hat": {
+        "damage": 0, 
+        "description": "", 
+        "flavor": "<p>I&#39;m wearing my green fedora. For Dora, for Dora.</p>\n", 
+        "rarity": "artifact", 
+        "targets": [
+            "account"
+        ], 
+        "title": "My Green Fedora", 
         "visibility": "all"
     }, 
     "green_mushroom_hat": {
@@ -393,7 +373,7 @@
     }, 
     "hatchet": {
         "damage": 2, 
-        "description": "<p>Collapses a comment into one paragraph.</p>\n", 
+        "description": "", 
         "flavor": "<p>Preferred weapon of the uninitiated <a href=\"/r/IAmA\">/r/IAmA</a> poster.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
@@ -404,7 +384,7 @@
     }, 
     "inebriation": {
         "damage": 1, 
-        "description": "<p>Causes your victim to hiccup and slur their words.</p>\n", 
+        "description": "", 
         "flavor": "<p>Zyxwvutsrqponmlkjihgfedcba...</p>\n", 
         "rarity": "common", 
         "targets": [
@@ -415,7 +395,7 @@
     }, 
     "intolerance": {
         "damage": 3, 
-        "description": "<p>Drastically increases the amount of ire a comment conveys.</p>\n", 
+        "description": "", 
         "flavor": "<p>Rumored to have been forged in the fires of eBay.</p>\n", 
         "rarity": "rare", 
         "targets": [
@@ -426,7 +406,7 @@
     }, 
     "inversion": {
         "damage": 3, 
-        "description": "<p>Your target will be inverted 180\u00b0.</p>\n", 
+        "description": "", 
         "flavor": "<p>Objects in orb may appear more Australian than they actually are.</p>\n", 
         "rarity": "rare", 
         "targets": [
@@ -447,20 +427,9 @@
         "title": "Time For Adventure!", 
         "visibility": "all"
     }, 
-    "key": {
-        "damage": 0, 
-        "description": "<p>Two Launch Keys must be applied to a comment before it can be targeted by a Nuke.</p>\n", 
-        "flavor": "<p>The key has &quot;Do Not Duplicate&quot; clearly etched in the bow. You take a moment to marvel at this epitome of security.</p>\n", 
-        "rarity": "artifact", 
-        "targets": [
-            "usertext"
-        ], 
-        "title": "Launch Key", 
-        "visibility": "all"
-    }, 
     "knuckles": {
         "damage": 2, 
-        "description": "<p>Rotates your victims vowels by one vowel-position.</p>\n", 
+        "description": "", 
         "flavor": "<p>Right then. All together now.. aaand one step to the right. Marvelous.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
@@ -482,7 +451,7 @@
     }, 
     "medal": {
         "damage": 1, 
-        "description": "<p>Exclaims &quot;Excelsior!&quot; at the end of a comment.</p>\n", 
+        "description": "", 
         "flavor": "<p>Some people say that Manbearpig isn&#39;t real. Well, I&#39;m here to tell you now, Manbearpig is very real, and he most certainly exists.</p>\n", 
         "rarity": "common", 
         "targets": [
@@ -503,28 +472,6 @@
         "title": "Wistful Panpipe Melodies", 
         "visibility": "all"
     }, 
-    "military_hat": {
-        "damage": 0, 
-        "description": "", 
-        "flavor": "<p>Allows you to stand in one place for an unbelieveable amount of time.</p>\n", 
-        "rarity": "", 
-        "targets": [
-            "account"
-        ], 
-        "title": "Sgt. First Class Hat", 
-        "visibility": "all"
-    }, 
-    "minecraft_hat": {
-        "damage": 0, 
-        "description": "", 
-        "flavor": "", 
-        "rarity": "", 
-        "targets": [
-            "account"
-        ], 
-        "title": "Steve", 
-        "visibility": "all"
-    }, 
     "mortar": {
         "damage": 0, 
         "description": "<p>Deals damage to a comment and its surroundings.</p>\n", 
@@ -536,35 +483,15 @@
         "title": "Cowardly Mortar of Indiscriminateness", 
         "visibility": "all"
     }, 
-    "nightfall": {
-        "damage": 1, 
-        "description": "<p>Your target&#39;s display will dim.</p>\n", 
-        "flavor": "<p>All that sunlight is cooking your brain.</p>\n", 
-        "rarity": "rare", 
-        "targets": [], 
-        "title": "Enveloping Cloak of Nightfall", 
-        "visibility": "all"
-    }, 
     "nostalgia": {
         "damage": 2, 
-        "description": "<p>Brings back memories of reddit mold\u2122.</p>\n", 
+        "description": "", 
         "flavor": "<p>&quot;cl\u1ebdan m\u1ebd up!&quot; ... ugh</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "usertext"
         ], 
         "title": "Moldy Boot of Nostalgia", 
-        "visibility": "all"
-    }, 
-    "nuke": {
-        "damage": 0, 
-        "description": "<p>Deals massive damage to a comment and its surroundings.  Two Launch Keys must be applied to a comment before it can be targeted by a Nuke.</p>\n", 
-        "flavor": "<p>Today is a good day to die.</p>\n", 
-        "rarity": "artifact", 
-        "targets": [
-            "usertext.armed"
-        ], 
-        "title": "Nucular and Present Danger", 
         "visibility": "all"
     }, 
     "overpowered": {
@@ -580,7 +507,7 @@
     }, 
     "palindrome": {
         "damage": 2, 
-        "description": "<p>Makes a palindrome of your vicitim&#39;s name.</p>\n", 
+        "description": "", 
         "flavor": "<p>The question is: how does the mirror know to get the left and right mixed up, but not the up and the down?</p>\n", 
         "rarity": "uncommon", 
         "targets": [
@@ -601,37 +528,15 @@
         "title": "Huge Syringe of Soothing Panacea", 
         "visibility": "all"
     }, 
-    "party_hat": {
-        "damage": 0, 
-        "description": "", 
-        "flavor": "", 
-        "rarity": "", 
-        "targets": [
-            "account"
-        ], 
-        "title": "", 
-        "visibility": "all"
-    }, 
     "patriotism": {
         "damage": 1, 
-        "description": "<p>Removes words that could compromise National Security.</p>\n", 
+        "description": "", 
         "flavor": "<p>A small label bearing the name &quot;D Cheney&quot; can be found on the inside of each spool.</p>\n", 
         "rarity": "common", 
         "targets": [
             "usertext"
         ], 
         "title": "Redacting Tape of Patriotism", 
-        "visibility": "all"
-    }, 
-    "pimp_hat": {
-        "damage": 0, 
-        "description": "", 
-        "flavor": "<p>Wait, I guess it&#39;s Lion now, huh?</p>\n", 
-        "rarity": "artifact", 
-        "targets": [
-            "account"
-        ], 
-        "title": "The D-O-double-G", 
         "visibility": "all"
     }, 
     "pope_hat": {
@@ -669,7 +574,7 @@
     }, 
     "rampart": {
         "damage": 2, 
-        "description": "<p>Keeps the conversation on the topic of Rampart.</p>\n", 
+        "description": "", 
         "flavor": "<p>The siege tower bears the damage of overuse and poor timing.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
@@ -735,7 +640,7 @@
     }, 
     "scrambler": {
         "damage": 2, 
-        "description": "<p>Causes a link&#39;s score to randomly change.</p>\n", 
+        "description": "", 
         "flavor": "<p>Over 0090 sold!</p>\n", 
         "rarity": "uncommon", 
         "targets": [
@@ -746,7 +651,7 @@
     }, 
     "shrouding": {
         "damage": 3, 
-        "description": "<p>Makes a comment significantly harder to read.</p>\n", 
+        "description": "", 
         "flavor": "<p>Known to have instigated several wars during the shitty-LCD era.</p>\n", 
         "rarity": "rare", 
         "targets": [
@@ -757,7 +662,7 @@
     }, 
     "shuffler": {
         "damage": 2, 
-        "description": "<p>Applies an unbreakable cipher to the target text.</p>\n", 
+        "description": "", 
         "flavor": "<p>You spot the logo of your bank on the underside of the cylinder.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
@@ -766,35 +671,26 @@
         "title": "Cryptographic Shuffler of Vzcrargenoyr Boshfpngvba", 
         "visibility": "all"
     }, 
-    "skull_hat": {
+    "snoop_hat": {
         "damage": 0, 
         "description": "", 
-        "flavor": "", 
-        "rarity": "", 
+        "flavor": "<p>Wait, I guess it&#39;s Lion now, huh?</p>\n", 
+        "rarity": "artifact", 
         "targets": [
             "account"
         ], 
-        "title": "", 
+        "title": "The D-O-double-G", 
         "visibility": "all"
     }, 
-    "spikey_hat": {
+    "spock_ears_hat": {
         "damage": 0, 
         "description": "", 
-        "flavor": "", 
-        "rarity": "", 
+        "flavor": "<p>Dif-tor heh smusma.</p>\n", 
+        "rarity": "rare", 
         "targets": [
             "account"
         ], 
-        "title": "", 
-        "visibility": "all"
-    }, 
-    "spock_hat": {
-        "damage": 0, 
-        "description": "", 
-        "flavor": "", 
-        "rarity": "", 
-        "targets": [], 
-        "title": "", 
+        "title": "Vulcan Phonic Receptors", 
         "visibility": "all"
     }, 
     "stainless_pot_hat": {
@@ -819,17 +715,6 @@
         "title": "Amorous Vomitor", 
         "visibility": "all"
     }, 
-    "ten_gallon_hat": {
-        "damage": 0, 
-        "description": "", 
-        "flavor": "", 
-        "rarity": "", 
-        "targets": [
-            "account"
-        ], 
-        "title": "", 
-        "visibility": "all"
-    }, 
     "top_hat": {
         "damage": 0, 
         "description": "", 
@@ -843,7 +728,7 @@
     }, 
     "torpor": {
         "damage": 1, 
-        "description": "<p>Shoots an arrow in your target&#39;s knee.</p>\n", 
+        "description": "", 
         "flavor": "<p>The prod and bow string appear severely worn. You begin to wonder if it will even fire anymore.</p>\n", 
         "rarity": "common", 
         "targets": [
@@ -875,7 +760,7 @@
         "visibility": "all"
     }, 
     "wand": {
-        "damage": 1, 
+        "damage": 3, 
         "description": "<p>Affects your target with a random affliction. Prone to backfiring.</p>\n", 
         "flavor": "<p>What could possibly go wrong?</p>\n", 
         "rarity": "rare", 
