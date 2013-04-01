@@ -25,7 +25,7 @@
         "damage": 1, 
         "description": "", 
         "flavor": "<p>Infamous for leading to several squabbles and one knife fight in <a href=\"/r/math\">/r/math</a>.</p>\n", 
-        "rarity": "uncommon", 
+        "rarity": "artifact", 
         "targets": [
             "usertext"
         ], 
@@ -103,7 +103,9 @@
         "description": "", 
         "flavor": "<p>This cap can&#39;t search the web, drive a car, or make the wet dog smell go away, but it can keep your noggin cool!</p>\n", 
         "rarity": "common", 
-        "targets": [], 
+        "targets": [
+            "account"
+        ], 
         "title": "Computerized Cranial Cooling Cap", 
         "visibility": "all"
     }, 
@@ -144,7 +146,7 @@
         "damage": 2, 
         "description": "", 
         "flavor": "<p>Dvlpd ftr yrs f nthcl, ghstly rsrch n <a href=\"/r/nmlswthtncks\">/r/nmlswthtncks</a>.</p>\n", 
-        "rarity": "uncommon", 
+        "rarity": "rare", 
         "targets": [
             "usertext"
         ], 
@@ -221,7 +223,7 @@
         "damage": 1, 
         "description": "", 
         "flavor": "<p>Choosey moms choose Cruise.</p>\n", 
-        "rarity": "common", 
+        "rarity": "never", 
         "targets": [
             "usertext"
         ], 
@@ -243,7 +245,7 @@
         "damage": 3, 
         "description": "<p>Your victim will be bombarded with confirmation dialogs.</p>\n", 
         "flavor": "<p>What say you to a spot of pugilism, old bean?</p>\n", 
-        "rarity": "rare", 
+        "rarity": "artifact", 
         "targets": [
             "account"
         ], 
@@ -353,7 +355,7 @@
         "damage": 0, 
         "description": "<p>Deals damage to a comment and its surroundings.</p>\n", 
         "flavor": "<p>O LORD, bless this Thy hand grenade that with it Thou mayest blow Thine enemies to tiny bits, in Thy mercy.</p>\n", 
-        "rarity": "artifact", 
+        "rarity": "never", 
         "targets": [
             "usertext"
         ], 
@@ -408,7 +410,7 @@
         "damage": 3, 
         "description": "", 
         "flavor": "<p>Objects in orb may appear more Australian than they actually are.</p>\n", 
-        "rarity": "rare", 
+        "rarity": "never", 
         "targets": [
             "usertext", 
             "account"
@@ -431,7 +433,7 @@
         "damage": 2, 
         "description": "", 
         "flavor": "<p>Right then. All together now.. aaand one step to the right. Marvelous.</p>\n", 
-        "rarity": "uncommon", 
+        "rarity": "rare", 
         "targets": [
             "usertext"
         ], 
@@ -476,7 +478,7 @@
         "damage": 0, 
         "description": "<p>Deals damage to a comment and its surroundings.</p>\n", 
         "flavor": "<p>Can also be used to obliterate herbs and spices into a vibrant m\u00e9lange.</p>\n", 
-        "rarity": "artifact", 
+        "rarity": "never", 
         "targets": [
             "usertext"
         ], 
@@ -532,7 +534,7 @@
         "damage": 1, 
         "description": "", 
         "flavor": "<p>A small label bearing the name &quot;D Cheney&quot; can be found on the inside of each spool.</p>\n", 
-        "rarity": "common", 
+        "rarity": "rare", 
         "targets": [
             "usertext"
         ], 
@@ -664,7 +666,7 @@
         "damage": 2, 
         "description": "", 
         "flavor": "<p>You spot the logo of your bank on the underside of the cylinder.</p>\n", 
-        "rarity": "uncommon", 
+        "rarity": "never", 
         "targets": [
             "usertext"
         ], 
@@ -730,7 +732,7 @@
         "damage": 1, 
         "description": "", 
         "flavor": "<p>The prod and bow string appear severely worn. You begin to wonder if it will even fire anymore.</p>\n", 
-        "rarity": "common", 
+        "rarity": "rare", 
         "targets": [
             "usertext"
         ], 
