@@ -1,7 +1,7 @@
 {
     "abstinence": {
         "damage": 0, 
-        "description": "<p>You may not vote while the ring is in your possion.</p>\n", 
+        "description": "<p>You may not vote while the ring is in your possession.</p>\n", 
         "flavor": "<p>Over 100% effective at preventing vote-communicated diseases.</p>\n", 
         "rarity": "artifact", 
         "targets": [
