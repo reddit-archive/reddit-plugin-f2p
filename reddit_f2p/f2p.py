@@ -229,6 +229,6 @@ def monkeypatch():
     def is_contributor_with_teams(sr, user):
         sr_team = g.team_subreddits.get(sr.name.lower())
         if sr_team:
-            return sr_team == scores.get_user_team(c.user)
+            return sr_team == scores.get_user_team(user)
         return orig_is_contributor(sr, user)
     Subreddit.is_contributor = is_contributor_with_teams
