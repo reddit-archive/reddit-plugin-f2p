@@ -8,7 +8,10 @@ from reddit_f2p import inventory, effects, scores, gamelog
 
 from r2.lib.comment_tree import get_comment_tree
 from r2.models import Account, Comment, Link
-from r2.models.admintools import send_system_message
+
+
+def send_system_message(*args, **kwargs):
+    pass
 
 
 ITEMS = {}
