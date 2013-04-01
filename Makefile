@@ -1,8 +1,8 @@
-all: images
+nothing:
 
 clean: clean_images
 
-static:
+static: images
 
 IMAGES_DIR = reddit_f2p/public/static/images
 SMALL_IMAGES_DIR = $(IMAGES_DIR)/sm/
