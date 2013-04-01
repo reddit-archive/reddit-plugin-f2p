@@ -58,7 +58,7 @@
         "damage": 3, 
         "description": "<p>reddit will randomly have an emergency downtime for your victim only.</p>\n", 
         "flavor": "<p>Personally, I prefer pickles.</p>\n", 
-        "rarity": "rare", 
+        "rarity": "never", 
         "targets": [
             "account"
         ], 
@@ -146,7 +146,7 @@
         "damage": 2, 
         "description": "", 
         "flavor": "<p>Dvlpd ftr yrs f nthcl, ghstly rsrch n <a href=\"/r/nmlswthtncks\">/r/nmlswthtncks</a>.</p>\n", 
-        "rarity": "rare", 
+        "rarity": "never", 
         "targets": [
             "usertext"
         ], 
@@ -377,7 +377,7 @@
         "damage": 2, 
         "description": "", 
         "flavor": "<p>Preferred weapon of the uninitiated <a href=\"/r/IAmA\">/r/IAmA</a> poster.</p>\n", 
-        "rarity": "uncommon", 
+        "rarity": "never", 
         "targets": [
             "usertext"
         ], 
@@ -433,7 +433,7 @@
         "damage": 2, 
         "description": "", 
         "flavor": "<p>Right then. All together now.. aaand one step to the right. Marvelous.</p>\n", 
-        "rarity": "rare", 
+        "rarity": "never", 
         "targets": [
             "usertext"
         ], 
@@ -489,7 +489,7 @@
         "damage": 2, 
         "description": "", 
         "flavor": "<p>&quot;cl\u1ebdan m\u1ebd up!&quot; ... ugh</p>\n", 
-        "rarity": "uncommon", 
+        "rarity": "never", 
         "targets": [
             "usertext"
         ], 
@@ -578,7 +578,7 @@
         "damage": 2, 
         "description": "", 
         "flavor": "<p>The siege tower bears the damage of overuse and poor timing.</p>\n", 
-        "rarity": "uncommon", 
+        "rarity": "rare", 
         "targets": [
             "usertext"
         ], 
@@ -765,7 +765,7 @@
         "damage": 3, 
         "description": "<p>Affects your target with a random affliction. Prone to backfiring.</p>\n", 
         "flavor": "<p>What could possibly go wrong?</p>\n", 
-        "rarity": "rare", 
+        "rarity": "never", 
         "targets": [], 
         "title": "Shonky Wand", 
         "visibility": "all"
