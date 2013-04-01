@@ -278,4 +278,12 @@ class Nuke(ChildKiller):
 
 @registered_item
 class Handgrenade(ChildKiller):
-    pass
+    def on_use(self, user, target):
+        all_effects = effects.get_all_effects([user._fullname])
+        user_effects = all_effects.get(user._fullname, [])
+
+        ITEM_NAME = "python_rabbit_hat"
+        if ITEM_NAME not in user_effects:
+            effects.add_effect(effector=user, thing=user, effect=ITEM_NAME)
+
+        super(Handgrenade, self).on_use(user, target)
