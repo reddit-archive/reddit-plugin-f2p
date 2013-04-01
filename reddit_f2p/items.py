@@ -1,3 +1,4 @@
+import itertools
 import random
 import re
 
@@ -5,6 +6,7 @@ from pylons import g
 
 from reddit_f2p import inventory, effects, scores, gamelog
 
+from r2.lib.comment_tree import get_comment_tree
 from r2.models import Account, Comment, Link
 from r2.models.admintools import send_system_message
 
@@ -223,4 +225,57 @@ class Caltrops(Trap):
 
 @registered_item
 class Propinquity(Trap):
+    pass
+
+
+class ChildKiller(Item):
+    direct_damage = 3
+    child_damage = 2
+    grandchild_damage = 1
+
+    def on_use(self, user, target):
+        link = Link._byID(target.link_id)
+        comment_tree = get_comment_tree(link)
+        child_ids = comment_tree.tree[target._id]
+        grandchild_ids = []
+        for child_id in child_ids:
+            grandchild_ids.extend(comment_tree.tree[child_id])
+
+        comments = Comment._byID(child_ids + grandchild_ids, data=True,
+                                 return_dict=True)
+        children = [comments[cid] for cid in child_ids]
+        grandchildren = [comments[cid] for cid in grandchild_ids]
+
+        for comment in itertools.chain([target], children, grandchildren):
+            effects.add_effect(user, comment, self.item_name)
+
+        self.apply_damage_and_log(user, [target], self.direct_damage)
+        self.apply_damage_and_log(user, children, self.child_damage)
+        self.apply_damage_and_log(user, grandchildren, self.grandchild_damage)
+
+    def apply_damage_and_log(self, user, comments, damage):
+        for comment in comments:
+            points = scores.apply_damage([comment], damage)
+            gamelog.GameLogEntry.create(
+                user._fullname,
+                comment._fullname,
+                self.item_name,
+                points,
+            )
+
+
+@registered_item
+class Mortar(ChildKiller):
+    pass
+
+
+@registered_item
+class Nuke(ChildKiller):
+    direct_damage = 7
+    child_damage = 5
+    grandchild_damage = 3
+
+
+@registered_item
+class Handgrenade(ChildKiller):
     pass
