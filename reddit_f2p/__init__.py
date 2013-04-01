@@ -67,7 +67,7 @@ class FreeToPlay(Plugin):
     def add_routes(self, mc):
         mc('/f2p/gamelog', controller='gamelog', action='listing')
         mc('/api/f2p/:action', controller='freetoplayapi')
-        mc('/f2p/steam/:action', controller='steam', action='start')
+        #mc('/f2p/steam/:action', controller='steam', action='start')
 
     def load_controllers(self):
         from r2.lib.pages import Reddit
@@ -77,5 +77,5 @@ class FreeToPlay(Plugin):
         f2p.hooks.register_all()
         f2p.monkeypatch()
 
-        from reddit_f2p.steam import SteamController
+        #from reddit_f2p.steam import SteamController
         from reddit_f2p.gamelog import GameLogController
