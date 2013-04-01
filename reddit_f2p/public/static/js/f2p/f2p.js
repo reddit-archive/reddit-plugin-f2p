@@ -289,7 +289,9 @@ r.f2p.TargetOverlay = Backbone.View.extend({
 
         this.$el.html(
             r.templates.make('f2p/target-overlay', {
-                selector: _.values(selectors).join(', ')
+                selector: _.values(selectors).join(', '),
+                item_title: item.get('title'),
+                use_on: item.get('use_on')
             })
         )
 
