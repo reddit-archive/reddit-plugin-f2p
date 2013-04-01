@@ -458,9 +458,15 @@ r.f2p.EffectUpdater = r.ScrollUpdater.extend({
 
         // todo: add a team data attribute and don't duplicate this in js?
         var userId = parseInt(fullname.split('_')[1], 36),
-            team = (userId % 2 == 0) ? 'red' : 'blue'
+            team = (userId % 2 == 0) ? 'red' : 'blue',
+            teamTitle = r.f2p.gameStatus.get(team + '_title')
 
-        $user.before($('<span class="author-bauble team-' + team + '" title="' + team + ' team"></span>'))
+        $user.before(
+            $('<span>')
+                .addClass('author-bauble')
+                .addClass('team-' + team)
+                .attr('title', 'a member of team ' + teamTitle)
+        )
     },
 
     update: function($el) {
