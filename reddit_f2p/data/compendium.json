@@ -22,10 +22,10 @@
         "visibility": "all"
     }, 
     "ass_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
-        "flavor": "<p>Extra smelly when combined with beans.</p>\n", 
-        "rarity": "", 
+        "flavor": "", 
+        "rarity": "rare", 
         "targets": [
             "account"
         ], 
@@ -33,18 +33,18 @@
         "visibility": "all"
     }, 
     "baker_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
-        "flavor": "", 
-        "rarity": "", 
+        "flavor": "<p>Extry, Extry! Hear all about it!</p>\n", 
+        "rarity": "common", 
         "targets": [
             "account"
         ], 
-        "title": "", 
+        "title": "Baker Boy", 
         "visibility": "all"
     }, 
     "banana": {
-        "damage": 1, 
+        "damage": 3, 
         "description": "", 
         "flavor": "<p>Personally, I prefer pickles.</p>\n", 
         "rarity": "rare", 
@@ -54,8 +54,17 @@
         "title": "Banana of Downtime", 
         "visibility": "self"
     }, 
+    "banana_hat": {
+        "damage": 0, 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "", 
+        "targets": [], 
+        "title": "", 
+        "visibility": "all"
+    }, 
     "barbershop_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "", 
         "rarity": "", 
@@ -66,10 +75,10 @@
         "visibility": "all"
     }, 
     "baseball_cap_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "", 
-        "rarity": "", 
+        "rarity": "common", 
         "targets": [
             "account"
         ], 
@@ -77,21 +86,21 @@
         "visibility": "all"
     }, 
     "beach_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
-        "flavor": "", 
-        "rarity": "", 
+        "flavor": "<p>It&#39;s what happens when 15,000 kids meet on 8 beach blankets.</p>\n", 
+        "rarity": "artifact", 
         "targets": [
             "account"
         ], 
-        "title": "", 
+        "title": "Party On The Beach", 
         "visibility": "all"
     }, 
     "beanie_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "", 
-        "rarity": "", 
+        "rarity": "common", 
         "targets": [
             "account"
         ], 
@@ -99,10 +108,10 @@
         "visibility": "all"
     }, 
     "beer_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "<p>Delivers 48 fl oz of courage when most needed.</p>\n", 
-        "rarity": "", 
+        "rarity": "rare", 
         "targets": [
             "account"
         ], 
@@ -110,7 +119,7 @@
         "visibility": "all"
     }, 
     "caltrops": {
-        "damage": 1, 
+        "damage": 2, 
         "description": "", 
         "flavor": "<p>The spines are covered with more spines for that double-spine goodness.</p>\n", 
         "rarity": "uncommon", 
@@ -121,7 +130,7 @@
         "visibility": "team"
     }, 
     "capitulation": {
-        "damage": "1", 
+        "damage": 1, 
         "description": "", 
         "flavor": "<p>Because what reddit needs most is more ways for people to annoy each other.</p>\n", 
         "rarity": "common", 
@@ -132,7 +141,7 @@
         "visibility": "all"
     }, 
     "cdgl": {
-        "damage": 1, 
+        "damage": 2, 
         "description": "", 
         "flavor": "<p>Dvlpd ftr yrs f nthcl, ghstly rsrch n <a href=\"/r/nmlswthtncks\">/r/nmlswthtncks</a>.</p>\n", 
         "rarity": "uncommon", 
@@ -143,14 +152,14 @@
         "visibility": "all"
     }, 
     "cheese_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
-        "flavor": "", 
-        "rarity": "", 
+        "flavor": "<p>I am the cheese. I am the best character on the show.</p>\n", 
+        "rarity": "rare", 
         "targets": [
             "account"
         ], 
-        "title": "", 
+        "title": "Just A Block Of Cheese", 
         "visibility": "all"
     }, 
     "chirality": {
@@ -165,7 +174,7 @@
         "visibility": "all"
     }, 
     "clap_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "", 
         "rarity": "", 
@@ -176,10 +185,10 @@
         "visibility": "all"
     }, 
     "clown_hair_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "<p>Definitely not terrifying. Definitely.</p>\n", 
-        "rarity": "", 
+        "rarity": "uncommon", 
         "targets": [
             "account"
         ], 
@@ -187,7 +196,7 @@
         "visibility": "all"
     }, 
     "compensation": {
-        "damage": 1, 
+        "damage": 3, 
         "description": "", 
         "flavor": "<p>Swinging the blade emits the sound of a large, unmuffled motorcycle engine.</p>\n", 
         "rarity": "rare", 
@@ -198,7 +207,7 @@
         "visibility": "all"
     }, 
     "crown_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "", 
         "rarity": "", 
@@ -219,6 +228,17 @@
         "title": "Cruise Missile", 
         "visibility": "all"
     }, 
+    "cursor": {
+        "damage": 2, 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "rare", 
+        "targets": [
+            "account"
+        ], 
+        "title": "Wand of Cursory Gestures", 
+        "visibility": "all"
+    }, 
     "daystar": {
         "damage": 1, 
         "description": "", 
@@ -229,7 +249,7 @@
         "visibility": "self"
     }, 
     "discombobulation": {
-        "damage": 1, 
+        "damage": 3, 
         "description": "", 
         "flavor": "<p>What say you to a spot of pugilism, old bean?</p>\n", 
         "rarity": "rare", 
@@ -240,7 +260,7 @@
         "visibility": "self"
     }, 
     "dowser": {
-        "damage": 1, 
+        "damage": -3, 
         "description": "", 
         "flavor": "<p>The trusty RDT-651.  Though you suspect it is just filled with lint and sauce tartare, it sure does the job.</p>\n", 
         "rarity": "rare", 
@@ -251,10 +271,10 @@
         "visibility": "self"
     }, 
     "dunce_cap_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "", 
-        "rarity": "", 
+        "rarity": "uncommon", 
         "targets": [
             "account"
         ], 
@@ -262,14 +282,14 @@
         "visibility": "all"
     }, 
     "eggscellent_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "<p>BINGOOOOOOOOOOOOOOOOOOOOOOO!!!!!!</p>\n", 
-        "rarity": "", 
+        "rarity": "rare", 
         "targets": [
             "account"
         ], 
-        "title": "", 
+        "title": "I'm Eggscellent", 
         "visibility": "all"
     }, 
     "emphasis": {
@@ -287,7 +307,7 @@
         "damage": 1, 
         "description": "", 
         "flavor": "<p>Her Britannic Majesty&#39;s Secretary of State Requests and requires in the Name of Her Majesty all those whom it may concern to allow the bearer to pass freely without let or hindrance, and to afford the bearer such assistance and protection as may be necessary.</p>\n", 
-        "rarity": "uncommon", 
+        "rarity": "common", 
         "targets": [
             "usertext"
         ], 
@@ -295,21 +315,32 @@
         "visibility": "all"
     }, 
     "fedora_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "<p>Decidedly not red.</p>\n", 
-        "rarity": "", 
+        "rarity": "uncommon", 
         "targets": [
             "account"
         ], 
         "title": "Dapper \u2019Dora", 
         "visibility": "all"
     }, 
+    "fedora_hat_green": {
+        "damage": 0, 
+        "description": "", 
+        "flavor": "<p>Decidedly very green.</p>\n", 
+        "rarity": "rare", 
+        "targets": [
+            "account"
+        ], 
+        "title": "Dapper \u2019Dora, Green Style", 
+        "visibility": "all"
+    }, 
     "gold_top_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "", 
-        "rarity": "", 
+        "rarity": "never", 
         "targets": [
             "account"
         ], 
@@ -317,10 +348,10 @@
         "visibility": "all"
     }, 
     "green_mushroom_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
-        "flavor": "", 
-        "rarity": "", 
+        "flavor": "<p>Makes you feel rejuvinated. Like you have a whole new life!</p>\n", 
+        "rarity": "rare", 
         "targets": [
             "account"
         ], 
@@ -328,7 +359,7 @@
         "visibility": "all"
     }, 
     "handgrenade": {
-        "damage": 1, 
+        "damage": 0, 
         "description": "", 
         "flavor": "<p>O LORD, bless this Thy hand grenade that with it Thou mayest blow Thine enemies to tiny bits, in Thy mercy.</p>\n", 
         "rarity": "artifact", 
@@ -339,10 +370,10 @@
         "visibility": "all"
     }, 
     "hard_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "", 
-        "rarity": "", 
+        "rarity": "uncommon", 
         "targets": [
             "account"
         ], 
@@ -350,7 +381,7 @@
         "visibility": "all"
     }, 
     "hatchet": {
-        "damage": 1, 
+        "damage": 2, 
         "description": "", 
         "flavor": "<p>Preferred weapon of the uninitiated <a href=\"/r/IAmA\">/r/IAmA</a> poster.</p>\n", 
         "rarity": "uncommon", 
@@ -372,7 +403,7 @@
         "visibility": "all"
     }, 
     "intolerance": {
-        "damage": 1, 
+        "damage": 3, 
         "description": "", 
         "flavor": "<p>Rumored to have been forged in the fires of eBay.</p>\n", 
         "rarity": "rare", 
@@ -383,7 +414,7 @@
         "visibility": "all"
     }, 
     "inversion": {
-        "damage": 1, 
+        "damage": 3, 
         "description": "", 
         "flavor": "<p>Objects in orb may appear more Australian than they actually are.</p>\n", 
         "rarity": "rare", 
@@ -395,29 +426,29 @@
         "visibility": "all"
     }, 
     "jake_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
-        "flavor": "", 
-        "rarity": "", 
+        "flavor": "<p>MATHEMATICAL!!</p>\n", 
+        "rarity": "rare", 
         "targets": [
             "account"
         ], 
-        "title": "", 
+        "title": "Time For Adventure!", 
         "visibility": "all"
     }, 
     "key": {
-        "damage": 1, 
+        "damage": 0, 
         "description": "", 
         "flavor": "<p>The key has &quot;Do Not Duplicate&quot; clearly etched in the bow. You take a moment to marvel at this epitome of security.</p>\n", 
         "rarity": "artifact", 
         "targets": [
-            "account.other"
+            "usertext"
         ], 
         "title": "Launch Key", 
         "visibility": "all"
     }, 
     "knuckles": {
-        "damage": 1, 
+        "damage": 2, 
         "description": "", 
         "flavor": "", 
         "rarity": "uncommon", 
@@ -428,7 +459,7 @@
         "visibility": "all"
     }, 
     "magnet": {
-        "damage": 1, 
+        "damage": 2, 
         "description": "<p>Steals an item from an unsuspecting victim&#39;s inventory.</p>\n", 
         "flavor": "<p>How do they work?</p>\n", 
         "rarity": "uncommon", 
@@ -442,7 +473,7 @@
         "damage": 1, 
         "description": "", 
         "flavor": "<p>Some people say that Manbearpig isn&#39;t real. Well, I&#39;m here to tell you now, Manbearpig is very real, and he most certainly exists.</p>\n", 
-        "rarity": "uncommon", 
+        "rarity": "common", 
         "targets": [
             "usertext"
         ], 
@@ -450,7 +481,7 @@
         "visibility": "all"
     }, 
     "melodies": {
-        "damage": "-2", 
+        "damage": -2, 
         "description": "", 
         "flavor": "<p>Lonely rivers flow....wait for me...... w..a.....i...t...... f...o.....r..... m......e......</p>\n", 
         "rarity": "uncommon", 
@@ -462,18 +493,18 @@
         "visibility": "all"
     }, 
     "military_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
-        "flavor": "", 
+        "flavor": "<p>Allows you to stand in one place for an unbelieveable amount of time.</p>\n", 
         "rarity": "", 
         "targets": [
             "account"
         ], 
-        "title": "", 
+        "title": "Sgt. First Class Hat", 
         "visibility": "all"
     }, 
     "minecraft_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "", 
         "rarity": "", 
@@ -484,7 +515,7 @@
         "visibility": "all"
     }, 
     "mortar": {
-        "damage": 1, 
+        "damage": 0, 
         "description": "", 
         "flavor": "<p>Can also be used to obliterate herbs and spices into a vibrant m\u00e9lange.</p>\n", 
         "rarity": "artifact", 
@@ -504,7 +535,7 @@
         "visibility": "all"
     }, 
     "nostalgia": {
-        "damage": 1, 
+        "damage": 2, 
         "description": "", 
         "flavor": "<p>&quot;cl\u1ebdan m\u1ebd up!&quot; ... ugh</p>\n", 
         "rarity": "rare", 
@@ -515,18 +546,18 @@
         "visibility": "all"
     }, 
     "nuke": {
-        "damage": 1, 
+        "damage": 0, 
         "description": "", 
         "flavor": "", 
         "rarity": "artifact", 
         "targets": [
-            "usertext"
+            "usertext.armed"
         ], 
         "title": "Nucular and Present Danger", 
         "visibility": "all"
     }, 
     "overpowered": {
-        "damage": 1, 
+        "damage": 4, 
         "description": "<p>Removes all items and effects from your target.</p>\n", 
         "flavor": "<p>Instructions: Point pointy end away from self. Apply force.</p>\n", 
         "rarity": "rare", 
@@ -537,7 +568,7 @@
         "visibility": "all"
     }, 
     "palindrome": {
-        "damage": 1, 
+        "damage": 2, 
         "description": "", 
         "flavor": "<p>The question is: how does the mirror know to get the left and right mixed up, but not the up and the down?</p>\n", 
         "rarity": "uncommon", 
@@ -549,7 +580,7 @@
         "visibility": "all"
     }, 
     "panacea": {
-        "damage": "-2", 
+        "damage": -2, 
         "description": "", 
         "flavor": "<p><strong>Warning</strong> &mdash; Expel all air from syringe before use. Failure to do so may result in unexpected consequences.</p>\n", 
         "rarity": "uncommon", 
@@ -560,7 +591,7 @@
         "visibility": "all"
     }, 
     "party_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "", 
         "rarity": "", 
@@ -582,10 +613,10 @@
         "visibility": "all"
     }, 
     "pimp_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "", 
-        "rarity": "", 
+        "rarity": "artifact", 
         "targets": [
             "account"
         ], 
@@ -593,10 +624,10 @@
         "visibility": "all"
     }, 
     "pope_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "<p>Will cause your enemies to spew black smoke.</p>\n", 
-        "rarity": "", 
+        "rarity": "rare", 
         "targets": [
             "account"
         ], 
@@ -604,32 +635,43 @@
         "visibility": "all"
     }, 
     "propinquity": {
-        "damage": 1, 
+        "damage": 4, 
         "description": "", 
         "flavor": "<p>Pistols only in the Facility.  No Oddjob.</p>\n", 
-        "rarity": "uncommon", 
+        "rarity": "rare", 
         "targets": [
             "usertext"
         ], 
         "title": "Mine of Propinquity", 
         "visibility": "team"
     }, 
-    "rampart": {
-        "damage": 1, 
+    "python_rabbit_hat": {
+        "damage": 0, 
         "description": "", 
-        "flavor": "<p>The trebuchet bears the damage of overuse and poor timing.</p>\n", 
+        "flavor": "", 
+        "rarity": "never", 
+        "targets": [
+            "account"
+        ], 
+        "title": "Rabbit of Caerbannog", 
+        "visibility": "all"
+    }, 
+    "rampart": {
+        "damage": 2, 
+        "description": "", 
+        "flavor": "<p>The siege tower bears the damage of overuse and poor timing.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "usertext"
         ], 
-        "title": "Ineffective Trebuchet of Rampart Surmounting", 
+        "title": "Ineffective Siege Tower of Rampart Surmounting", 
         "visibility": "all"
     }, 
     "red_mushroom_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "<p>Transports you to Texas, where everything is bigger.</p>\n", 
-        "rarity": "", 
+        "rarity": "uncommon", 
         "targets": [
             "account"
         ], 
@@ -637,10 +679,10 @@
         "visibility": "all"
     }, 
     "reddit_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "", 
-        "rarity": "", 
+        "rarity": "rare", 
         "targets": [
             "account"
         ], 
@@ -648,10 +690,10 @@
         "visibility": "all"
     }, 
     "rooster_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "", 
-        "rarity": "", 
+        "rarity": "artifact", 
         "targets": [
             "account"
         ], 
@@ -659,10 +701,10 @@
         "visibility": "all"
     }, 
     "santa_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
-        "flavor": "<p>Increases the probability that a kid will pee on you by 37%.</p>\n", 
-        "rarity": "", 
+        "flavor": "<p>Increases the probability that a kid will kick you by 37%.</p>\n", 
+        "rarity": "uncommon", 
         "targets": [
             "account"
         ], 
@@ -670,7 +712,7 @@
         "visibility": "all"
     }, 
     "scrambler": {
-        "damage": 1, 
+        "damage": 2, 
         "description": "", 
         "flavor": "<p>Over 0090 sold!</p>\n", 
         "rarity": "uncommon", 
@@ -681,7 +723,7 @@
         "visibility": "all"
     }, 
     "shrouding": {
-        "damage": 1, 
+        "damage": 3, 
         "description": "", 
         "flavor": "<p>Known to have instigated several wars during the shitty-LCD era.</p>\n", 
         "rarity": "rare", 
@@ -692,18 +734,18 @@
         "visibility": "all"
     }, 
     "shuffler": {
-        "damage": 1, 
+        "damage": 2, 
         "description": "<p>Applies an unbreakable cipher to the target text.</p>\n", 
         "flavor": "<p>You spot the logo of your bank on the underside of the cylinder.</p>\n", 
         "rarity": "uncommon", 
         "targets": [
             "usertext"
         ], 
-        "title": "Cryptographic Shuffler of Pelcgbtencuvp Fuhssyre", 
+        "title": "Cryptographic Shuffler of Vzcrargenoyr Boshfpngvba", 
         "visibility": "all"
     }, 
     "skull_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "", 
         "rarity": "", 
@@ -714,7 +756,7 @@
         "visibility": "all"
     }, 
     "spikey_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "", 
         "rarity": "", 
@@ -724,11 +766,20 @@
         "title": "", 
         "visibility": "all"
     }, 
-    "stainless_pot_hat": {
-        "damage": "0", 
+    "spock_hat": {
+        "damage": 0, 
         "description": "", 
         "flavor": "", 
         "rarity": "", 
+        "targets": [], 
+        "title": "", 
+        "visibility": "all"
+    }, 
+    "stainless_pot_hat": {
+        "damage": 0, 
+        "description": "", 
+        "flavor": "", 
+        "rarity": "uncommon", 
         "targets": [
             "account"
         ], 
@@ -736,29 +787,18 @@
         "visibility": "all"
     }, 
     "stans_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
-        "flavor": "", 
-        "rarity": "", 
+        "flavor": "<p>More like Stan Darsh.</p>\n", 
+        "rarity": "rare", 
         "targets": [
             "account"
         ], 
         "title": "", 
         "visibility": "all"
     }, 
-    "subterfuge": {
-        "damage": 1, 
-        "description": "", 
-        "flavor": "<p>They&#39;ll never see you coming, provided the spirit gum and popsicle sticks hold together.</p>\n", 
-        "rarity": "rare", 
-        "targets": [
-            "account.self"
-        ], 
-        "title": "Poorly Crafted but Utterly Convincing Mask of Subterfuge", 
-        "visibility": "all"
-    }, 
     "ten_gallon_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "", 
         "rarity": "", 
@@ -769,10 +809,10 @@
         "visibility": "all"
     }, 
     "top_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "", 
-        "rarity": "", 
+        "rarity": "common", 
         "targets": [
             "account"
         ], 
@@ -791,21 +831,21 @@
         "visibility": "all"
     }, 
     "trucker_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
-        "flavor": "", 
-        "rarity": "", 
+        "flavor": "<p>I&#39;m drivin&#39; a truck. Drivin&#39; a big ol&#39; truck.</p>\n", 
+        "rarity": "common", 
         "targets": [
             "account"
         ], 
-        "title": "", 
+        "title": "World's Greatest Trucker", 
         "visibility": "all"
     }, 
     "viking_helmet_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "", 
-        "rarity": "", 
+        "rarity": "uncommon", 
         "targets": [
             "account"
         ], 
@@ -818,14 +858,14 @@
         "flavor": "<p>What could possibly go wrong?</p>\n", 
         "rarity": "rare", 
         "targets": [], 
-        "title": "Cursed Wand", 
+        "title": "Shonky Wand", 
         "visibility": "all"
     }, 
     "white_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
         "flavor": "<p>Responsibly disposes downvotes.</p>\n", 
-        "rarity": "", 
+        "rarity": "uncommon", 
         "targets": [
             "account"
         ], 
@@ -833,14 +873,14 @@
         "visibility": "all"
     }, 
     "wizard_hat": {
-        "damage": "0", 
+        "damage": 0, 
         "description": "", 
-        "flavor": "", 
-        "rarity": "", 
+        "flavor": "<p>Now let me just put on my robe...</p>\n", 
+        "rarity": "uncommon", 
         "targets": [
             "account"
         ], 
-        "title": "", 
+        "title": "Yer A Wizard!", 
         "visibility": "all"
     }
 }

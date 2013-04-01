@@ -21,9 +21,10 @@ DEFAULTS = {
 }
 
 
-MARKDOWN = {
-    "description",
-    "flavor",
+CONVERTERS = {
+    "damage": int,
+    "description": snudown.markdown,
+    "flavor": snudown.markdown,
 }
 
 
@@ -44,8 +45,9 @@ for row in reader:
             continue
 
         value = value.strip()
-        if output_key in MARKDOWN and value:
-            item_data[output_key] = snudown.markdown(value)
+        converter = CONVERTERS.get(output_key)
+        if converter and value:
+            item_data[output_key] = converter(value)
         else:
             item_data[output_key] = value or DEFAULTS.get(output_key, "")
 
