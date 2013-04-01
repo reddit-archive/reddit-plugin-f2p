@@ -123,7 +123,6 @@
         height: @item-width + 20px;
         margin: @item-margin;
         text-align: center;
-        cursor: pointer;
 
         .icon {
             display: inline-block;
@@ -160,6 +159,10 @@
 
     &.inventory-view {
         height: 300px;
+
+        .item {
+            cursor: pointer;
+        }
     }
 
     &.myeffects-view {

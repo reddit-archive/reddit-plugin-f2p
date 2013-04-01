@@ -228,7 +228,9 @@ r.f2p.ItemView = Backbone.View.extend({
     },
 
     activate: function() {
-        r.f2p.targetOverlay.displayFor(this.model)
+        if ('use' in this.model.collection) {
+            r.f2p.targetOverlay.displayFor(this.model)
+        }
     }
 })
 

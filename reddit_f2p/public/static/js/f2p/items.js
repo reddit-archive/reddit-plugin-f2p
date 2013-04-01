@@ -4,8 +4,7 @@ r.f2p.targetTypes = {
     'link': 'links'
 }
 
-r.f2p.Inventory = Backbone.Collection.extend({
-    url: '#inventory',
+r.f2p.ItemSet = Backbone.Collection.extend({
     model: function(attrs, options) {
         var itemKind = r.f2p.Item.kinds[attrs.kind] || r.f2p.Item
         return new itemKind(attrs, options)
@@ -18,7 +17,11 @@ r.f2p.Inventory = Backbone.Collection.extend({
                 this.remove(item)
             }
         }, this)
-    },
+    }
+})
+
+r.f2p.Inventory = r.f2p.ItemSet.extend({
+    url: '#inventory',
 
     use: function(item, targetId) {
         $.ajax({
@@ -545,7 +548,7 @@ r.f2p.HatPile = Backbone.View.extend({
     }
 })
 
-r.f2p.PlayerEffects = r.f2p.Inventory.extend({
+r.f2p.PlayerEffects = r.f2p.ItemSet.extend({
     url: '#myeffects',
 
     initialize: function() {
