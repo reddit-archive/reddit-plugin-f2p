@@ -45,4 +45,4 @@ $(CURSOR_IMAGES_DIR)%.png: art/%.png
 	$(CONVERT_SQUARE) -resize 32x32 $< -unsharp 0x2 $@
 
 $(SILHOUETTE_IMAGES_DIR)%.png: art/%.png
-	$(CONVERT_SQUARE) -resize 24x24 -channel RGB -threshold 100% -channel A -normalize $< -unsharp 0x0.5 $@
+	$(CONVERT_SQUARE) -flop -resize 24x24 -channel RGB -threshold 100% -channel A -normalize $< -unsharp 0x0.5 $@
