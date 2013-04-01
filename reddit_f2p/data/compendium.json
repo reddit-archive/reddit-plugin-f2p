@@ -234,7 +234,7 @@
         "damage": 2, 
         "description": "<p>Transforms your target&#39;s cursor.</p>\n", 
         "flavor": "<p>Also in this set: Wand of the Flaming Rotating Skull!</p>\n", 
-        "rarity": "rare", 
+        "rarity": "common", 
         "targets": [
             "account"
         ], 
@@ -655,7 +655,7 @@
         "damage": 3, 
         "description": "", 
         "flavor": "<p>Known to have instigated several wars during the shitty-LCD era.</p>\n", 
-        "rarity": "rare", 
+        "rarity": "never", 
         "targets": [
             "usertext"
         ], 
