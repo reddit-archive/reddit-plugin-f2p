@@ -557,7 +557,7 @@ r.f2p.HatPile = Backbone.View.extend({
         var curCol = 0
         _.each(this.hats, function(kind, idx) {
             var hat = $('<img class="hat">')
-                .attr('src', 'http://www.redditstatic.com/images/hat/' + kind + '.png')
+                .attr('src', r.utils.staticURL('images/hat/' + kind + '.png'))
                 .css('z-index', 100 + idx)
             cols[curCol].prepend(hat)
             curCol = (curCol + 1) % columnCount
