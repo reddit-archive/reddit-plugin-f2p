@@ -33,9 +33,10 @@ class GameLogPage(Templated):
 
 
 class GameLogTarget(Templated):
-    def __init__(self, target, permalink, author):
+    def __init__(self, target, permalink, author, subreddit):
         self.text = "%s (%s)" % (target.__class__.__name__, author.name)
         self.url = permalink
+        self.subreddit = subreddit
         Templated.__init__(self)
 
 
@@ -73,11 +74,14 @@ class GameLogEntry(object):
             if isinstance(target, (Comment, Link)):
                 author = authors[target.author_id]
                 if isinstance(target, Link):
-                    path = target.make_permalink(subreddits[target.sr_id])
+                    subreddit = subreddits[target.sr_id]
+                    path = target.make_permalink(subreddit)
                 else:
                     link = links[target.link_id]
-                    path = target.make_permalink(link, subreddits[link.sr_id])
-                target_things[fullname] = GameLogTarget(target, path, author)
+                    subreddit = subreddits[link.sr_id]
+                    path = target.make_permalink(link, subreddit)
+                target_things[fullname] = GameLogTarget(target, path, author,
+                                                        subreddit)
             elif isinstance(target, Account):
                 target_things[fullname] = WrappedUser(target)
 
@@ -222,7 +226,13 @@ class GameLogController(RedditController):
         if after:
             q._after(after)
 
-        builder = QueryBuilder(q, skip=False, num=num, reverse=reverse)
+        def keep_fn(item):
+            if isinstance(item.target, GameLogTarget):
+                return item.target.subreddit.can_view(c.user)
+            return True
+
+        builder = QueryBuilder(q, skip=True, keep_fn=keep_fn, num=num,
+                               reverse=reverse)
 
         def wrap_items_fn(items):
             wrapped = []
@@ -233,6 +243,7 @@ class GameLogController(RedditController):
             return wrapped
 
         builder.wrap_items = wrap_items_fn
+
         listing = TableListing(builder)
         content = GameLogPage(listing.listing())
         return Reddit(content=content,
