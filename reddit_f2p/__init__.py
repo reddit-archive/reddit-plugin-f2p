@@ -17,6 +17,7 @@ class FreeToPlay(Plugin):
 
         ConfigValue.dict(str, str): [
             "team_subreddits",
+            "steam_promo_items",
         ],
     }
 
@@ -47,6 +48,15 @@ class FreeToPlay(Plugin):
         ],
     }
 
+    def declare_queues(self, queues):
+        # imported here so we don't depend on pyx files at import time
+        # which allows "make" to work in a clean clone of the repos
+        from r2.config.queues import MessageQueue
+
+        queues.declare({
+            "steam_q": MessageQueue(bind_to_self=True),
+        })
+
     def on_load(self, g):
         from r2.lib.cache import CMemcache, MemcacheChain, LocalCache
 
@@ -67,7 +77,7 @@ class FreeToPlay(Plugin):
     def add_routes(self, mc):
         mc('/f2p/gamelog', controller='gamelog', action='listing')
         mc('/api/f2p/:action', controller='freetoplayapi')
-        #mc('/f2p/steam/:action', controller='steam', action='start')
+        mc('/f2p/steam/:action', controller='steam', action='start')
 
     def load_controllers(self):
         from r2.lib.pages import Reddit
@@ -77,5 +87,5 @@ class FreeToPlay(Plugin):
         f2p.hooks.register_all()
         f2p.monkeypatch()
 
-        #from reddit_f2p.steam import SteamController
+        from reddit_f2p.steam import SteamController
         from reddit_f2p.gamelog import GameLogController

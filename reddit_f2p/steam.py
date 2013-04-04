@@ -1,3 +1,4 @@
+import json
 import re
 
 import openid.consumer.consumer
@@ -6,14 +7,20 @@ from pylons.controllers.util import redirect_to, abort
 
 from r2.controllers import add_controller
 from r2.controllers.reddit_base import RedditController
+from r2.lib import amqp
 from r2.lib.wrapped import Templated
 from r2.lib.validator import validate, VUser
 from r2.lib.pages import Reddit
 from r2.lib.template_helpers import add_sr
+from r2.models import Account
+
+from reddit_f2p import scores
 
 
 STEAM_AUTH_URL = "http://steamcommunity.com/openid"
 STEAMID_EXTRACTOR = re.compile("steamcommunity.com/openid/id/(.*?)$")
+GRANT_URL = "http://api.steampowered.com/ITFPromos_440/GrantItem/v0001/"
+QNAME = "steam_q"
 
 
 class SteamStart(Templated):
@@ -41,7 +48,6 @@ class SteamController(RedditController):
         else:
             # TODO: something nicer?
             abort(404)
-
 
     @validate(VUser())
     def POST_auth(self):
@@ -81,10 +87,58 @@ class SteamController(RedditController):
             abort(404)
 
         steamid = steamid_match.group(1)
-        g.log.warning("successful steam auth for %r", steamid)
+        g.log.debug("successful steam auth for %r", steamid)
 
-        # TODO: insert into a claim queue or something?
-        c.user.f2p = "claimed"
-        c.user._commit()
+        with g.make_lock("f2p", "steam_claim_%d" % c.user._id):
+            c.user._sync_latest()
+            if c.user.participated != "participated":
+                abort(403)
+
+            c.user.f2p = "claiming"
+            c.user._commit()
+
+        message = json.dumps({
+            "user-id": c.user._id,
+            "steam-id": steamid,
+        })
+        amqp.add_item(QNAME, message)
 
         return Reddit(content=SteamStop()).render()
+
+
+def run_steam_q():
+    import requests
+
+    session = requests.Session()
+    session.headers.update({
+        "User-Agent": g.useragent,
+    })
+
+    @g.stats.amqp_processor(QNAME)
+    def _claim_hat(msg):
+        data = json.loads(msg.body)
+
+        account = Account._byID(int(data["user-id"]), data=True)
+        if account.f2p != "claiming":
+            g.log.warning("%r attempted to claim twice!", account)
+            return
+
+        user_team = scores.get_user_team(account)
+        promo_id = g.steam_promo_items[user_team]
+        response = session.post(GRANT_URL, data={
+            "SteamID": data["steam-id"],
+            "PromoID": promo_id,
+            "key": g.steam_api_key,
+            "format": "json",
+        })
+
+        response_data = response.json()
+        if response_data["status"] != "1":
+            g.log.warning("Steam Promo for %r -> %r failed: %s",
+                          account, data["steam-id"],
+                          response_data["statusDetail"])
+            return
+
+        account.f2p = "claimed"
+        account._commit()
+    amqp.consume_items(QNAME, _claim_hat, verbose=True)
