@@ -23,11 +23,28 @@ GRANT_URL = "http://api.steampowered.com/ITFPromos_440/GrantItem/v0001/"
 QNAME = "steam_q"
 
 
+class SteamPage(Reddit):
+    def __init__(self, content):
+        Reddit.__init__(
+            self,
+            show_sidebar=False,
+            content=content,
+        )
+
+
 class SteamStart(Templated):
     pass
 
 
 class SteamStop(Templated):
+    pass
+
+
+class SteamInProgress(Templated):
+    pass
+
+
+class SteamSorry(Templated):
     pass
 
 
@@ -42,14 +59,15 @@ class SteamController(RedditController):
         f2p_status = getattr(c.user, "f2p")
 
         if f2p_status == "participated":
-            return Reddit(content=SteamStart()).render()
+            return SteamPage(content=SteamStart()).render()
+        elif f2p_status == "claiming":
+            return SteamPage(content=SteamInProgress()).render()
         elif f2p_status == "claimed":
-            return Reddit(content=SteamStop()).render()
-        else:
-            # TODO: something nicer?
-            abort(404)
+            return SteamPage(content=SteamStop()).render()
+        return SteamPage(content=SteamSorry()).render()
 
     @validate(VUser())
+    # TODO: vmodhash
     def POST_auth(self):
         if getattr(c.user, "f2p") != "participated":
             abort(403)
@@ -67,11 +85,11 @@ class SteamController(RedditController):
     @validate(VUser())
     def GET_postlogin(self):
         if getattr(c.user, "f2p") != "participated":
-            abort(403)
+            return redirect_to("/f2p/steam")
 
         session = g.f2pcache.get("steam_session_%d" % c.user._id)
         if not session:
-            abort(404)
+            return redirect_to("/f2p/steam")
 
         consumer = openid.consumer.consumer.Consumer(session, store=None)
         auth_response = consumer.complete(request.params, request.url)
@@ -80,19 +98,19 @@ class SteamController(RedditController):
             return redirect_to("/f2p/steam")
 
         if auth_response.status != openid.consumer.consumer.SUCCESS:
-            abort(404)
+            return redirect_to("/f2p/steam")
 
         steamid_match = STEAMID_EXTRACTOR.search(auth_response.identity_url)
         if not steamid_match:
-            abort(404)
+            return redirect_to("/f2p/steam")
 
         steamid = steamid_match.group(1)
         g.log.debug("successful steam auth for %r", steamid)
 
         with g.make_lock("f2p", "steam_claim_%d" % c.user._id):
             c.user._sync_latest()
-            if c.user.participated != "participated":
-                abort(403)
+            if c.user.f2p != "participated":
+                return redirect_to("/f2p/steam")
 
             c.user.f2p = "claiming"
             c.user._commit()
@@ -103,7 +121,7 @@ class SteamController(RedditController):
         })
         amqp.add_item(QNAME, message)
 
-        return Reddit(content=SteamStop()).render()
+        return redirect_to("/f2p/steam")
 
 
 def run_steam_q():
@@ -125,6 +143,7 @@ def run_steam_q():
 
         user_team = scores.get_user_team(account)
         promo_id = g.steam_promo_items[user_team]
+        # TODO: graphite the promo_id to see how many we've handed out
         response = session.post(GRANT_URL, data={
             "SteamID": data["steam-id"],
             "PromoID": promo_id,
@@ -137,7 +156,7 @@ def run_steam_q():
             g.log.warning("Steam Promo for %r -> %r failed: %s",
                           account, data["steam-id"],
                           response_data["statusDetail"])
-            return
+            raise Exception
 
         account.f2p = "claimed"
         account._commit()

@@ -2,9 +2,13 @@
   from r2.lib.template_helpers import static
 %>
 
-<h1>Claim your TF2 hat</h1>
+<img src="${static("images/hatstack.png")}" >
 
-<p>To claim your TF2 hat, you will need to log in to Steam by clicking the button below.</p>
+<div id="steamform">
+<h1>Put dispenser here</h1>
+
+<p>To claim your TF2 hat, you will need to log in to Steam by clicking the
+button below.</p>
 
 <form method="post" action="/f2p/steam/auth">
   <input type="image" src="${static("images/steam.png")}" alt="log in with Steam">
@@ -13,4 +17,5 @@
 <p>Note: we will not store the association between your Steam account and your
 reddit account for longer than it takes to give you a hat.</p>
 
-<p><a href="http://steampowered.com">Powered by Steam</a></p>
+<p class="poweredbysteam"><a href="http://steampowered.com">Powered by Steam</a></p>
+</div>
