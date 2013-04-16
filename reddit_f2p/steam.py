@@ -153,7 +153,12 @@ def run_steam_q():
             "format": "json",
         })
 
-        response_data = response.json()
+        # band-aid for requests API change in v1.0.0
+        if callable(response.json):
+            response_data = response.json()
+        else:
+            response_data = response.json
+
         if response_data["status"] != "1":
             g.log.warning("Steam Promo for %r -> %r failed: %s",
                           account, data["steam-id"],
