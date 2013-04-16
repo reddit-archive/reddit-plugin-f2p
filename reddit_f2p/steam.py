@@ -143,7 +143,9 @@ def run_steam_q():
 
         user_team = scores.get_user_team(account)
         promo_id = g.steam_promo_items[user_team]
-        # TODO: graphite the promo_id to see how many we've handed out
+
+        g.stats.event_count("f2p.claim_hat", "item_%s" % promo_id)
+
         response = session.post(GRANT_URL, data={
             "SteamID": data["steam-id"],
             "PromoID": promo_id,
