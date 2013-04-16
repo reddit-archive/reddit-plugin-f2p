@@ -80,8 +80,8 @@ class FreeToPlay(Plugin):
         mc('/f2p/steam/:action', controller='steam', action='start')
 
     def load_controllers(self):
-        #from r2.lib.pages import Reddit
-        #Reddit.extra_stylesheets.append('f2p.less')
+        from r2.lib.pages import Reddit
+        Reddit.extra_stylesheets.append('f2p.less')
 
         #from reddit_f2p import f2p
         #f2p.hooks.register_all()
