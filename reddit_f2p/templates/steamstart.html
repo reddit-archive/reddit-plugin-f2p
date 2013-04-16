@@ -2,15 +2,26 @@
   from r2.lib.template_helpers import static
 %>
 
-<h1>Claim your TF2 hat</h1>
+<img id="hatsnoo" src="${static("images/hatstack.png")}" >
 
-<p>To claim your TF2 hat, you will need to log in to Steam by clicking the button below.</p>
+<div id="steamform">
+
+%if thing.error:
+  <strong class="error">Sorry, something went wrong. Please try again or&#32;<a href="http://www.reddit.com/message/compose?to=%2Fr%2FFieldOfKarmicGlory">contact us</a>.</strong>
+%endif
+
+<h1>Put dispenser here</h1>
+
+<p>To claim your TF2 hat, you will need to log in to Steam by clicking the
+button below.</p>
 
 <form method="post" action="/f2p/steam/auth">
   <input type="image" src="${static("images/steam.png")}" alt="log in with Steam">
+  <input type="hidden" name="uh" value="${c.modhash}">
 </form>
 
 <p>Note: we will not store the association between your Steam account and your
-reddit account beyond today.</p>
+reddit account for longer than it takes to give you a hat.</p>
 
-<p><a href="http://steampowered.com">Powered by Steam</a></p>
+<p class="poweredbysteam"><a href="http://steampowered.com">Powered by Steam</a></p>
+</div>
