@@ -9,7 +9,7 @@ from r2.controllers import add_controller
 from r2.controllers.reddit_base import RedditController
 from r2.lib import amqp
 from r2.lib.wrapped import Templated
-from r2.lib.validator import validate, VUser, VModhash
+from r2.lib.validator import validate, nop, VUser, VModhash
 from r2.lib.pages import Reddit
 from r2.lib.template_helpers import add_sr
 from r2.models import Account
@@ -54,12 +54,14 @@ class SteamController(RedditController):
     def make_post_login_url():
         return add_sr("/f2p/steam/postlogin")
 
-    @validate(VUser())
-    def GET_start(self):
+    @validate(VUser(),
+              error=nop("error"))
+    def GET_start(self, error):
         f2p_status = getattr(c.user, "f2p")
+        error = bool(error)
 
         if f2p_status == "participated":
-            return SteamPage(content=SteamStart()).render()
+            return SteamPage(content=SteamStart(error=error)).render()
         elif f2p_status == "claiming":
             return SteamPage(content=SteamInProgress()).render()
         elif f2p_status == "claimed":
@@ -89,20 +91,20 @@ class SteamController(RedditController):
 
         session = g.f2pcache.get("steam_session_%d" % c.user._id)
         if not session:
-            return redirect_to("/f2p/steam")
+            return redirect_to("/f2p/steam?error=no_session")
 
         consumer = openid.consumer.consumer.Consumer(session, store=None)
         auth_response = consumer.complete(request.params, request.url)
 
         if auth_response.status == openid.consumer.consumer.CANCEL:
-            return redirect_to("/f2p/steam")
+            return redirect_to("/f2p/steam?error=cancel")
 
         if auth_response.status != openid.consumer.consumer.SUCCESS:
-            return redirect_to("/f2p/steam")
+            return redirect_to("/f2p/steam?error=not_success")
 
         steamid_match = STEAMID_EXTRACTOR.search(auth_response.identity_url)
         if not steamid_match:
-            return redirect_to("/f2p/steam")
+            return redirect_to("/f2p/steam?error=id_mismatch")
 
         steamid = steamid_match.group(1)
         g.log.debug("successful steam auth for %r", steamid)

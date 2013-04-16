@@ -5,6 +5,11 @@
 <img id="hatsnoo" src="${static("images/hatstack.png")}" alt="">
 
 <div id="steamform">
+
+%if thing.error:
+  <strong class="error">Sorry, something went wrong. Please try again or&#32;<a href="http://www.reddit.com/message/compose?to=%2Fr%2FFieldOfKarmicGlory">contact us</a>.</strong>
+%endif
+
 <h1>Put dispenser here</h1>
 
 <p>To claim your TF2 hat, you will need to log in to Steam by clicking the
