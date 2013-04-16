@@ -2,7 +2,7 @@ import json
 from time import sleep
 
 from r2.models import *
-from r2.lib.utils import fetch_things2, progress
+from r2.lib.utils import fetch_things2, in_chunks, progress
 from reddit_f2p.scores import get_user_team
 
 
@@ -17,18 +17,20 @@ def get_participated():
 
 
 def give_trophies(users):
-    for fullname in progress(users):
-        user = Account._by_fullname(fullname)
-        team = get_user_team(user)
+    for fullnames in in_chunks(progress(users, verbosity=50), size=50):
+        users = Account._by_fullname(fullnames, return_dict=False)
 
-        trophy = Award.give_if_needed(
-            codename="f2p_orangered" if team == "red" else "f2p_periwinkle",
-            user=user,
-        )
-        if trophy:
-            trophy._commit()
+        for user in users:
+            team = get_user_team(user)
 
-        sleep(.25)
+            trophy = Award.give_if_needed(
+                codename="f2p_orangered" if team == "red" else "f2p_periwinkle",
+                user=user,
+            )
+            if trophy:
+                trophy._commit()
+
+        sleep(.5)
 
 
 def save_participated(data_path):
