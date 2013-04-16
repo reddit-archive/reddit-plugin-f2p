@@ -78,7 +78,7 @@ class SteamController(RedditController):
         consumer = openid.consumer.consumer.Consumer(session, store=None)
         auth_request = consumer.begin(STEAM_AUTH_URL)
         post_login_url = self.make_post_login_url()
-        url = auth_request.redirectURL(realm="http://" + g.domain,
+        url = auth_request.redirectURL(realm=g.origin,
                                        return_to=post_login_url)
         g.f2pcache.set("steam_session_%d" % c.user._id, session)
         g.log.debug("started steam auth for %s", c.user.name)
