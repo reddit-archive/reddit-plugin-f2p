@@ -159,7 +159,7 @@ def run_steam_q():
         else:
             response_data = response.json
 
-        if response_data["status"] != "1":
+        if response_data["result"]["status"] != 1:
             g.log.warning("Steam Promo for %r -> %r failed: %s",
                           account, data["steam-id"],
                           response_data["statusDetail"])
