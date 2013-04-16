@@ -9,7 +9,7 @@ from r2.controllers import add_controller
 from r2.controllers.reddit_base import RedditController
 from r2.lib import amqp
 from r2.lib.wrapped import Templated
-from r2.lib.validator import validate, VUser
+from r2.lib.validator import validate, VUser, VModhash
 from r2.lib.pages import Reddit
 from r2.lib.template_helpers import add_sr
 from r2.models import Account
@@ -66,8 +66,8 @@ class SteamController(RedditController):
             return SteamPage(content=SteamStop()).render()
         return SteamPage(content=SteamSorry()).render()
 
-    @validate(VUser())
-    # TODO: vmodhash
+    @validate(VUser(),
+              VModhash())
     def POST_auth(self):
         if getattr(c.user, "f2p") != "participated":
             abort(403)

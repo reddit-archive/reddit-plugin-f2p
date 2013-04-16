@@ -12,6 +12,7 @@ button below.</p>
 
 <form method="post" action="/f2p/steam/auth">
   <input type="image" src="${static("images/steam.png")}" alt="log in with Steam">
+  <input type="hidden" name="uh" value="${c.modhash}">
 </form>
 
 <p>Note: we will not store the association between your Steam account and your
