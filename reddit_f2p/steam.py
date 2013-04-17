@@ -162,9 +162,9 @@ def run_steam_q():
             response_data = response.json
 
         if response_data["result"]["status"] != 1:
-            g.log.warning("Steam Promo for %r -> %r failed: %s",
+            g.log.warning("Steam Promo for %r -> %r failed: %r",
                           account, data["steam-id"],
-                          response_data["statusDetail"])
+                          response_data)
             raise Exception
 
         account.f2p = "claimed"
