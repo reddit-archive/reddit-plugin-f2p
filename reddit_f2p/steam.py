@@ -57,7 +57,7 @@ class SteamController(RedditController):
     @validate(VUser(),
               error=nop("error"))
     def GET_start(self, error):
-        f2p_status = getattr(c.user, "f2p")
+        f2p_status = getattr(c.user, "f2p", None)
         error = bool(error)
 
         if f2p_status == "participated":
@@ -71,7 +71,7 @@ class SteamController(RedditController):
     @validate(VUser(),
               VModhash())
     def POST_auth(self):
-        if getattr(c.user, "f2p") != "participated":
+        if getattr(c.user, "f2p", None) != "participated":
             abort(403)
 
         session = {}
@@ -86,7 +86,7 @@ class SteamController(RedditController):
 
     @validate(VUser())
     def GET_postlogin(self):
-        if getattr(c.user, "f2p") != "participated":
+        if getattr(c.user, "f2p", None) != "participated":
             return redirect_to("/f2p/steam")
 
         session = g.f2pcache.get("steam_session_%d" % c.user._id)
