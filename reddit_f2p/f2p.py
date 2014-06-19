@@ -13,9 +13,11 @@ from r2.lib.utils import weighted_lottery
 from r2.lib.wrapped import Templated
 from r2.lib.validator import (
     validate,
-    VLimit,
-    VRequired,
     VByName,
+    VLimit,
+    VModhash,
+    VRequired,
+    VUser,
 )
 from r2.models import (
     Account,
@@ -205,7 +207,9 @@ def comment_reply_effect(comment):
 
 @add_controller
 class FreeToPlayApiController(RedditController):
-    @validate(item_name=VRequired('item', errors.NO_NAME),
+    @validate(VUser(),
+              VModhash(),
+              item_name=VRequired('item', errors.NO_NAME),
               target=VByName('target'))
     def POST_use_item(self, item_name, target):
         try:

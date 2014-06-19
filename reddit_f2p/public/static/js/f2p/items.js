@@ -29,7 +29,8 @@ r.f2p.Inventory = r.f2p.ItemSet.extend({
             url: '/api/f2p/use_item',
             data: {
                 item: item.get('kind'),
-                target: targetId
+                target: targetId,
+                uh: r.config.modhash,
             },
             dataType: 'json',
             success: r.f2p.updateState
