@@ -61,7 +61,11 @@ class FreeToPlay(Plugin):
         from r2.lib.cache import CMemcache, MemcacheChain, LocalCache
 
         # TODO: use SelfEmptyingCache for localcache if we use this in jobs
-        f2p_memcaches = CMemcache(g.f2pcaches, num_clients=g.num_mc_clients)
+        f2p_memcaches = CMemcache(
+            'f2p',
+            g.f2pcaches,
+            num_clients=g.num_mc_clients,
+        )
         g.f2pcache = MemcacheChain((
             LocalCache(),
             f2p_memcaches,
